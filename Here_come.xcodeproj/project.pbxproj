@@ -16,6 +16,14 @@
 		DC0769742C6C78D10025F939 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769732C6C78D10025F939 /* BaseViewController.swift */; };
 		DC0769762C6C79280025F939 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769752C6C79280025F939 /* BaseTableViewCell.swift */; };
 		DC0769782C6C79AC0025F939 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769772C6C79AC0025F939 /* BaseCollectionViewCell.swift */; };
+		DC07697B2C6C7CAD0025F939 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC07697A2C6C7CAD0025F939 /* LoginViewController.swift */; };
+		DC07697E2C6C7E350025F939 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DC07697D2C6C7E350025F939 /* Alamofire */; };
+		DC0769812C6C7E400025F939 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DC0769802C6C7E400025F939 /* Kingfisher */; };
+		DC0769842C6C7E4B0025F939 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DC0769832C6C7E4B0025F939 /* SnapKit */; };
+		DC0769872C6C7E6C0025F939 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = DC0769862C6C7E6C0025F939 /* RxCocoa */; };
+		DC0769892C6C7E6C0025F939 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DC0769882C6C7E6C0025F939 /* RxSwift */; };
+		DC07698B2C6C815E0025F939 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC07698A2C6C815E0025F939 /* UITextField+Extension.swift */; };
+		DC0769902C6C832C0025F939 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = DC07698F2C6C832C0025F939 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +38,9 @@
 		DC0769732C6C78D10025F939 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		DC0769752C6C79280025F939 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		DC0769772C6C79AC0025F939 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		DC07697A2C6C7CAD0025F939 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		DC07698A2C6C815E0025F939 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		DC07698F2C6C832C0025F939 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +48,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC0769842C6C7E4B0025F939 /* SnapKit in Frameworks */,
+				DC0769812C6C7E400025F939 /* Kingfisher in Frameworks */,
+				DC0769892C6C7E6C0025F939 /* RxSwift in Frameworks */,
+				DC0769872C6C7E6C0025F939 /* RxCocoa in Frameworks */,
+				DC07697E2C6C7E350025F939 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +62,7 @@
 		DC07694E2C6C77D30025F939 = {
 			isa = PBXGroup;
 			children = (
+				DC07698F2C6C832C0025F939 /* .gitignore */,
 				DC0769592C6C77D30025F939 /* Here_come */,
 				DC0769582C6C77D30025F939 /* Products */,
 			);
@@ -69,11 +86,13 @@
 				DC0769632C6C77D50025F939 /* Assets.xcassets */,
 				DC0769652C6C77D50025F939 /* LaunchScreen.storyboard */,
 				DC0769682C6C77D50025F939 /* Info.plist */,
+				DC07698C2C6C82B30025F939 /* Stuff */,
 				DC0769722C6C788E0025F939 /* Extension */,
 				DC0769712C6C78810025F939 /* Singleton */,
 				DC0769702C6C78790025F939 /* Database */,
 				DC07696F2C6C786E0025F939 /* Network */,
 				DC07696E2C6C78210025F939 /* Base */,
+				DC0769792C6C7C920025F939 /* Login */,
 			);
 			path = Here_come;
 			sourceTree = "<group>";
@@ -112,8 +131,24 @@
 		DC0769722C6C788E0025F939 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				DC07698A2C6C815E0025F939 /* UITextField+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		DC0769792C6C7C920025F939 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				DC07697A2C6C7CAD0025F939 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		DC07698C2C6C82B30025F939 /* Stuff */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Stuff;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,6 +167,13 @@
 			dependencies = (
 			);
 			name = Here_come;
+			packageProductDependencies = (
+				DC07697D2C6C7E350025F939 /* Alamofire */,
+				DC0769802C6C7E400025F939 /* Kingfisher */,
+				DC0769832C6C7E4B0025F939 /* SnapKit */,
+				DC0769862C6C7E6C0025F939 /* RxCocoa */,
+				DC0769882C6C7E6C0025F939 /* RxSwift */,
+			);
 			productName = Here_come;
 			productReference = DC0769572C6C77D30025F939 /* Here_come.app */;
 			productType = "com.apple.product-type.application";
@@ -160,6 +202,12 @@
 				Base,
 			);
 			mainGroup = DC07694E2C6C77D30025F939;
+			packageReferences = (
+				DC07697C2C6C7E350025F939 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				DC07697F2C6C7E400025F939 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				DC0769822C6C7E4B0025F939 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				DC0769852C6C7E6C0025F939 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			productRefGroup = DC0769582C6C77D30025F939 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -174,6 +222,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC0769902C6C832C0025F939 /* .gitignore in Resources */,
 				DC0769672C6C77D50025F939 /* LaunchScreen.storyboard in Resources */,
 				DC0769642C6C77D50025F939 /* Assets.xcassets in Resources */,
 				DC0769622C6C77D30025F939 /* Main.storyboard in Resources */,
@@ -187,10 +236,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC07697B2C6C7CAD0025F939 /* LoginViewController.swift in Sources */,
 				DC07695F2C6C77D30025F939 /* ViewController.swift in Sources */,
 				DC0769742C6C78D10025F939 /* BaseViewController.swift in Sources */,
 				DC07695B2C6C77D30025F939 /* AppDelegate.swift in Sources */,
 				DC0769762C6C79280025F939 /* BaseTableViewCell.swift in Sources */,
+				DC07698B2C6C815E0025F939 /* UITextField+Extension.swift in Sources */,
 				DC07695D2C6C77D30025F939 /* SceneDelegate.swift in Sources */,
 				DC0769782C6C79AC0025F939 /* BaseCollectionViewCell.swift in Sources */,
 			);
@@ -423,6 +474,69 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DC07697C2C6C7E350025F939 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+		DC07697F2C6C7E400025F939 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.12.0;
+			};
+		};
+		DC0769822C6C7E4B0025F939 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		DC0769852C6C7E6C0025F939 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DC07697D2C6C7E350025F939 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC07697C2C6C7E350025F939 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		DC0769802C6C7E400025F939 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC07697F2C6C7E400025F939 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		DC0769832C6C7E4B0025F939 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC0769822C6C7E4B0025F939 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		DC0769862C6C7E6C0025F939 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC0769852C6C7E6C0025F939 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		DC0769882C6C7E6C0025F939 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC0769852C6C7E6C0025F939 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DC07694F2C6C77D30025F939 /* Project object */;
 }
