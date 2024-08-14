@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 final class LoginViewController: BaseViewController {
     
@@ -14,9 +15,13 @@ final class LoginViewController: BaseViewController {
     let passwordTextField = UITextField()
     let loginButton = UIButton()
     
+    let viewModel = LoginViewModel()
+    let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        bind()
     }
     
     override func configureHierarchy() {
@@ -44,7 +49,6 @@ final class LoginViewController: BaseViewController {
             make.height.equalTo(50)
         }
         
-        
     }
     
     override func configureUI() {
@@ -62,6 +66,22 @@ final class LoginViewController: BaseViewController {
         
         loginButton.backgroundColor = .black
         loginButton.setTitle("로그인하기", for: .normal)
+        
+    }
+    
+    func bind() {
+
+        let loginInfo = Observable.combineLatest(idTextField.rx.text.orEmpty.asObservable(), passwordTextField.rx.text.orEmpty.asObservable())
+        
+        let input = LoginViewModel.Input(loginButtonTap: loginButton.rx.tap, loginInfo: loginInfo)
+        let output = viewModel.transform(input: input)
+        
+        output.loginValidation
+            .bind(with: self) { owner, _ in
+                let vc = ViewController()
+                owner.navigationController?.pushViewController(vc, animated: true)
+            }
+            .disposed(by: disposeBag)
         
     }
     
