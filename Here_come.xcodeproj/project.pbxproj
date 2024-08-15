@@ -43,6 +43,7 @@
 		DC0769B92C6CD77E0025F939 /* Restaurants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769B82C6CD77D0025F939 /* Restaurants.swift */; };
 		DC0769BB2C6CD7850025F939 /* Cafes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769BA2C6CD7850025F939 /* Cafes.swift */; };
 		DC0769BD2C6CD78E0025F939 /* Attractions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769BC2C6CD78E0025F939 /* Attractions.swift */; };
+		DC0769C02C6DF6250025F939 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DC0769BF2C6DF6250025F939 /* IQKeyboardManagerSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +92,7 @@
 				DC0769892C6C7E6C0025F939 /* RxSwift in Frameworks */,
 				DC0769872C6C7E6C0025F939 /* RxCocoa in Frameworks */,
 				DC07697E2C6C7E350025F939 /* Alamofire in Frameworks */,
+				DC0769C02C6DF6250025F939 /* IQKeyboardManagerSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +288,7 @@
 				DC0769832C6C7E4B0025F939 /* SnapKit */,
 				DC0769862C6C7E6C0025F939 /* RxCocoa */,
 				DC0769882C6C7E6C0025F939 /* RxSwift */,
+				DC0769BF2C6DF6250025F939 /* IQKeyboardManagerSwift */,
 			);
 			productName = Here_come;
 			productReference = DC0769572C6C77D30025F939 /* Here_come.app */;
@@ -320,6 +323,7 @@
 				DC07697F2C6C7E400025F939 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				DC0769822C6C7E4B0025F939 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				DC0769852C6C7E6C0025F939 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				DC0769BE2C6DF6250025F939 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = DC0769582C6C77D30025F939 /* Products */;
 			projectDirPath = "";
@@ -640,6 +644,14 @@
 				minimumVersion = 6.7.1;
 			};
 		};
+		DC0769BE2C6DF6250025F939 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -667,6 +679,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DC0769852C6C7E6C0025F939 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		DC0769BF2C6DF6250025F939 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC0769BE2C6DF6250025F939 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
