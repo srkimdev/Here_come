@@ -20,8 +20,6 @@ final class NetworkManager {
             let query = LoginQuery(email: id, password: password)
             let request = try Router.login(query: query).asURLRequest()
             
-            print(request)
-            
             AF.request(request).responseDecodable(of: LoginModel.self) { response in
                 switch response.result {
                 case .success(let success):
@@ -30,7 +28,7 @@ final class NetworkManager {
                     UserDefaultsManager.shared.refreshToken = success.refreshToken
                     completionHandler(success)
                 
-                case .failure(let failure):
+                case .failure:
                     print("실패")
                 }
             }
@@ -40,5 +38,7 @@ final class NetworkManager {
         }
         
     }
+    
+    
     
 }

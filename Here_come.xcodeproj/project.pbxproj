@@ -33,6 +33,16 @@
 		DC0769A02C6C99610025F939 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC07699F2C6C99610025F939 /* Header.swift */; };
 		DC0769A22C6C9A6E0025F939 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769A12C6C9A6E0025F939 /* UserDefaultsManager.swift */; };
 		DC0769A42C6C9DB00025F939 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769A32C6C9DB00025F939 /* LoginViewModel.swift */; };
+		DC0769A72C6CD1FC0025F939 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769A62C6CD1FC0025F939 /* TabBarViewController.swift */; };
+		DC0769AD2C6CD2B60025F939 /* AccomodationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769AC2C6CD2B60025F939 /* AccomodationViewController.swift */; };
+		DC0769AF2C6CD3460025F939 /* RecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769AE2C6CD3460025F939 /* RecommendViewController.swift */; };
+		DC0769B12C6CD3880025F939 /* FreeBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769B02C6CD3880025F939 /* FreeBoardViewController.swift */; };
+		DC0769B32C6CD3A30025F939 /* ProfileManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769B22C6CD3A30025F939 /* ProfileManageViewController.swift */; };
+		DC0769B52C6CD4800025F939 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769B42C6CD4800025F939 /* UIViewController+Extension.swift */; };
+		DC0769B72C6CD7720025F939 /* Accomodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769B62C6CD7720025F939 /* Accomodations.swift */; };
+		DC0769B92C6CD77E0025F939 /* Restaurants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769B82C6CD77D0025F939 /* Restaurants.swift */; };
+		DC0769BB2C6CD7850025F939 /* Cafes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769BA2C6CD7850025F939 /* Cafes.swift */; };
+		DC0769BD2C6CD78E0025F939 /* Attractions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769BC2C6CD78E0025F939 /* Attractions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +69,16 @@
 		DC07699F2C6C99610025F939 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		DC0769A12C6C9A6E0025F939 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		DC0769A32C6C9DB00025F939 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		DC0769A62C6CD1FC0025F939 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		DC0769AC2C6CD2B60025F939 /* AccomodationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomodationViewController.swift; sourceTree = "<group>"; };
+		DC0769AE2C6CD3460025F939 /* RecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendViewController.swift; sourceTree = "<group>"; };
+		DC0769B02C6CD3880025F939 /* FreeBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeBoardViewController.swift; sourceTree = "<group>"; };
+		DC0769B22C6CD3A30025F939 /* ProfileManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManageViewController.swift; sourceTree = "<group>"; };
+		DC0769B42C6CD4800025F939 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		DC0769B62C6CD7720025F939 /* Accomodations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accomodations.swift; sourceTree = "<group>"; };
+		DC0769B82C6CD77D0025F939 /* Restaurants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurants.swift; sourceTree = "<group>"; };
+		DC0769BA2C6CD7850025F939 /* Cafes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafes.swift; sourceTree = "<group>"; };
+		DC0769BC2C6CD78E0025F939 /* Attractions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attractions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +133,11 @@
 				DC0769982C6C8A3C0025F939 /* ResponseModel */,
 				DC07696E2C6C78210025F939 /* Base */,
 				DC0769792C6C7C920025F939 /* Login */,
+				DC0769A52C6CD1D90025F939 /* Tab */,
+				DC0769A82C6CD2280025F939 /* First */,
+				DC0769A92C6CD23A0025F939 /* Second */,
+				DC0769AA2C6CD2400025F939 /* Third */,
+				DC0769AB2C6CD2480025F939 /* Fourth */,
 			);
 			path = Here_come;
 			sourceTree = "<group>";
@@ -142,6 +167,10 @@
 		DC0769702C6C78790025F939 /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				DC0769B62C6CD7720025F939 /* Accomodations.swift */,
+				DC0769B82C6CD77D0025F939 /* Restaurants.swift */,
+				DC0769BA2C6CD7850025F939 /* Cafes.swift */,
+				DC0769BC2C6CD78E0025F939 /* Attractions.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -157,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				DC07698A2C6C815E0025F939 /* UITextField+Extension.swift */,
+				DC0769B42C6CD4800025F939 /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -192,6 +222,46 @@
 				DC0769992C6C8A580025F939 /* LoginModel.swift */,
 			);
 			path = ResponseModel;
+			sourceTree = "<group>";
+		};
+		DC0769A52C6CD1D90025F939 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				DC0769A62C6CD1FC0025F939 /* TabBarViewController.swift */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
+		DC0769A82C6CD2280025F939 /* First */ = {
+			isa = PBXGroup;
+			children = (
+				DC0769AC2C6CD2B60025F939 /* AccomodationViewController.swift */,
+			);
+			path = First;
+			sourceTree = "<group>";
+		};
+		DC0769A92C6CD23A0025F939 /* Second */ = {
+			isa = PBXGroup;
+			children = (
+				DC0769AE2C6CD3460025F939 /* RecommendViewController.swift */,
+			);
+			path = Second;
+			sourceTree = "<group>";
+		};
+		DC0769AA2C6CD2400025F939 /* Third */ = {
+			isa = PBXGroup;
+			children = (
+				DC0769B02C6CD3880025F939 /* FreeBoardViewController.swift */,
+			);
+			path = Third;
+			sourceTree = "<group>";
+		};
+		DC0769AB2C6CD2480025F939 /* Fourth */ = {
+			isa = PBXGroup;
+			children = (
+				DC0769B22C6CD3A30025F939 /* ProfileManageViewController.swift */,
+			);
+			path = Fourth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,17 +349,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC0769B92C6CD77E0025F939 /* Restaurants.swift in Sources */,
 				DC07697B2C6C7CAD0025F939 /* LoginViewController.swift in Sources */,
+				DC0769BB2C6CD7850025F939 /* Cafes.swift in Sources */,
 				DC07699A2C6C8A580025F939 /* LoginModel.swift in Sources */,
+				DC0769B72C6CD7720025F939 /* Accomodations.swift in Sources */,
 				DC07695F2C6C77D30025F939 /* ViewController.swift in Sources */,
+				DC0769B32C6CD3A30025F939 /* ProfileManageViewController.swift in Sources */,
 				DC0769942C6C84280025F939 /* NetworkManager.swift in Sources */,
+				DC0769A72C6CD1FC0025F939 /* TabBarViewController.swift in Sources */,
 				DC0769742C6C78D10025F939 /* BaseViewController.swift in Sources */,
+				DC0769B52C6CD4800025F939 /* UIViewController+Extension.swift in Sources */,
 				DC07695B2C6C77D30025F939 /* AppDelegate.swift in Sources */,
+				DC0769AD2C6CD2B60025F939 /* AccomodationViewController.swift in Sources */,
 				DC0769A22C6C9A6E0025F939 /* UserDefaultsManager.swift in Sources */,
+				DC0769B12C6CD3880025F939 /* FreeBoardViewController.swift in Sources */,
+				DC0769AF2C6CD3460025F939 /* RecommendViewController.swift in Sources */,
 				DC07699E2C6C8C4D0025F939 /* TargetType.swift in Sources */,
 				DC0769762C6C79280025F939 /* BaseTableViewCell.swift in Sources */,
 				DC07698B2C6C815E0025F939 /* UITextField+Extension.swift in Sources */,
 				DC0769A42C6C9DB00025F939 /* LoginViewModel.swift in Sources */,
+				DC0769BD2C6CD78E0025F939 /* Attractions.swift in Sources */,
 				DC07695D2C6C77D30025F939 /* SceneDelegate.swift in Sources */,
 				DC0769A02C6C99610025F939 /* Header.swift in Sources */,
 				DC0769972C6C89F00025F939 /* LoginQuery.swift in Sources */,

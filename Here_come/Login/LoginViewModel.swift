@@ -26,7 +26,6 @@ final class LoginViewModel {
         
         let loginValidation = PublishSubject<LoginModel>()
         
-        // viewmodel에서 통신하는 방법?
         input.loginButtonTap
             .withLatestFrom(input.loginInfo)
             .bind(with: self) { owner, value in

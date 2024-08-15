@@ -78,8 +78,8 @@ final class LoginViewController: BaseViewController {
         
         output.loginValidation
             .bind(with: self) { owner, _ in
-                let vc = ViewController()
-                owner.navigationController?.pushViewController(vc, animated: true)
+                let vc = TabBarViewController()
+                owner.transitionScreen(vc: vc, style: .presentFull)
             }
             .disposed(by: disposeBag)
         
