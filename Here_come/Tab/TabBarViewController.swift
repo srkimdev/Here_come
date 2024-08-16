@@ -19,7 +19,7 @@ final class TabBarViewController: UITabBarController {
         let nav1 = UINavigationController(rootViewController: first)
         nav1.tabBarItem = UITabBarItem(title: "홈", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "home.fill"))
         
-        let second = RecommendViewController()
+        let second = SociallingViewController()
         let nav2 = UINavigationController(rootViewController: second)
         nav2.tabBarItem = UITabBarItem(title: "소셜링", image: UIImage(systemName: "leaf"), selectedImage: UIImage(systemName: "leaf.fill"))
         

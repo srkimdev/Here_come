@@ -14,7 +14,7 @@ final class NetworkManager {
     
     private init() { }
     
-    func accessLogin(id: String, password: String, completionHandler: @escaping (LoginModel) -> Void) {
+    func accessLogin(id: String, password: String, completionHandler: @escaping (LoginModel) -> Void)  {
         
         do {
             let query = LoginQuery(email: id, password: password)
