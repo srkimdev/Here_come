@@ -26,4 +26,6 @@ class BaseViewController: UIViewController {
     
     func configureUI() { }
     
+    func configureAction() { }
+    
 }

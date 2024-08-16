@@ -40,9 +40,6 @@
 		DC0769B32C6CD3A30025F939 /* ProfileManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769B22C6CD3A30025F939 /* ProfileManageViewController.swift */; };
 		DC0769B52C6CD4800025F939 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769B42C6CD4800025F939 /* UIViewController+Extension.swift */; };
 		DC0769B72C6CD7720025F939 /* Accomodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769B62C6CD7720025F939 /* Accomodations.swift */; };
-		DC0769B92C6CD77E0025F939 /* Restaurants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769B82C6CD77D0025F939 /* Restaurants.swift */; };
-		DC0769BB2C6CD7850025F939 /* Cafes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769BA2C6CD7850025F939 /* Cafes.swift */; };
-		DC0769BD2C6CD78E0025F939 /* Attractions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769BC2C6CD78E0025F939 /* Attractions.swift */; };
 		DC0769C02C6DF6250025F939 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DC0769BF2C6DF6250025F939 /* IQKeyboardManagerSwift */; };
 		DC0769C22C6E10840025F939 /* AccomodationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769C12C6E10840025F939 /* AccomodationCollectionViewCell.swift */; };
 		DC0769C42C6E10D60025F939 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769C32C6E10D60025F939 /* ReusableProtocol.swift */; };
@@ -50,6 +47,11 @@
 		DC0769C82C6E5E740025F939 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769C72C6E5E740025F939 /* ImageCollectionViewCell.swift */; };
 		DC0769CA2C6F2E3D0025F939 /* RecentTextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769C92C6F2E3D0025F939 /* RecentTextCollectionViewCell.swift */; };
 		DC0769CC2C6F43600025F939 /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769CB2C6F43600025F939 /* RecommendCollectionViewCell.swift */; };
+		DC0769CF2C6F4F020025F939 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769CE2C6F4F020025F939 /* SearchViewController.swift */; };
+		DC0769D12C6F51470025F939 /* SociallingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769D02C6F51470025F939 /* SociallingTableViewCell.swift */; };
+		DC0769D32C6F541F0025F939 /* SociallingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769D22C6F541F0025F939 /* SociallingCollectionViewCell.swift */; };
+		DC0769D52C6F72500025F939 /* SociallingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769D42C6F72500025F939 /* SociallingViewModel.swift */; };
+		DC0769D72C6F73140025F939 /* Party.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769D62C6F73140025F939 /* Party.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,15 +85,17 @@
 		DC0769B22C6CD3A30025F939 /* ProfileManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManageViewController.swift; sourceTree = "<group>"; };
 		DC0769B42C6CD4800025F939 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		DC0769B62C6CD7720025F939 /* Accomodations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accomodations.swift; sourceTree = "<group>"; };
-		DC0769B82C6CD77D0025F939 /* Restaurants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurants.swift; sourceTree = "<group>"; };
-		DC0769BA2C6CD7850025F939 /* Cafes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafes.swift; sourceTree = "<group>"; };
-		DC0769BC2C6CD78E0025F939 /* Attractions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attractions.swift; sourceTree = "<group>"; };
 		DC0769C12C6E10840025F939 /* AccomodationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomodationCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC0769C32C6E10D60025F939 /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 		DC0769C52C6E13E40025F939 /* AccomodationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomodationViewModel.swift; sourceTree = "<group>"; };
 		DC0769C72C6E5E740025F939 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC0769C92C6F2E3D0025F939 /* RecentTextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTextCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC0769CB2C6F43600025F939 /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
+		DC0769CE2C6F4F020025F939 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		DC0769D02C6F51470025F939 /* SociallingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SociallingTableViewCell.swift; sourceTree = "<group>"; };
+		DC0769D22C6F541F0025F939 /* SociallingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SociallingCollectionViewCell.swift; sourceTree = "<group>"; };
+		DC0769D42C6F72500025F939 /* SociallingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SociallingViewModel.swift; sourceTree = "<group>"; };
+		DC0769D62C6F73140025F939 /* Party.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Party.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,7 @@
 				DC0769A92C6CD23A0025F939 /* Second */,
 				DC0769AA2C6CD2400025F939 /* Third */,
 				DC0769AB2C6CD2480025F939 /* Fourth */,
+				DC0769CD2C6F4EE50025F939 /* Search */,
 			);
 			path = Here_come;
 			sourceTree = "<group>";
@@ -182,9 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				DC0769B62C6CD7720025F939 /* Accomodations.swift */,
-				DC0769B82C6CD77D0025F939 /* Restaurants.swift */,
-				DC0769BA2C6CD7850025F939 /* Cafes.swift */,
-				DC0769BC2C6CD78E0025F939 /* Attractions.swift */,
+				DC0769D62C6F73140025F939 /* Party.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -262,8 +265,9 @@
 			isa = PBXGroup;
 			children = (
 				DC0769AE2C6CD3460025F939 /* SociallingViewController.swift */,
-				DC0769C92C6F2E3D0025F939 /* RecentTextCollectionViewCell.swift */,
-				DC0769CB2C6F43600025F939 /* RecommendCollectionViewCell.swift */,
+				DC0769D02C6F51470025F939 /* SociallingTableViewCell.swift */,
+				DC0769D22C6F541F0025F939 /* SociallingCollectionViewCell.swift */,
+				DC0769D42C6F72500025F939 /* SociallingViewModel.swift */,
 			);
 			path = Second;
 			sourceTree = "<group>";
@@ -282,6 +286,16 @@
 				DC0769B22C6CD3A30025F939 /* ProfileManageViewController.swift */,
 			);
 			path = Fourth;
+			sourceTree = "<group>";
+		};
+		DC0769CD2C6F4EE50025F939 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				DC0769CE2C6F4F020025F939 /* SearchViewController.swift */,
+				DC0769C92C6F2E3D0025F939 /* RecentTextCollectionViewCell.swift */,
+				DC0769CB2C6F43600025F939 /* RecommendCollectionViewCell.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,9 +385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC0769B92C6CD77E0025F939 /* Restaurants.swift in Sources */,
 				DC07697B2C6C7CAD0025F939 /* LoginViewController.swift in Sources */,
-				DC0769BB2C6CD7850025F939 /* Cafes.swift in Sources */,
 				DC07699A2C6C8A580025F939 /* LoginModel.swift in Sources */,
 				DC0769B72C6CD7720025F939 /* Accomodations.swift in Sources */,
 				DC07695F2C6C77D30025F939 /* ViewController.swift in Sources */,
@@ -391,17 +403,21 @@
 				DC0769AF2C6CD3460025F939 /* SociallingViewController.swift in Sources */,
 				DC0769CA2C6F2E3D0025F939 /* RecentTextCollectionViewCell.swift in Sources */,
 				DC07699E2C6C8C4D0025F939 /* TargetType.swift in Sources */,
+				DC0769CF2C6F4F020025F939 /* SearchViewController.swift in Sources */,
 				DC0769762C6C79280025F939 /* BaseTableViewCell.swift in Sources */,
 				DC07698B2C6C815E0025F939 /* UITextField+Extension.swift in Sources */,
 				DC0769A42C6C9DB00025F939 /* LoginViewModel.swift in Sources */,
 				DC0769C82C6E5E740025F939 /* ImageCollectionViewCell.swift in Sources */,
-				DC0769BD2C6CD78E0025F939 /* Attractions.swift in Sources */,
 				DC07695D2C6C77D30025F939 /* SceneDelegate.swift in Sources */,
+				DC0769D12C6F51470025F939 /* SociallingTableViewCell.swift in Sources */,
 				DC0769A02C6C99610025F939 /* Header.swift in Sources */,
+				DC0769D32C6F541F0025F939 /* SociallingCollectionViewCell.swift in Sources */,
 				DC0769972C6C89F00025F939 /* LoginQuery.swift in Sources */,
 				DC0769922C6C83650025F939 /* APIKey.swift in Sources */,
 				DC0769CC2C6F43600025F939 /* RecommendCollectionViewCell.swift in Sources */,
 				DC0769782C6C79AC0025F939 /* BaseCollectionViewCell.swift in Sources */,
+				DC0769D72C6F73140025F939 /* Party.swift in Sources */,
+				DC0769D52C6F72500025F939 /* SociallingViewModel.swift in Sources */,
 				DC07699C2C6C8BA00025F939 /* Router.swift in Sources */,
 				DC0769C22C6E10840025F939 /* AccomodationCollectionViewCell.swift in Sources */,
 			);
