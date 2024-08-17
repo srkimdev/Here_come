@@ -77,6 +77,14 @@ final class SociallingViewController: BaseViewController {
                 
             }
             .disposed(by: disposeBag)
+        
+        output.collectionViewList
+            .bind(to: categoryCollectionView.rx.items(cellIdentifier: CategoryCollectionViewCell.identifier, cellType: CategoryCollectionViewCell.self)) { (item, element, cell) in
+                
+                cell.designCell(transition: element)
+                
+            }
+            .disposed(by: disposeBag)
             
     }
     
@@ -85,8 +93,10 @@ final class SociallingViewController: BaseViewController {
 extension SociallingViewController: UICollectionViewDelegateFlowLayout {
     func categoryCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-//        layout
-        
+        layout.itemSize = CGSize(width: 50, height: 100)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        layout.minimumLineSpacing = 20
+        layout.scrollDirection = .horizontal
         return layout
     }
 }

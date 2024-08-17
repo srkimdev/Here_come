@@ -19,19 +19,22 @@ final class SociallingViewModel {
     
     struct Output {
         let tableViewList: BehaviorSubject<[Party]>
+        let collectionViewList: BehaviorSubject<[Category]>
     }
     
     func transform(input: Input) -> Output {
         
         let tableViewList = BehaviorSubject<[Party]>(value: [])
+        let collectionViewList = BehaviorSubject<[Category]>(value: [])
         
         input.viewDidLoadTrigger
             .bind(with: self) { owner, _ in
                 tableViewList.onNext(Parties)
+                collectionViewList.onNext(cateogies)
             }
             .disposed(by: disposeBag)
         
-        return Output(tableViewList: tableViewList)
+        return Output(tableViewList: tableViewList, collectionViewList: collectionViewList)
     }
     
 }
