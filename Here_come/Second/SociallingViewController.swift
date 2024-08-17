@@ -11,38 +11,50 @@ import RxSwift
 
 final class SociallingViewController: BaseViewController {
     
+    lazy var categoryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: categoryCollectionViewLayout())
     let topicTableView = UITableView()
     
     let viewModel = SociallingViewModel()
     let disposeBag = DisposeBag()
     
-    let list = ["NEW", "추천 소셜링", "인기 소셜링"]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        categoryCollectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
         topicTableView.register(SociallingTableViewCell.self, forCellReuseIdentifier: SociallingTableViewCell.identifier)
         
         bind()
     }
     
     override func configureHierarchy() {
+        view.addSubview(categoryCollectionView)
         view.addSubview(topicTableView)
     }
     
     override func configureLayout() {
-        topicTableView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
+        
+        categoryCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(100)
         }
+        
+        topicTableView.snp.makeConstraints { make in
+            make.top.equalTo(categoryCollectionView.snp.bottom).offset(20)
+            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+        
     }
     
     override func configureUI() {
-        let item = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(searchButtonTapped))
+        let item = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(searchButtonTapped))
+        item.tintColor = .black
         navigationItem.rightBarButtonItem = item
         
-        topicTableView.backgroundColor = .lightGray
-        topicTableView.rowHeight = 250
-        topicTableView.separatorStyle = .none
+        categoryCollectionView.backgroundColor = .lightGray
+        
+        topicTableView.rowHeight = 120
+        
         
     }
 
@@ -61,11 +73,20 @@ final class SociallingViewController: BaseViewController {
         output.tableViewList
             .bind(to: topicTableView.rx.items(cellIdentifier: SociallingTableViewCell.identifier, cellType: SociallingTableViewCell.self)) { (row, element, cell) in
 
-                cell.designCell(transition: self.list[row])
+                cell.designCell(transition: element)
                 
             }
             .disposed(by: disposeBag)
             
     }
     
+}
+
+extension SociallingViewController: UICollectionViewDelegateFlowLayout {
+    func categoryCollectionViewLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewFlowLayout()
+//        layout
+        
+        return layout
+    }
 }

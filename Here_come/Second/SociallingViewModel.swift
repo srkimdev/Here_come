@@ -18,26 +18,18 @@ final class SociallingViewModel {
     }
     
     struct Output {
-        let tableViewList: BehaviorSubject<[[Party]]>
+        let tableViewList: BehaviorSubject<[Party]>
     }
     
     func transform(input: Input) -> Output {
         
-        let tableViewList = BehaviorSubject<[[Party]]>(value: [])
+        let tableViewList = BehaviorSubject<[Party]>(value: [])
         
-        let a = input.viewDidLoadTrigger
-            .map{Parties}
-//            .bind(to: tableViewList)
-            .bind(with: self) { owner, value in
-                tableViewList.onNext(value)
-                print("onnext")
+        input.viewDidLoadTrigger
+            .bind(with: self) { owner, _ in
+                tableViewList.onNext(Parties)
             }
             .disposed(by: disposeBag)
-        
-        tableViewList.subscribe { parties in
-            print("🥵", parties)
-        }
-        .disposed(by: disposeBag)
         
         return Output(tableViewList: tableViewList)
     }

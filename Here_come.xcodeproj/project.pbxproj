@@ -49,9 +49,9 @@
 		DC0769CC2C6F43600025F939 /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769CB2C6F43600025F939 /* RecommendCollectionViewCell.swift */; };
 		DC0769CF2C6F4F020025F939 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769CE2C6F4F020025F939 /* SearchViewController.swift */; };
 		DC0769D12C6F51470025F939 /* SociallingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769D02C6F51470025F939 /* SociallingTableViewCell.swift */; };
-		DC0769D32C6F541F0025F939 /* SociallingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769D22C6F541F0025F939 /* SociallingCollectionViewCell.swift */; };
 		DC0769D52C6F72500025F939 /* SociallingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769D42C6F72500025F939 /* SociallingViewModel.swift */; };
 		DC0769D72C6F73140025F939 /* Party.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769D62C6F73140025F939 /* Party.swift */; };
+		DC0769D92C709CDF0025F939 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769D82C709CDF0025F939 /* CategoryCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,9 +93,9 @@
 		DC0769CB2C6F43600025F939 /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC0769CE2C6F4F020025F939 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		DC0769D02C6F51470025F939 /* SociallingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SociallingTableViewCell.swift; sourceTree = "<group>"; };
-		DC0769D22C6F541F0025F939 /* SociallingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SociallingCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC0769D42C6F72500025F939 /* SociallingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SociallingViewModel.swift; sourceTree = "<group>"; };
 		DC0769D62C6F73140025F939 /* Party.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Party.swift; sourceTree = "<group>"; };
+		DC0769D82C709CDF0025F939 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,8 +265,8 @@
 			isa = PBXGroup;
 			children = (
 				DC0769AE2C6CD3460025F939 /* SociallingViewController.swift */,
+				DC0769D82C709CDF0025F939 /* CategoryCollectionViewCell.swift */,
 				DC0769D02C6F51470025F939 /* SociallingTableViewCell.swift */,
-				DC0769D22C6F541F0025F939 /* SociallingCollectionViewCell.swift */,
 				DC0769D42C6F72500025F939 /* SociallingViewModel.swift */,
 			);
 			path = Second;
@@ -411,7 +411,7 @@
 				DC07695D2C6C77D30025F939 /* SceneDelegate.swift in Sources */,
 				DC0769D12C6F51470025F939 /* SociallingTableViewCell.swift in Sources */,
 				DC0769A02C6C99610025F939 /* Header.swift in Sources */,
-				DC0769D32C6F541F0025F939 /* SociallingCollectionViewCell.swift in Sources */,
+				DC0769D92C709CDF0025F939 /* CategoryCollectionViewCell.swift in Sources */,
 				DC0769972C6C89F00025F939 /* LoginQuery.swift in Sources */,
 				DC0769922C6C83650025F939 /* APIKey.swift in Sources */,
 				DC0769CC2C6F43600025F939 /* RecommendCollectionViewCell.swift in Sources */,
