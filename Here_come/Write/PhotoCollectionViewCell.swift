@@ -51,7 +51,6 @@ final class PhotoCollectionViewCell: BaseCollectionViewCell {
     override func configureUI() {
         photoImage.layer.masksToBounds = true
         photoImage.layer.cornerRadius = 5
-        photoImage.backgroundColor = .red
         
         deleteButton.backgroundColor = .black
         deleteButton.tintColor = .white

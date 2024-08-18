@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import RxSwift
+import PhotosUI
 
 final class WriteViewController: BaseViewController {
     
@@ -18,13 +19,13 @@ final class WriteViewController: BaseViewController {
     let titleTextField = UITextField()
     let contentTextView = UITextView()
     
-    let photoLabel = UILabel()
     lazy var photoCollectionView = UICollectionView(frame: .zero, collectionViewLayout: photoCollectionViewLayout())
+    let imageButton = UIButton()
     
     let viewModel = WriteViewModel()
     let disposeBag = DisposeBag()
     
-    let image = ["", "", "", "", "", "", "", ""]
+    private var selectedImage: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,14 +37,18 @@ final class WriteViewController: BaseViewController {
         bind()
     }
     
+    override func viewDidLayoutSubviews() {
+        imageButton.layer.cornerRadius = imageButton.frame.width / 2
+    }
+    
     override func configureHierarchy() {
         view.addSubview(categoryButton)
         categoryButton.addSubview(categoryLabel)
         categoryButton.addSubview(nextImage)
         view.addSubview(titleTextField)
         view.addSubview(contentTextView)
-        view.addSubview(photoLabel)
         view.addSubview(photoCollectionView)
+        view.addSubview(imageButton)
     }
     
     override func configureLayout() {
@@ -76,17 +81,17 @@ final class WriteViewController: BaseViewController {
             make.height.equalTo(300)
         }
         
-        photoLabel.snp.makeConstraints { make in
-            make.top.equalTo(contentTextView.snp.bottom).offset(16)
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(12)
-            make.height.equalTo(20)
-        }
-        
         photoCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(photoLabel.snp.bottom).offset(16)
+            make.top.equalTo(contentTextView.snp.bottom).offset(16)
             make.leading.equalTo(view.safeAreaLayoutGuide).offset(16)
             make.trailing.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(90)
+        }
+        
+        imageButton.snp.makeConstraints { make in
+            make.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
+            make.size.equalTo(40)
         }
         
     }
@@ -95,7 +100,12 @@ final class WriteViewController: BaseViewController {
         navigationItem.title = "글쓰기"
         
         let item = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(saveButtonTapped))
+        item.tintColor = .black
         navigationItem.rightBarButtonItem = item
+        
+        let xButton = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(backButtonTapped))
+        xButton.tintColor = .black
+        navigationItem.leftBarButtonItem = xButton
         
         categoryButton.layer.borderWidth = 1
         categoryButton.layer.borderColor = UIColor.systemGray5.cgColor
@@ -112,7 +122,9 @@ final class WriteViewController: BaseViewController {
         contentTextView.textColor = .lightGray
         contentTextView.font = .systemFont(ofSize: 15)
         
-        photoLabel.text = "사진을 등록해주세요"
+        imageButton.backgroundColor = .lightGray
+        imageButton.layer.masksToBounds = true
+        imageButton.setImage(UIImage(systemName: "photo.badge.plus"), for: .normal)
         
     }
     
@@ -120,14 +132,32 @@ final class WriteViewController: BaseViewController {
         
     }
     
+    @objc func backButtonTapped() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     func bind() {
         
-        let input = WriteViewModel.Input(categoryButtonTap: categoryButton.rx.tap)
+        let input = WriteViewModel.Input(categoryButtonTap: categoryButton.rx.tap, imageButtonTap: imageButton.rx.tap)
         let output = viewModel.transform(input: input)
         
         output.categoryButtonTap
             .bind(with: self) { owner, _ in
                 print("tap")
+            }
+            .disposed(by: disposeBag)
+        
+        output.imageButtonTap
+            .bind(with: self) { owner, _ in
+                
+                var configuration = PHPickerConfiguration()
+                configuration.selectionLimit = 10
+                configuration.filter = .any(of: [.screenshots, .images])
+                
+                let picker = PHPickerViewController(configuration: configuration)
+                picker.delegate = self
+                
+                owner.present(picker, animated: true)
             }
             .disposed(by: disposeBag)
         
@@ -156,13 +186,39 @@ extension WriteViewController: UICollectionViewDelegateFlowLayout {
 
 extension WriteViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return selectedImage.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = photoCollectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as! PhotoCollectionViewCell
         
+        cell.photoImage.image = selectedImage[indexPath.item]
+        
         return cell
+    }
+}
+
+extension WriteViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+        
+        let dispatchGroup = DispatchGroup()
+        
+        for result in results {
+            dispatchGroup.enter()
+            result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] (object, error) in
+                if let image = object as? UIImage {
+                    self?.selectedImage.append(image)
+                }
+                dispatchGroup.leave()
+            }
+            
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            self.photoCollectionView.reloadData()
+        }
+        
     }
 }
 
