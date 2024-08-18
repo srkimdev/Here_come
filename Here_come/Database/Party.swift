@@ -142,7 +142,7 @@ let Parties: [Party] = [
 //case fishing
 //case driving
 
-let cateogies: [Category] = [
+let categories: [Category] = [
     Category(image: "", name: "전체"),
     Category(image: "", name: "서핑"),
     Category(image: "", name: "등산"),

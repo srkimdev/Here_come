@@ -22,6 +22,7 @@ final class WriteViewController: BaseViewController {
     lazy var photoCollectionView = UICollectionView(frame: .zero, collectionViewLayout: photoCollectionViewLayout())
     let imageButton = UIButton()
     
+    private let pickerSubject = PublishSubject<[UIImage]>()
     let viewModel = WriteViewModel()
     let disposeBag = DisposeBag()
     
@@ -34,6 +35,7 @@ final class WriteViewController: BaseViewController {
         photoCollectionView.dataSource = self
         photoCollectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
         
+        bindNavi()
         bind()
     }
     
@@ -99,14 +101,6 @@ final class WriteViewController: BaseViewController {
     override func configureUI() {
         navigationItem.title = "글쓰기"
         
-        let item = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(saveButtonTapped))
-        item.tintColor = .black
-        navigationItem.rightBarButtonItem = item
-        
-        let xButton = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(backButtonTapped))
-        xButton.tintColor = .black
-        navigationItem.leftBarButtonItem = xButton
-        
         categoryButton.layer.borderWidth = 1
         categoryButton.layer.borderColor = UIColor.systemGray5.cgColor
         
@@ -128,12 +122,32 @@ final class WriteViewController: BaseViewController {
         
     }
     
-    @objc func saveButtonTapped() {
+    func configureNavi() {
         
     }
     
     @objc func backButtonTapped() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    func bindNavi() {
+        
+        let item = UIBarButtonItem(title: "완료", style: .plain, target: self, action: nil)
+        item.tintColor = .black
+        navigationItem.rightBarButtonItem = item
+        
+        item.rx.tap
+            .bind(with: self) { owner, _ in
+                
+                // Network
+                print(owner.selectedImage)
+                NetworkManager.shared.uploadImage(images: owner.selectedImage)
+                
+                owner.navigationController?.popViewController(animated: true)
+            }
+            .disposed(by: disposeBag)
+        
+        
     }
     
     func bind() {
@@ -151,7 +165,7 @@ final class WriteViewController: BaseViewController {
             .bind(with: self) { owner, _ in
                 
                 var configuration = PHPickerConfiguration()
-                configuration.selectionLimit = 10
+                configuration.selectionLimit = 5
                 configuration.filter = .any(of: [.screenshots, .images])
                 
                 let picker = PHPickerViewController(configuration: configuration)
@@ -170,7 +184,7 @@ final class WriteViewController: BaseViewController {
 //            .disposed(by: disposeBag)
         
     }
-    
+
 }
 
 extension WriteViewController: UICollectionViewDelegateFlowLayout {
@@ -199,6 +213,7 @@ extension WriteViewController: UICollectionViewDelegate, UICollectionViewDataSou
 }
 
 extension WriteViewController: PHPickerViewControllerDelegate {
+    
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true)
         

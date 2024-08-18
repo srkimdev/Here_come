@@ -36,7 +36,7 @@ final class SociallingViewController: BaseViewController {
         categoryCollectionView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-            make.height.equalTo(100)
+            make.height.equalTo(110)
         }
         
         topicTableView.snp.makeConstraints { make in
@@ -81,8 +81,17 @@ final class SociallingViewController: BaseViewController {
         output.collectionViewList
             .bind(to: categoryCollectionView.rx.items(cellIdentifier: CategoryCollectionViewCell.identifier, cellType: CategoryCollectionViewCell.self)) { (item, element, cell) in
                 
-                cell.designCell(transition: element)
+                cell.designCell(transition: item, selectedIndex: self.viewModel.selectedIndexPath.value)
                 
+            }
+            .disposed(by: disposeBag)
+        
+        categoryCollectionView.rx.itemSelected
+            .map { indexPath in indexPath.row }
+            .bind(with: self) { owner, value in
+                
+                owner.viewModel.selectedIndexPath.accept(value)
+                owner.categoryCollectionView.reloadData()
             }
             .disposed(by: disposeBag)
             
@@ -93,7 +102,7 @@ final class SociallingViewController: BaseViewController {
 extension SociallingViewController: UICollectionViewDelegateFlowLayout {
     func categoryCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 50, height: 100)
+        layout.itemSize = CGSize(width: 50, height: 110)
         layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         layout.minimumLineSpacing = 20
         layout.scrollDirection = .horizontal

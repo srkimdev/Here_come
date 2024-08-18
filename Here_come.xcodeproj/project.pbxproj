@@ -56,6 +56,7 @@
 		DC0769DE2C70F6A10025F939 /* WriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769DD2C70F6A10025F939 /* WriteViewModel.swift */; };
 		DC0769E02C71A8260025F939 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769DF2C71A8250025F939 /* PhotoCollectionViewCell.swift */; };
 		DC0769E22C71C61B0025F939 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769E12C71C61B0025F939 /* SettingTableViewCell.swift */; };
+		DC0769E42C71DF730025F939 /* FilesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769E32C71DF730025F939 /* FilesModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +105,7 @@
 		DC0769DD2C70F6A10025F939 /* WriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewModel.swift; sourceTree = "<group>"; };
 		DC0769DF2C71A8250025F939 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC0769E12C71C61B0025F939 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		DC0769E32C71DF730025F939 /* FilesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				DC0769992C6C8A580025F939 /* LoginModel.swift */,
+				DC0769E32C71DF730025F939 /* FilesModel.swift */,
 			);
 			path = ResponseModel;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				DC0769D52C6F72500025F939 /* SociallingViewModel.swift in Sources */,
 				DC07699C2C6C8BA00025F939 /* Router.swift in Sources */,
 				DC0769C22C6E10840025F939 /* AccomodationCollectionViewCell.swift in Sources */,
+				DC0769E42C71DF730025F939 /* FilesModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -30,6 +30,9 @@ final class WriteViewModel {
         
         photoCollectionView.onNext(image)
         
+        
+        
+        
         return Output(categoryButtonTap: input.categoryButtonTap, imageButtonTap: input.imageButtonTap, photoCollectionView: photoCollectionView)
     }
     

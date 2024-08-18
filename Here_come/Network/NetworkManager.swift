@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import UIKit
 
 final class NetworkManager {
     
@@ -29,7 +30,7 @@ final class NetworkManager {
                     completionHandler(success)
                 
                 case .failure:
-                    print("실패")
+                    print("로그인 실패")
                 }
             }
             
@@ -39,6 +40,41 @@ final class NetworkManager {
         
     }
     
+    func uploadImage(images: [UIImage]) {
+        
+        do {
+            let request = try Router.uploadImage.asURLRequest()
+            print(request)
+            
+            AF.upload(multipartFormData: { multipartFormData in
+                
+                for (index, item) in images.enumerated() {
+                    guard let data = item.jpegData(compressionQuality: 0.5) else { return }
+                    
+                    multipartFormData.append(data, withName: "files", fileName: "image\(index + 1).jpg", mimeType: "image/jpeg")
+                }
+                
+            }, with: request)
+            .validate(statusCode: 200..<300)
+            .responseDecodable(of: FilesModel.self) { response in
+                switch response.result {
+                case .success(let value):
+                    print(value)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+            
+        } catch {
+            print(error)
+        }
+        
+    }
     
+    func uploadPost() {
+        
+        
+        
+    }
     
 }

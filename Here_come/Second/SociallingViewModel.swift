@@ -12,6 +12,7 @@ import RxCocoa
 final class SociallingViewModel {
     
     let disposeBag = DisposeBag()
+    var selectedIndexPath = BehaviorRelay<Int>(value: 0)
     
     struct Input {
         let viewDidLoadTrigger: Observable<Void>
@@ -30,7 +31,7 @@ final class SociallingViewModel {
         input.viewDidLoadTrigger
             .bind(with: self) { owner, _ in
                 tableViewList.onNext(Parties)
-                collectionViewList.onNext(cateogies)
+                collectionViewList.onNext(categories)
             }
             .disposed(by: disposeBag)
         

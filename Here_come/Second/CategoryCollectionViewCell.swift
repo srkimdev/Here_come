@@ -22,11 +22,12 @@ final class CategoryCollectionViewCell: BaseCollectionViewCell {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         backView.layer.cornerRadius = backView.frame.width / 2
+        categoryImage.layer.cornerRadius = categoryImage.frame.width / 2
     }
     
     override func configureHierarchy() {
         contentView.addSubview(backView)
-        contentView.addSubview(categoryImage)
+        backView.addSubview(categoryImage)
         contentView.addSubview(categoryLabel)
     }
     
@@ -34,27 +35,41 @@ final class CategoryCollectionViewCell: BaseCollectionViewCell {
         backView.snp.makeConstraints { make in
             make.top.equalTo(contentView.safeAreaLayoutGuide).offset(20)
             make.centerX.equalTo(contentView)
-            make.size.equalTo(46)
+            make.size.equalTo(54)
+        }
+        
+        categoryImage.snp.makeConstraints { make in
+            make.center.equalTo(backView)
+            make.size.equalTo(backView).multipliedBy(0.8)
         }
         
         categoryLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(8)
+            make.top.equalTo(backView.snp.bottom).offset(4)
             make.centerX.equalTo(contentView)
-            make.top.equalTo(backView.snp.bottom).offset(8)
         }
     }
     
     override func configureUI() {
-        backView.backgroundColor = .red
+        
         backView.layer.masksToBounds = true
+        backView.layer.borderColor = UIColor.black.cgColor
+        
+        categoryImage.layer.masksToBounds = true
+        categoryImage.backgroundColor = .red
         
         categoryLabel.font = .systemFont(ofSize: 14)
         
     }
     
-    func designCell(transition: Category) {
-//        categoryImage
-        categoryLabel.text = transition.name
+    func designCell(transition: Int, selectedIndex: Int) {
+
+        if transition == selectedIndex {
+            backView.layer.borderWidth = 1
+        } else {
+            backView.layer.borderWidth = 0
+        }
+        
+        categoryLabel.text = categories[transition].name
         
     }
 
