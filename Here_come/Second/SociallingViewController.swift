@@ -59,7 +59,7 @@ final class SociallingViewController: BaseViewController {
     }
 
     @objc func searchButtonTapped() {
-        let vc = SearchViewController()
+        let vc = WriteViewController()
         transitionScreen(vc: vc, style: .push)
     }
     

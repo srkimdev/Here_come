@@ -52,6 +52,10 @@
 		DC0769D52C6F72500025F939 /* SociallingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769D42C6F72500025F939 /* SociallingViewModel.swift */; };
 		DC0769D72C6F73140025F939 /* Party.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769D62C6F73140025F939 /* Party.swift */; };
 		DC0769D92C709CDF0025F939 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769D82C709CDF0025F939 /* CategoryCollectionViewCell.swift */; };
+		DC0769DC2C70AE940025F939 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769DB2C70AE940025F939 /* WriteViewController.swift */; };
+		DC0769DE2C70F6A10025F939 /* WriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769DD2C70F6A10025F939 /* WriteViewModel.swift */; };
+		DC0769E02C71A8260025F939 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769DF2C71A8250025F939 /* PhotoCollectionViewCell.swift */; };
+		DC0769E22C71C61B0025F939 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769E12C71C61B0025F939 /* SettingTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +100,10 @@
 		DC0769D42C6F72500025F939 /* SociallingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SociallingViewModel.swift; sourceTree = "<group>"; };
 		DC0769D62C6F73140025F939 /* Party.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Party.swift; sourceTree = "<group>"; };
 		DC0769D82C709CDF0025F939 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		DC0769DB2C70AE940025F939 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
+		DC0769DD2C70F6A10025F939 /* WriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewModel.swift; sourceTree = "<group>"; };
+		DC0769DF2C71A8250025F939 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		DC0769E12C71C61B0025F939 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +165,7 @@
 				DC0769AA2C6CD2400025F939 /* Third */,
 				DC0769AB2C6CD2480025F939 /* Fourth */,
 				DC0769CD2C6F4EE50025F939 /* Search */,
+				DC0769DA2C70AE830025F939 /* Write */,
 			);
 			path = Here_come;
 			sourceTree = "<group>";
@@ -284,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				DC0769B22C6CD3A30025F939 /* ProfileManageViewController.swift */,
+				DC0769E12C71C61B0025F939 /* SettingTableViewCell.swift */,
 			);
 			path = Fourth;
 			sourceTree = "<group>";
@@ -296,6 +306,16 @@
 				DC0769CB2C6F43600025F939 /* RecommendCollectionViewCell.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		DC0769DA2C70AE830025F939 /* Write */ = {
+			isa = PBXGroup;
+			children = (
+				DC0769DB2C70AE940025F939 /* WriteViewController.swift */,
+				DC0769DF2C71A8250025F939 /* PhotoCollectionViewCell.swift */,
+				DC0769DD2C70F6A10025F939 /* WriteViewModel.swift */,
+			);
+			path = Write;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -400,12 +420,16 @@
 				DC0769AD2C6CD2B60025F939 /* AccomodationViewController.swift in Sources */,
 				DC0769A22C6C9A6E0025F939 /* UserDefaultsManager.swift in Sources */,
 				DC0769B12C6CD3880025F939 /* FreeBoardViewController.swift in Sources */,
+				DC0769DE2C70F6A10025F939 /* WriteViewModel.swift in Sources */,
 				DC0769AF2C6CD3460025F939 /* SociallingViewController.swift in Sources */,
 				DC0769CA2C6F2E3D0025F939 /* RecentTextCollectionViewCell.swift in Sources */,
 				DC07699E2C6C8C4D0025F939 /* TargetType.swift in Sources */,
+				DC0769DC2C70AE940025F939 /* WriteViewController.swift in Sources */,
 				DC0769CF2C6F4F020025F939 /* SearchViewController.swift in Sources */,
+				DC0769E22C71C61B0025F939 /* SettingTableViewCell.swift in Sources */,
 				DC0769762C6C79280025F939 /* BaseTableViewCell.swift in Sources */,
 				DC07698B2C6C815E0025F939 /* UITextField+Extension.swift in Sources */,
+				DC0769E02C71A8260025F939 /* PhotoCollectionViewCell.swift in Sources */,
 				DC0769A42C6C9DB00025F939 /* LoginViewModel.swift in Sources */,
 				DC0769C82C6E5E740025F939 /* ImageCollectionViewCell.swift in Sources */,
 				DC07695D2C6C77D30025F939 /* SceneDelegate.swift in Sources */,
