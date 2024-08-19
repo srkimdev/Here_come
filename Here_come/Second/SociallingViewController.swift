@@ -11,7 +11,7 @@ import RxSwift
 
 final class SociallingViewController: BaseViewController {
     
-    lazy var categoryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: categoryCollectionViewLayout())
+    lazy var sociallingCollectionView = UICollectionView(frame: .zero, collectionViewLayout: sociallingCollectionViewLayout())
     let topicTableView = UITableView()
     
     let viewModel = SociallingViewModel()
@@ -24,7 +24,7 @@ final class SociallingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        categoryCollectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
+        sociallingCollectionView.register(SociallingCollectionViewCell.self, forCellWithReuseIdentifier: SociallingCollectionViewCell.identifier)
         topicTableView.register(SociallingTableViewCell.self, forCellReuseIdentifier: SociallingTableViewCell.identifier)
         topicTableView.refreshControl = refreshControl
         
@@ -37,20 +37,20 @@ final class SociallingViewController: BaseViewController {
     }
     
     override func configureHierarchy() {
-        view.addSubview(categoryCollectionView)
+        view.addSubview(sociallingCollectionView)
         view.addSubview(topicTableView)
     }
     
     override func configureLayout() {
         
-        categoryCollectionView.snp.makeConstraints { make in
+        sociallingCollectionView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(110)
         }
         
         topicTableView.snp.makeConstraints { make in
-            make.top.equalTo(categoryCollectionView.snp.bottom).offset(20)
+            make.top.equalTo(sociallingCollectionView.snp.bottom).offset(20)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
@@ -61,7 +61,7 @@ final class SociallingViewController: BaseViewController {
         item.tintColor = .black
         navigationItem.rightBarButtonItem = item
         
-        categoryCollectionView.backgroundColor = .lightGray
+        sociallingCollectionView.backgroundColor = .lightGray
         
         topicTableView.rowHeight = 120
         
@@ -98,19 +98,19 @@ final class SociallingViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         output.collectionViewList
-            .bind(to: categoryCollectionView.rx.items(cellIdentifier: CategoryCollectionViewCell.identifier, cellType: CategoryCollectionViewCell.self)) { (item, element, cell) in
+            .bind(to: sociallingCollectionView.rx.items(cellIdentifier: SociallingCollectionViewCell.identifier, cellType: SociallingCollectionViewCell.self)) { (item, element, cell) in
                 
                 cell.designCell(transition: item, selectedIndex: self.viewModel.selectedIndexPath.value)
                 
             }
             .disposed(by: disposeBag)
         
-        categoryCollectionView.rx.itemSelected
+        sociallingCollectionView.rx.itemSelected
             .map { indexPath in indexPath.row }
             .bind(with: self) { owner, value in
                 
                 owner.viewModel.selectedIndexPath.accept(value)
-                owner.categoryCollectionView.reloadData()
+                owner.sociallingCollectionView.reloadData()
             }
             .disposed(by: disposeBag)
             
@@ -119,7 +119,7 @@ final class SociallingViewController: BaseViewController {
 }
 
 extension SociallingViewController: UICollectionViewDelegateFlowLayout {
-    func categoryCollectionViewLayout() -> UICollectionViewLayout {
+    func sociallingCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 50, height: 110)
         layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)

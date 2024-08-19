@@ -158,7 +158,16 @@ final class WriteViewController: BaseViewController {
         
         output.categoryButtonTap
             .bind(with: self) { owner, _ in
-                print("tap")
+                
+                let vc = CategoryViewController()
+                
+                if let sheet = vc.sheetPresentationController {
+                    sheet.detents = [.large()]
+                    sheet.prefersGrabberVisible = true
+                }
+                
+                owner.present(vc, animated: true)
+                
             }
             .disposed(by: disposeBag)
         

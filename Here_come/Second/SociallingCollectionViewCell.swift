@@ -1,5 +1,5 @@
 //
-//  CategoryCollectionViewCell.swift
+//  SociallingCollectionViewCell.swift
 //  Here_come
 //
 //  Created by 김성률 on 8/17/24.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class CategoryCollectionViewCell: BaseCollectionViewCell {
+final class SociallingCollectionViewCell: BaseCollectionViewCell {
     
     let backView = UIView()
     let categoryImage = UIImageView()
