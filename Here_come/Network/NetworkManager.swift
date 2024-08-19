@@ -49,7 +49,6 @@ final class NetworkManager {
                 
                 for (index, item) in images.enumerated() {
                     guard let data = item.jpegData(compressionQuality: 0.5) else { return }
-                    
                     multipartFormData.append(data, withName: "files", fileName: "image\(index + 1).jpg", mimeType: "image/jpeg")
                 }
                 
@@ -58,8 +57,7 @@ final class NetworkManager {
             .responseDecodable(of: FilesModel.self) { response in
                 switch response.result {
                 case .success(let value):
-                    print(value)
-                    completionHandler(value.files)
+                    completionHandler(value.files ?? [])
                     
                 case .failure(let error):
                     print(error)
@@ -77,8 +75,6 @@ final class NetworkManager {
         
         do {
             let request = try Router.uploadPost(query: query).asURLRequest()
-            
-            print(request)
             
             AF.request(request)
                 .validate(statusCode: 200..<300)
@@ -117,7 +113,6 @@ final class NetworkManager {
         } catch {
             print(error)
         }
-        
         
     }
     

@@ -39,7 +39,7 @@ final class SociallingViewModel {
             }
             .disposed(by: disposeBag)
         
-        input.networkTrigger
+        input.pullToRefresh
             .bind(with: self) { owner, _ in
                 NetworkManager.shared.readPost(productId: "herecome_맛집") { value in
                     tableViewList.onNext(value)

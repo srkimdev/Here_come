@@ -11,5 +11,5 @@ struct PostModel: Decodable {
     let title: String
     let content: String
     let product_id: String
-    let files: [String]
+    let files: [String]?
 }

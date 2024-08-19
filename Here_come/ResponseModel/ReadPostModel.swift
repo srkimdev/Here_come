@@ -19,7 +19,7 @@ struct Posts: Decodable {
     let content: String
     let createdAt: String
 //    let creator: User
-    let files: [String]
+    let files: [String]?
 //    let likes: [String]
 //    let comments: [String]
 }

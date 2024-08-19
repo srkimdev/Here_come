@@ -123,7 +123,6 @@ final class SociallingTableViewCell: BaseTableViewCell {
         locationLabel.text = "제주시 애월읍"
         locationLabel.font = .systemFont(ofSize: 13)
         
-        optionalImage.backgroundColor = .red
         optionalImage.layer.masksToBounds = true
         optionalImage.layer.cornerRadius = 5
         
@@ -146,8 +145,8 @@ final class SociallingTableViewCell: BaseTableViewCell {
         
         contentLabel.text = transition.content
         
-        let url = URL(string: transition.files[0])
-        optionalImage.kf.setImage(with: url)
+        let url = URL(string: "http://lslp.sesac.co.kr:24513/v1/" + (transition.files?[0] ?? ""))
+        optionalImage.kf.setImage(with: url, options: [.requestModifier(KingfisherManager.shared.modifier)])
         
     }
     

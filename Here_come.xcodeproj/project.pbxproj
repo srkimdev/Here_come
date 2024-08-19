@@ -60,6 +60,7 @@
 		DC15FCDC2C730F7E0049FEB5 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC15FCDB2C730F7E0049FEB5 /* PostModel.swift */; };
 		DC15FCDE2C731E3C0049FEB5 /* PostQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC15FCDD2C731E3C0049FEB5 /* PostQuery.swift */; };
 		DC15FCE02C7329450049FEB5 /* ReadPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC15FCDF2C7329450049FEB5 /* ReadPostModel.swift */; };
+		DC15FCE82C735B3A0049FEB5 /* KingfisherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC15FCE72C735B3A0049FEB5 /* KingfisherManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +113,7 @@
 		DC15FCDB2C730F7E0049FEB5 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		DC15FCDD2C731E3C0049FEB5 /* PostQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostQuery.swift; sourceTree = "<group>"; };
 		DC15FCDF2C7329450049FEB5 /* ReadPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPostModel.swift; sourceTree = "<group>"; };
+		DC15FCE72C735B3A0049FEB5 /* KingfisherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 		DC0769712C6C78810025F939 /* Singleton */ = {
 			isa = PBXGroup;
 			children = (
+				DC15FCE72C735B3A0049FEB5 /* KingfisherManager.swift */,
 			);
 			path = Singleton;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				DC0769E02C71A8260025F939 /* PhotoCollectionViewCell.swift in Sources */,
 				DC0769A42C6C9DB00025F939 /* LoginViewModel.swift in Sources */,
 				DC0769C82C6E5E740025F939 /* ImageCollectionViewCell.swift in Sources */,
+				DC15FCE82C735B3A0049FEB5 /* KingfisherManager.swift in Sources */,
 				DC15FCE02C7329450049FEB5 /* ReadPostModel.swift in Sources */,
 				DC07695D2C6C77D30025F939 /* SceneDelegate.swift in Sources */,
 				DC0769D12C6F51470025F939 /* SociallingTableViewCell.swift in Sources */,

@@ -138,6 +138,8 @@ final class WriteViewController: BaseViewController {
                 // Network
                 NetworkManager.shared.uploadImage(images: owner.selectedImage) { value in
                     
+//                    dump(value)
+                    
                     let postQuery = PostQuery(title: self.titleTextField.text!, content: self.contentTextView.text!, product_id: "herecome_" + self.categoryLabel.text!, files: value)
                     
                     NetworkManager.shared.uploadPost(query: postQuery)

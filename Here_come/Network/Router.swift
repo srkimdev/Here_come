@@ -15,6 +15,7 @@ enum Router: TargetType {
     case uploadImage
     case uploadPost(query: PostQuery)
     case readPost(productId: String)
+    case readImage
     
     var method: Alamofire.HTTPMethod {
         switch self {
@@ -27,6 +28,8 @@ enum Router: TargetType {
         case .uploadPost:
             return .post
         case .readPost:
+            return .get
+        case .readImage:
             return .get
         }
     }
@@ -88,6 +91,8 @@ enum Router: TargetType {
             return "/posts"
         case .readPost:
             return "/posts"
+        default:
+            return ""
         }
     }
     
@@ -116,7 +121,7 @@ enum Router: TargetType {
                 Header.contentType.rawValue: Header.json.rawValue,
                 Header.sesacKey.rawValue: APIKey.Key
             ]
-        case .readPost:
+        case .readPost, .readImage:
             return [
                 Header.authorization.rawValue: UserDefaultsManager.shared.token,
                 Header.sesacKey.rawValue: APIKey.Key

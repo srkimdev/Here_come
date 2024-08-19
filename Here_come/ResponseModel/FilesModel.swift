@@ -8,5 +8,5 @@
 import Foundation
 
 struct FilesModel: Decodable {
-    let files: [String]
+    let files: [String]?
 }
