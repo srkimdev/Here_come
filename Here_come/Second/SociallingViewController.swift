@@ -17,11 +17,16 @@ final class SociallingViewController: BaseViewController {
     let viewModel = SociallingViewModel()
     let disposeBag = DisposeBag()
     
+    let refreshControl = UIRefreshControl()
+    let networkTrigger = BehaviorSubject<Void>(value: ())
+    let pullToRefresh = PublishSubject<Void>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         categoryCollectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
         topicTableView.register(SociallingTableViewCell.self, forCellReuseIdentifier: SociallingTableViewCell.identifier)
+        topicTableView.refreshControl = refreshControl
         
         bind()
     }
@@ -45,7 +50,7 @@ final class SociallingViewController: BaseViewController {
         }
         
     }
-    
+        
     override func configureUI() {
         let item = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(searchButtonTapped))
         item.tintColor = .black
@@ -55,7 +60,10 @@ final class SociallingViewController: BaseViewController {
         
         topicTableView.rowHeight = 120
         
-        
+    }
+    
+    override func configureAction() {
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
     }
 
     @objc func searchButtonTapped() {
@@ -63,11 +71,16 @@ final class SociallingViewController: BaseViewController {
         transitionScreen(vc: vc, style: .push)
     }
     
+    @objc func refreshData() {
+        pullToRefresh.onNext(())
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+            self.refreshControl.endRefreshing()
+        }
+    }
+    
     private func bind() {
         
-        let viewDidLoadTrigger = Observable.just(())
-        
-        let input = SociallingViewModel.Input(viewDidLoadTrigger: viewDidLoadTrigger)
+        let input = SociallingViewModel.Input(networkTrigger: networkTrigger, pullToRefresh: self.pullToRefresh)
         let output = viewModel.transform(input: input)
         
         output.tableViewList

@@ -10,6 +10,8 @@ import Foundation
 struct Accomodations {
     let name: String
     let photos: [String]
+
+    
     
 }
 

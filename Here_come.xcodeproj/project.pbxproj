@@ -57,6 +57,9 @@
 		DC0769E02C71A8260025F939 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769DF2C71A8250025F939 /* PhotoCollectionViewCell.swift */; };
 		DC0769E22C71C61B0025F939 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769E12C71C61B0025F939 /* SettingTableViewCell.swift */; };
 		DC0769E42C71DF730025F939 /* FilesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769E32C71DF730025F939 /* FilesModel.swift */; };
+		DC15FCDC2C730F7E0049FEB5 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC15FCDB2C730F7E0049FEB5 /* PostModel.swift */; };
+		DC15FCDE2C731E3C0049FEB5 /* PostQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC15FCDD2C731E3C0049FEB5 /* PostQuery.swift */; };
+		DC15FCE02C7329450049FEB5 /* ReadPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC15FCDF2C7329450049FEB5 /* ReadPostModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +109,9 @@
 		DC0769DF2C71A8250025F939 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC0769E12C71C61B0025F939 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		DC0769E32C71DF730025F939 /* FilesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesModel.swift; sourceTree = "<group>"; };
+		DC15FCDB2C730F7E0049FEB5 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		DC15FCDD2C731E3C0049FEB5 /* PostQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostQuery.swift; sourceTree = "<group>"; };
+		DC15FCDF2C7329450049FEB5 /* ReadPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPostModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				DC0769962C6C89F00025F939 /* LoginQuery.swift */,
+				DC15FCDD2C731E3C0049FEB5 /* PostQuery.swift */,
 			);
 			path = RequestModel;
 			sourceTree = "<group>";
@@ -250,6 +257,8 @@
 			children = (
 				DC0769992C6C8A580025F939 /* LoginModel.swift */,
 				DC0769E32C71DF730025F939 /* FilesModel.swift */,
+				DC15FCDB2C730F7E0049FEB5 /* PostModel.swift */,
+				DC15FCDF2C7329450049FEB5 /* ReadPostModel.swift */,
 			);
 			path = ResponseModel;
 			sourceTree = "<group>";
@@ -435,12 +444,15 @@
 				DC0769E02C71A8260025F939 /* PhotoCollectionViewCell.swift in Sources */,
 				DC0769A42C6C9DB00025F939 /* LoginViewModel.swift in Sources */,
 				DC0769C82C6E5E740025F939 /* ImageCollectionViewCell.swift in Sources */,
+				DC15FCE02C7329450049FEB5 /* ReadPostModel.swift in Sources */,
 				DC07695D2C6C77D30025F939 /* SceneDelegate.swift in Sources */,
 				DC0769D12C6F51470025F939 /* SociallingTableViewCell.swift in Sources */,
 				DC0769A02C6C99610025F939 /* Header.swift in Sources */,
 				DC0769D92C709CDF0025F939 /* CategoryCollectionViewCell.swift in Sources */,
 				DC0769972C6C89F00025F939 /* LoginQuery.swift in Sources */,
+				DC15FCDC2C730F7E0049FEB5 /* PostModel.swift in Sources */,
 				DC0769922C6C83650025F939 /* APIKey.swift in Sources */,
+				DC15FCDE2C731E3C0049FEB5 /* PostQuery.swift in Sources */,
 				DC0769CC2C6F43600025F939 /* RecommendCollectionViewCell.swift in Sources */,
 				DC0769782C6C79AC0025F939 /* BaseCollectionViewCell.swift in Sources */,
 				DC0769D72C6F73140025F939 /* Party.swift in Sources */,

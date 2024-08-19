@@ -15,23 +15,35 @@ final class SociallingViewModel {
     var selectedIndexPath = BehaviorRelay<Int>(value: 0)
     
     struct Input {
-        let viewDidLoadTrigger: Observable<Void>
+        let networkTrigger: Observable<Void>
+        let pullToRefresh: PublishSubject<Void>
     }
     
     struct Output {
-        let tableViewList: BehaviorSubject<[Party]>
+        let tableViewList: BehaviorSubject<[Posts]>
         let collectionViewList: BehaviorSubject<[Category]>
     }
     
     func transform(input: Input) -> Output {
         
-        let tableViewList = BehaviorSubject<[Party]>(value: [])
+        let tableViewList = BehaviorSubject<[Posts]>(value: [])
         let collectionViewList = BehaviorSubject<[Category]>(value: [])
         
-        input.viewDidLoadTrigger
+        input.networkTrigger
             .bind(with: self) { owner, _ in
-                tableViewList.onNext(Parties)
+                NetworkManager.shared.readPost(productId: "herecome_맛집") { value in
+                    tableViewList.onNext(value)
+                }
+                
                 collectionViewList.onNext(categories)
+            }
+            .disposed(by: disposeBag)
+        
+        input.networkTrigger
+            .bind(with: self) { owner, _ in
+                NetworkManager.shared.readPost(productId: "herecome_맛집") { value in
+                    tableViewList.onNext(value)
+                }
             }
             .disposed(by: disposeBag)
         

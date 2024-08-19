@@ -40,11 +40,10 @@ final class NetworkManager {
         
     }
     
-    func uploadImage(images: [UIImage]) {
+    func uploadImage(images: [UIImage], completionHandler: @escaping([String]) -> Void) {
         
         do {
             let request = try Router.uploadImage.asURLRequest()
-            print(request)
             
             AF.upload(multipartFormData: { multipartFormData in
                 
@@ -60,8 +59,11 @@ final class NetworkManager {
                 switch response.result {
                 case .success(let value):
                     print(value)
+                    completionHandler(value.files)
+                    
                 case .failure(let error):
                     print(error)
+                    print("fail uploadImage function")
                 }
             }
             
@@ -71,8 +73,50 @@ final class NetworkManager {
         
     }
     
-    func uploadPost() {
+    func uploadPost(query: PostQuery) {
         
+        do {
+            let request = try Router.uploadPost(query: query).asURLRequest()
+            
+            print(request)
+            
+            AF.request(request)
+                .validate(statusCode: 200..<300)
+                .responseDecodable(of: PostModel.self) { response in
+                    switch response.result {
+                    case .success(let value):
+                        print(value)
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+            
+        } catch {
+            print(error, "uploadPost 실패")
+        }
+        
+    }
+    
+    func readPost(productId: String, completionHandler: @escaping ([Posts]) -> Void) {
+        
+        do {
+            let request = try Router.readPost(productId: productId).asURLRequest()
+            
+            AF.request(request)
+                .validate(statusCode: 200..<300)
+                .responseDecodable(of: ReadPostModel.self) { response in
+                    switch response.result {
+                    case .success(let value):
+                        dump(value.data)
+                        completionHandler(value.data)
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+            
+        } catch {
+            print(error)
+        }
         
         
     }

@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 import RxSwift
 
 final class SociallingTableViewCell: BaseTableViewCell {
@@ -139,8 +140,15 @@ final class SociallingTableViewCell: BaseTableViewCell {
         commentCount.font = .systemFont(ofSize: 13)
     }
     
-    func designCell(transition: Party) {
-
+    func designCell(transition: Posts) {
+        
+        titleLabel.text = transition.title
+        
+        contentLabel.text = transition.content
+        
+        let url = URL(string: transition.files[0])
+        optionalImage.kf.setImage(with: url)
+        
     }
     
 }

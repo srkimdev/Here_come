@@ -122,10 +122,6 @@ final class WriteViewController: BaseViewController {
         
     }
     
-    func configureNavi() {
-        
-    }
-    
     @objc func backButtonTapped() {
         navigationController?.popViewController(animated: true)
     }
@@ -140,13 +136,16 @@ final class WriteViewController: BaseViewController {
             .bind(with: self) { owner, _ in
                 
                 // Network
-                print(owner.selectedImage)
-                NetworkManager.shared.uploadImage(images: owner.selectedImage)
+                NetworkManager.shared.uploadImage(images: owner.selectedImage) { value in
+                    
+                    let postQuery = PostQuery(title: self.titleTextField.text!, content: self.contentTextView.text!, product_id: "herecome_" + self.categoryLabel.text!, files: value)
+                    
+                    NetworkManager.shared.uploadPost(query: postQuery)
+                }
                 
                 owner.navigationController?.popViewController(animated: true)
             }
             .disposed(by: disposeBag)
-        
         
     }
     
@@ -174,6 +173,9 @@ final class WriteViewController: BaseViewController {
                 owner.present(picker, animated: true)
             }
             .disposed(by: disposeBag)
+        
+        
+        
         
 //        output.photoCollectionView
 //            .bind(to: photoCollectionView.rx.items(cellIdentifier: PhotoCollectionViewCell.identifier, cellType: PhotoCollectionViewCell.self)) { (item, element, cell) in

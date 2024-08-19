@@ -13,7 +13,8 @@ enum Router: TargetType {
     case login(query: LoginQuery)
     case refresh
     case uploadImage
-    case uploadPost
+    case uploadPost(query: PostQuery)
+    case readPost(productId: String)
     
     var method: Alamofire.HTTPMethod {
         switch self {
@@ -25,6 +26,8 @@ enum Router: TargetType {
             return .post
         case .uploadPost:
             return .post
+        case .readPost:
+            return .get
         }
     }
     
@@ -33,7 +36,14 @@ enum Router: TargetType {
     }
     
     var queryItems: [URLQueryItem]? {
-        return nil
+        switch self {
+        case .readPost(let productId):
+            return [URLQueryItem(name: "product_id", value: productId)]
+            
+        default:
+            return nil
+        }
+    
     }
     
     var body: Data? {
@@ -47,10 +57,18 @@ enum Router: TargetType {
             } catch {
                 return nil
             }
+        case .uploadPost(let query):
+            let encoder = JSONEncoder()
+            
+            do {
+                let data = try encoder.encode(query)
+                return data
+            } catch {
+                return nil
+            }
             
         default:
             return nil
-            
         }
     }
 
@@ -67,6 +85,8 @@ enum Router: TargetType {
         case .uploadImage:
             return "/posts/files"
         case .uploadPost:
+            return "/posts"
+        case .readPost:
             return "/posts"
         }
     }
@@ -94,6 +114,11 @@ enum Router: TargetType {
             return [
                 Header.authorization.rawValue: UserDefaultsManager.shared.token,
                 Header.contentType.rawValue: Header.json.rawValue,
+                Header.sesacKey.rawValue: APIKey.Key
+            ]
+        case .readPost:
+            return [
+                Header.authorization.rawValue: UserDefaultsManager.shared.token,
                 Header.sesacKey.rawValue: APIKey.Key
             ]
         }
