@@ -64,6 +64,7 @@
 		DC15FCED2C736A3B0049FEB5 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC15FCEC2C736A3B0049FEB5 /* CategoryViewController.swift */; };
 		DC15FCEF2C7371CB0049FEB5 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC15FCEE2C7371CB0049FEB5 /* CategoryTableViewCell.swift */; };
 		DC15FCF12C7371D50049FEB5 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC15FCF02C7371D50049FEB5 /* CategoryCollectionViewCell.swift */; };
+		DC8C21FA2C747E31003FE59B /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +121,7 @@
 		DC15FCEC2C736A3B0049FEB5 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		DC15FCEE2C7371CB0049FEB5 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		DC15FCF02C7371D50049FEB5 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -346,6 +348,7 @@
 				DC15FCEC2C736A3B0049FEB5 /* CategoryViewController.swift */,
 				DC15FCEE2C7371CB0049FEB5 /* CategoryTableViewCell.swift */,
 				DC15FCF02C7371D50049FEB5 /* CategoryCollectionViewCell.swift */,
+				DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -465,6 +468,7 @@
 				DC0769E02C71A8260025F939 /* PhotoCollectionViewCell.swift in Sources */,
 				DC15FCEF2C7371CB0049FEB5 /* CategoryTableViewCell.swift in Sources */,
 				DC15FCED2C736A3B0049FEB5 /* CategoryViewController.swift in Sources */,
+				DC8C21FA2C747E31003FE59B /* CategoryViewModel.swift in Sources */,
 				DC0769A42C6C9DB00025F939 /* LoginViewModel.swift in Sources */,
 				DC0769C82C6E5E740025F939 /* ImageCollectionViewCell.swift in Sources */,
 				DC15FCE82C735B3A0049FEB5 /* KingfisherManager.swift in Sources */,

@@ -34,4 +34,11 @@ extension UIViewController {
         
     }
     
+    func dismissWithDelay(delay: TimeInterval, completion: (() -> Void)? = nil) {
+        UIView.animate(withDuration: delay, animations: {
+            self.dismiss(animated: true, completion: completion)
+        })
+    }
+    
+    
 }

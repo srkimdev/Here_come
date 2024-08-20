@@ -77,7 +77,6 @@ final class SociallingViewController: BaseViewController {
     }
     
     @objc func refreshData() {
-        print("here")
         pullToRefresh.onNext(())
         DispatchQueue.main.asyncAfter(deadline: .now()) {
             self.refreshControl.endRefreshing()

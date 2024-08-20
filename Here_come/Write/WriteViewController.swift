@@ -161,6 +161,12 @@ final class WriteViewController: BaseViewController {
                 
                 let vc = CategoryViewController()
                 
+                vc.viewModel.selectedValue.accept(owner.categoryLabel.text!)
+                
+                vc.categoryClosure = { value in
+                    owner.categoryLabel.text = value
+                }
+                
                 if let sheet = vc.sheetPresentationController {
                     sheet.detents = [.large()]
                     sheet.prefersGrabberVisible = true
