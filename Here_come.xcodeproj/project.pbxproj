@@ -57,6 +57,8 @@
 		DC0769E02C71A8260025F939 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769DF2C71A8250025F939 /* PhotoCollectionViewCell.swift */; };
 		DC0769E22C71C61B0025F939 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769E12C71C61B0025F939 /* SettingTableViewCell.swift */; };
 		DC0769E42C71DF730025F939 /* FilesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769E32C71DF730025F939 /* FilesModel.swift */; };
+		DC1143A72C75D96E00CEB325 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1143A62C75D96E00CEB325 /* DetailViewController.swift */; };
+		DC1143A92C75E24A00CEB325 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1143A82C75E24A00CEB325 /* DetailCollectionViewCell.swift */; };
 		DC15FCDC2C730F7E0049FEB5 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC15FCDB2C730F7E0049FEB5 /* PostModel.swift */; };
 		DC15FCDE2C731E3C0049FEB5 /* PostQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC15FCDD2C731E3C0049FEB5 /* PostQuery.swift */; };
 		DC15FCE02C7329450049FEB5 /* ReadPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC15FCDF2C7329450049FEB5 /* ReadPostModel.swift */; };
@@ -64,6 +66,7 @@
 		DC15FCED2C736A3B0049FEB5 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC15FCEC2C736A3B0049FEB5 /* CategoryViewController.swift */; };
 		DC15FCEF2C7371CB0049FEB5 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC15FCEE2C7371CB0049FEB5 /* CategoryTableViewCell.swift */; };
 		DC15FCF12C7371D50049FEB5 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC15FCF02C7371D50049FEB5 /* CategoryCollectionViewCell.swift */; };
+		DC2E073D2C75FA4D007589E9 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E073C2C75FA4D007589E9 /* DetailViewModel.swift */; };
 		DC8C21FA2C747E31003FE59B /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +117,8 @@
 		DC0769DF2C71A8250025F939 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC0769E12C71C61B0025F939 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		DC0769E32C71DF730025F939 /* FilesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesModel.swift; sourceTree = "<group>"; };
+		DC1143A62C75D96E00CEB325 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		DC1143A82C75E24A00CEB325 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC15FCDB2C730F7E0049FEB5 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		DC15FCDD2C731E3C0049FEB5 /* PostQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostQuery.swift; sourceTree = "<group>"; };
 		DC15FCDF2C7329450049FEB5 /* ReadPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPostModel.swift; sourceTree = "<group>"; };
@@ -121,6 +126,7 @@
 		DC15FCEC2C736A3B0049FEB5 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		DC15FCEE2C7371CB0049FEB5 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		DC15FCF02C7371D50049FEB5 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		DC2E073C2C75FA4D007589E9 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -185,6 +191,7 @@
 				DC0769CD2C6F4EE50025F939 /* Search */,
 				DC0769DA2C70AE830025F939 /* Write */,
 				DC15FCE92C7368CD0049FEB5 /* Category */,
+				DC1143A52C75D95C00CEB325 /* Detail */,
 			);
 			path = Here_come;
 			sourceTree = "<group>";
@@ -342,6 +349,16 @@
 			path = Write;
 			sourceTree = "<group>";
 		};
+		DC1143A52C75D95C00CEB325 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				DC1143A62C75D96E00CEB325 /* DetailViewController.swift */,
+				DC1143A82C75E24A00CEB325 /* DetailCollectionViewCell.swift */,
+				DC2E073C2C75FA4D007589E9 /* DetailViewModel.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		DC15FCE92C7368CD0049FEB5 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -443,6 +460,7 @@
 				DC07697B2C6C7CAD0025F939 /* LoginViewController.swift in Sources */,
 				DC07699A2C6C8A580025F939 /* LoginModel.swift in Sources */,
 				DC0769B72C6CD7720025F939 /* Accomodations.swift in Sources */,
+				DC1143A92C75E24A00CEB325 /* DetailCollectionViewCell.swift in Sources */,
 				DC07695F2C6C77D30025F939 /* ViewController.swift in Sources */,
 				DC15FCF12C7371D50049FEB5 /* CategoryCollectionViewCell.swift in Sources */,
 				DC0769B32C6CD3A30025F939 /* ProfileManageViewController.swift in Sources */,
@@ -460,6 +478,7 @@
 				DC0769AF2C6CD3460025F939 /* SociallingViewController.swift in Sources */,
 				DC0769CA2C6F2E3D0025F939 /* RecentTextCollectionViewCell.swift in Sources */,
 				DC07699E2C6C8C4D0025F939 /* TargetType.swift in Sources */,
+				DC1143A72C75D96E00CEB325 /* DetailViewController.swift in Sources */,
 				DC0769DC2C70AE940025F939 /* WriteViewController.swift in Sources */,
 				DC0769CF2C6F4F020025F939 /* SearchViewController.swift in Sources */,
 				DC0769E22C71C61B0025F939 /* SettingTableViewCell.swift in Sources */,
@@ -472,6 +491,7 @@
 				DC0769A42C6C9DB00025F939 /* LoginViewModel.swift in Sources */,
 				DC0769C82C6E5E740025F939 /* ImageCollectionViewCell.swift in Sources */,
 				DC15FCE82C735B3A0049FEB5 /* KingfisherManager.swift in Sources */,
+				DC2E073D2C75FA4D007589E9 /* DetailViewModel.swift in Sources */,
 				DC15FCE02C7329450049FEB5 /* ReadPostModel.swift in Sources */,
 				DC07695D2C6C77D30025F939 /* SceneDelegate.swift in Sources */,
 				DC0769D12C6F51470025F939 /* SociallingTableViewCell.swift in Sources */,

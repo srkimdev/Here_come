@@ -33,7 +33,7 @@ final class SociallingViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        networkTrigger.onNext(())
+//        networkTrigger.onNext(())
     }
     
     override func configureHierarchy() {
@@ -110,6 +110,18 @@ final class SociallingViewController: BaseViewController {
                 
                 owner.viewModel.selectedIndexPath.accept(value)
                 owner.sociallingCollectionView.reloadData()
+            }
+            .disposed(by: disposeBag)
+        
+        topicTableView.rx.modelSelected(Posts.self)
+            .bind(with: self) { owner, value in
+                let vc = DetailViewController()
+                
+                print(value.files)
+                vc.viewModel.transitionData.accept(value.files ?? [])
+                vc.data = value
+                
+                owner.transitionScreen(vc: vc, style: .push)
             }
             .disposed(by: disposeBag)
             
