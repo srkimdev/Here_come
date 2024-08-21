@@ -145,7 +145,7 @@ final class SociallingTableViewCell: BaseTableViewCell {
         
         contentLabel.text = transition.content
         
-        let url = URL(string: "http://lslp.sesac.co.kr:24513/v1/" + (transition.files?[0] ?? ""))
+        let url = URL(string: APIKey.baseURL + "v1/" + (transition.files?[0] ?? ""))!
         optionalImage.kf.setImage(with: url, options: [.requestModifier(KingfisherManager.shared.modifier)])
         
     }

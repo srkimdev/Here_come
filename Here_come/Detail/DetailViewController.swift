@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import RxSwift
+import RxCocoa
 
 final class DetailViewController: BaseViewController {
     
@@ -27,10 +28,17 @@ final class DetailViewController: BaseViewController {
     lazy var imageCollectionView = UICollectionView(frame: .zero, collectionViewLayout: imageCollectionViewLayout())
     
     let seperateLine = UIView()
+    let commentLabel = UILabel()
+    let commentTableView = UITableView()
+    
+    let belowView = UIView()
+    let textFieldView = UIView()
+    let commentTextField = UITextField()
+    let sendButton = UIButton()
     
     let disposeBag = DisposeBag()
-    let viewModel = DetailViewModel()
     var data: Posts?
+    var transitionData = BehaviorRelay<[String]>(value: [])
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +66,12 @@ final class DetailViewController: BaseViewController {
         contentView.addSubview(contentLabel)
         contentView.addSubview(imageCollectionView)
         contentView.addSubview(seperateLine)
+        contentView.addSubview(commentLabel)
+        contentView.addSubview(commentTableView)
+        view.addSubview(belowView)
+        belowView.addSubview(textFieldView)
+        textFieldView.addSubview(commentTextField)
+        belowView.addSubview(sendButton)
         
     }
     
@@ -108,12 +122,50 @@ final class DetailViewController: BaseViewController {
         imageCollectionView.snp.makeConstraints { make in
             make.top.equalTo(contentLabel.snp.bottom).offset(20)
             make.horizontalEdges.equalTo(contentView).inset(16)
+            make.height.equalTo(320)
         }
         
         seperateLine.snp.makeConstraints { make in
             make.top.equalTo(imageCollectionView.snp.bottom).offset(30)
             make.horizontalEdges.equalTo(contentView)
             make.height.equalTo(10)
+        }
+        
+        commentLabel.snp.makeConstraints { make in
+            make.top.equalTo(seperateLine.snp.bottom).offset(16)
+            make.leading.equalTo(contentView.snp.leading).offset(16)
+            make.height.equalTo(20)
+        }
+        
+        commentTableView.snp.makeConstraints { make in
+            make.top.equalTo(commentLabel.snp.bottom).offset(16)
+            make.horizontalEdges.equalTo(contentView)
+            make.height.equalTo(200)
+            make.bottom.equalToSuperview()
+        }
+        
+        belowView.snp.makeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(50)
+        }
+        
+        textFieldView.snp.makeConstraints { make in
+            make.centerY.equalTo(belowView)
+            make.leading.equalTo(belowView.snp.leading).offset(16)
+            make.height.equalTo(40)
+            make.width.equalTo(300)
+        }
+        
+        commentTextField.snp.makeConstraints { make in
+            make.horizontalEdges.equalTo(textFieldView).inset(12)
+            make.centerY.equalTo(textFieldView)
+        }
+        
+        sendButton.snp.makeConstraints { make in
+            make.centerY.equalTo(belowView)
+            make.trailing.equalTo(belowView.snp.trailing).inset(16)
+            make.size.equalTo(40)
         }
         
     }
@@ -144,20 +196,28 @@ final class DetailViewController: BaseViewController {
         
         seperateLine.backgroundColor = .systemGray5
         
+        commentLabel.text = "댓글"
+        
+        textFieldView.layer.masksToBounds = true
+        textFieldView.layer.cornerRadius = 20
+        textFieldView.backgroundColor = .systemGray5
+        
+        commentTextField.placeholder = "댓글을 입력해주세요"
+        
+        sendButton.setImage(UIImage(systemName: "paperplain"), for: .normal)
     }
     
     func bind() {
         
-        let output = viewModel.transform()
-        
-        output.imageList
+        transitionData
+            .asObservable()
             .bind(to: imageCollectionView.rx.items(cellIdentifier: DetailCollectionViewCell.identifier, cellType: DetailCollectionViewCell.self)) { (item, element, cell) in
                 
-                print(element)
                 cell.designCell(transition: element)
                 
             }
             .disposed(by: disposeBag)
+        
         
         
     }
@@ -169,7 +229,15 @@ extension DetailViewController: UICollectionViewDelegateFlowLayout {
         let layout = UICollectionViewFlowLayout()
         let width = view.bounds.width - 32
         layout.itemSize = CGSize(width: width, height: width)
-        layout.scrollDirection = .vertical
+        layout.scrollDirection = .horizontal
         return layout
     }
 }
+
+//extension DetailViewController {
+//    func calculateTableViewHeight() -> CGFloat {
+//        let cellHeight: CGFloat = 50.0 // 각 셀의 높이
+//        let numberOfCells = comments.count // 테이블 뷰의 셀 개수
+//        return cellHeight * CGFloat(numberOfCells)
+//    }
+//}

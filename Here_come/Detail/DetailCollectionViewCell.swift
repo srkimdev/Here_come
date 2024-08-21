@@ -38,15 +38,15 @@ final class DetailCollectionViewCell: BaseCollectionViewCell {
     override func configureUI() {
         backView.layer.masksToBounds = true
         backView.layer.cornerRadius = 5
+        
+        myImage.contentMode = .scaleAspectFit
     }
     
     func designCell(transition: String) {
         
-        let url = URL(string: "http://lslp.sesac.co.kr:24513/v1/" + (transition ?? ""))
-        print(url)
+        let url = URL(string: APIKey.baseURL + "v1/" + transition)
         myImage.kf.setImage(with: url, options: [.requestModifier(KingfisherManager.shared.modifier)])
         
     }
-    
-    
+
 }

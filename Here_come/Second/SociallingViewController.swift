@@ -29,6 +29,8 @@ final class SociallingViewController: BaseViewController {
         topicTableView.refreshControl = refreshControl
         
         bind()
+        
+//        NetworkManager.shared.deletePost(postId: "66c43a4197d02bf91e201b01")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,9 +119,9 @@ final class SociallingViewController: BaseViewController {
             .bind(with: self) { owner, value in
                 let vc = DetailViewController()
                 
-                print(value.files)
-                vc.viewModel.transitionData.accept(value.files ?? [])
+                vc.transitionData.accept(value.files ?? [])
                 vc.data = value
+                vc.hidesBottomBarWhenPushed = true
                 
                 owner.transitionScreen(vc: vc, style: .push)
             }

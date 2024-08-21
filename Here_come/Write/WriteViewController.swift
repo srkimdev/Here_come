@@ -104,8 +104,6 @@ final class WriteViewController: BaseViewController {
         categoryButton.layer.borderWidth = 1
         categoryButton.layer.borderColor = UIColor.systemGray5.cgColor
         
-        categoryLabel.text = "맛집"
-        
         nextImage.image = UIImage(systemName: "chevron.right")
         nextImage.tintColor = .black
         

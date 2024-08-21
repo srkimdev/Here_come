@@ -116,4 +116,26 @@ final class NetworkManager {
         
     }
     
+    func deletePost(postId: String) {
+        
+        do {
+            let request = try Router.deletePost(postId: postId).asURLRequest()
+            
+            AF.request(request)
+                .validate(statusCode: 200..<300)
+                .responseDecodable(of: ReadPostModel.self) { response in
+                    switch response.result {
+                    case .success(let value):
+                        dump(value.data)
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+            
+        } catch {
+            print(error)
+        }
+        
+    }
+    
 }

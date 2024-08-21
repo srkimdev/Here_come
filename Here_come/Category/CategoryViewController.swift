@@ -72,7 +72,7 @@ final class CategoryViewController: BaseViewController {
                         owner.viewModel.selectedValue.accept(value)
                         owner.categoryClosure?(value)
                         
-                        owner.dismissWithDelay(delay: 2.0)
+                        owner.dismiss(animated: true)
                         
                     }
                     .disposed(by: cell.disposeBag)
