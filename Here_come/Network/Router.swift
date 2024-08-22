@@ -15,8 +15,10 @@ enum Router: TargetType {
     case uploadImage
     case uploadPost(query: PostQuery)
     case readPost(productId: String)
+    case readOnePost(postId: String)
     case readImage
     case deletePost(postId: String)
+    case makeComment
     
     var method: Alamofire.HTTPMethod {
         switch self {
@@ -30,10 +32,14 @@ enum Router: TargetType {
             return .post
         case .readPost:
             return .get
+        case .readOnePost:
+            return .get
         case .readImage:
             return .get
         case .deletePost:
             return .delete
+        case .makeComment:
+            return .post
         }
     }
     
@@ -72,6 +78,7 @@ enum Router: TargetType {
             } catch {
                 return nil
             }
+//        case .makeComment()
             
         default:
             return nil
@@ -94,6 +101,8 @@ enum Router: TargetType {
             return "/posts"
         case .readPost:
             return "/posts"
+        case .readOnePost(let postId):
+            return "/posts/\(postId)"
         case .deletePost(let postId):
             return "/posts/\(postId)"
         default:
@@ -120,13 +129,13 @@ enum Router: TargetType {
                 Header.contentType.rawValue: Header.multipart.rawValue,
                 Header.sesacKey.rawValue: APIKey.Key
             ]
-        case .uploadPost:
+        case .uploadPost, .makeComment:
             return [
                 Header.authorization.rawValue: UserDefaultsManager.shared.token,
                 Header.contentType.rawValue: Header.json.rawValue,
                 Header.sesacKey.rawValue: APIKey.Key
             ]
-        case .readPost, .readImage, .deletePost:
+        case .readPost, .readOnePost, .readImage, .deletePost:
             return [
                 Header.authorization.rawValue: UserDefaultsManager.shared.token,
                 Header.sesacKey.rawValue: APIKey.Key

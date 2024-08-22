@@ -36,6 +36,7 @@ final class DetailViewController: BaseViewController {
     let commentTextField = UITextField()
     let sendButton = UIButton()
     
+    let viewModel = DetailViewModel()
     let disposeBag = DisposeBag()
     var data: Posts?
     var transitionData = BehaviorRelay<[String]>(value: [])
@@ -43,6 +44,8 @@ final class DetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+      //  commentTableView.isScrollEnabled = false
+
         imageCollectionView.register(DetailCollectionViewCell.self, forCellWithReuseIdentifier: DetailCollectionViewCell.identifier)
         
         bind()
@@ -140,7 +143,7 @@ final class DetailViewController: BaseViewController {
         commentTableView.snp.makeConstraints { make in
             make.top.equalTo(commentLabel.snp.bottom).offset(16)
             make.horizontalEdges.equalTo(contentView)
-            make.height.equalTo(200)
+          //  make.height.equalTo(200)
             make.bottom.equalToSuperview()
         }
         
@@ -154,7 +157,7 @@ final class DetailViewController: BaseViewController {
             make.centerY.equalTo(belowView)
             make.leading.equalTo(belowView.snp.leading).offset(16)
             make.height.equalTo(40)
-            make.width.equalTo(300)
+            make.width.equalTo(320)
         }
         
         commentTextField.snp.makeConstraints { make in
@@ -204,10 +207,14 @@ final class DetailViewController: BaseViewController {
         
         commentTextField.placeholder = "댓글을 입력해주세요"
         
-        sendButton.setImage(UIImage(systemName: "paperplain"), for: .normal)
+        sendButton.setImage(UIImage(systemName: "paperplane"), for: .normal)
+        
     }
     
     func bind() {
+        
+        let input = DetailViewModel.Input(inputText: commentTextField.rx.text.orEmpty)
+        let output = viewModel.transform(input: input)
         
         transitionData
             .asObservable()
@@ -218,7 +225,15 @@ final class DetailViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        output.updateTableView
+            .bind(to: commentTableView.rx.items(cellIdentifier: CommentTableViewCell.identifier, cellType: CommentTableViewCell.self)) { (row, element, cell) in
+                
+              //  cell.designCell(transition: element)
+                
+            }
+            .disposed(by: disposeBag)
         
+
         
     }
     

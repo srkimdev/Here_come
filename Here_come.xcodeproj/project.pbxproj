@@ -66,6 +66,9 @@
 		DC15FCED2C736A3B0049FEB5 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC15FCEC2C736A3B0049FEB5 /* CategoryViewController.swift */; };
 		DC15FCEF2C7371CB0049FEB5 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC15FCEE2C7371CB0049FEB5 /* CategoryTableViewCell.swift */; };
 		DC15FCF12C7371D50049FEB5 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC15FCF02C7371D50049FEB5 /* CategoryCollectionViewCell.swift */; };
+		DC2E073F2C7637F9007589E9 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E073E2C7637F9007589E9 /* DetailViewModel.swift */; };
+		DC2E07412C763B1D007589E9 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E07402C763B1D007589E9 /* CommentTableViewCell.swift */; };
+		DC4150CD2C771D1C0008FAB3 /* CommentQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150CC2C771D1C0008FAB3 /* CommentQuery.swift */; };
 		DC8C21FA2C747E31003FE59B /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +128,9 @@
 		DC15FCEC2C736A3B0049FEB5 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		DC15FCEE2C7371CB0049FEB5 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		DC15FCF02C7371D50049FEB5 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		DC2E073E2C7637F9007589E9 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		DC2E07402C763B1D007589E9 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		DC4150CC2C771D1C0008FAB3 /* CommentQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentQuery.swift; sourceTree = "<group>"; };
 		DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -265,6 +271,7 @@
 			children = (
 				DC0769962C6C89F00025F939 /* LoginQuery.swift */,
 				DC15FCDD2C731E3C0049FEB5 /* PostQuery.swift */,
+				DC4150CC2C771D1C0008FAB3 /* CommentQuery.swift */,
 			);
 			path = RequestModel;
 			sourceTree = "<group>";
@@ -352,6 +359,8 @@
 			children = (
 				DC1143A62C75D96E00CEB325 /* DetailViewController.swift */,
 				DC1143A82C75E24A00CEB325 /* DetailCollectionViewCell.swift */,
+				DC2E073E2C7637F9007589E9 /* DetailViewModel.swift */,
+				DC2E07402C763B1D007589E9 /* CommentTableViewCell.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -488,6 +497,7 @@
 				DC0769A42C6C9DB00025F939 /* LoginViewModel.swift in Sources */,
 				DC0769C82C6E5E740025F939 /* ImageCollectionViewCell.swift in Sources */,
 				DC15FCE82C735B3A0049FEB5 /* KingfisherManager.swift in Sources */,
+				DC2E073F2C7637F9007589E9 /* DetailViewModel.swift in Sources */,
 				DC15FCE02C7329450049FEB5 /* ReadPostModel.swift in Sources */,
 				DC07695D2C6C77D30025F939 /* SceneDelegate.swift in Sources */,
 				DC0769D12C6F51470025F939 /* SociallingTableViewCell.swift in Sources */,
@@ -500,10 +510,12 @@
 				DC0769CC2C6F43600025F939 /* RecommendCollectionViewCell.swift in Sources */,
 				DC0769782C6C79AC0025F939 /* BaseCollectionViewCell.swift in Sources */,
 				DC0769D72C6F73140025F939 /* Party.swift in Sources */,
+				DC2E07412C763B1D007589E9 /* CommentTableViewCell.swift in Sources */,
 				DC0769D52C6F72500025F939 /* SociallingViewModel.swift in Sources */,
 				DC07699C2C6C8BA00025F939 /* Router.swift in Sources */,
 				DC0769C22C6E10840025F939 /* AccomodationCollectionViewCell.swift in Sources */,
 				DC0769E42C71DF730025F939 /* FilesModel.swift in Sources */,
+				DC4150CD2C771D1C0008FAB3 /* CommentQuery.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

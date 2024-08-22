@@ -116,6 +116,29 @@ final class NetworkManager {
         
     }
     
+    func readOnePost(postId: String, completionHandler: @escaping (Posts) -> Void) {
+        
+        do {
+            let request = try Router.readOnePost(postId: postId).asURLRequest()
+            
+            AF.request(request)
+                .validate(statusCode: 200..<300)
+                .responseDecodable(of: Posts.self) { response in
+                    switch response.result {
+                    case .success(let value):
+                        dump(value)
+                        completionHandler(value)
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+            
+        } catch {
+            print(error)
+        }
+        
+    }
+    
     func deletePost(postId: String) {
         
         do {
@@ -137,5 +160,29 @@ final class NetworkManager {
         }
         
     }
+    
+//    func makeComment(postId: String, comment: String) {
+//        
+//        do {
+//            let query = CommentQuery(content: comment)
+//            let request = try Router.makeComment(postId: postId, query: query).asURLRequest()
+//         //   print("🐽코멘트 \(comment), 포스트 아이디\(postId)")
+//            AF.request(request)
+//                .validate(statusCode: 200..<300)
+//                .responseDecodable(of: Posts.self) { response in
+//                    switch response.result {
+//                    case .success(let value):
+//                        dump(value.comments)
+//                        print("성공")
+//                    case .failure(let error):
+//                        print(error)
+//                    }
+//                }
+//            
+//        } catch {
+//            print(error)
+//        }
+//        
+//    }
     
 }
