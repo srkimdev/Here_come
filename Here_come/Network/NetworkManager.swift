@@ -161,21 +161,25 @@ final class NetworkManager {
         
     }
     
-    func makeComment(postId: String, comment: String) {
+    func makeComment(postId: String, comment: String, completionHandler: @escaping (CommentResponse) -> Void) {
         
         do {
             let query = CommentQuery(content: comment)
+            print(postId)
             let request = try Router.makeComment(postId: postId, query: query).asURLRequest()
+            print(request)
+            print("makeComment에서 포스트 아이디\(postId), 쿼리 \(query)")
             
             AF.request(request)
                 .validate(statusCode: 200..<300)
-                .responseDecodable(of: Posts.self) { response in
+                .responseDecodable(of: CommentResponse.self) { response in
                     switch response.result {
                     case .success(let value):
-                        dump(value.comments)
+                        completionHandler(value)
                         print("성공")
                     case .failure(let error):
                         print(error)
+                        print("댓글 실패")
                     }
                 }
             
@@ -185,4 +189,30 @@ final class NetworkManager {
         
     }
     
+}
+
+
+//MARK: - 댓글
+struct CommentResponse: Codable {
+    let commentId: String
+    let content: String
+    let createdAt: String
+    let creator: CommentCreator
+    
+    enum CodingKeys: String, CodingKey {
+        case commentId = "comment_id"
+        case content
+        case createdAt
+        case creator
+    }
+}
+
+struct CommentCreator: Codable {
+    let userId: String
+    let nick: String
+    
+    enum CodingKeys: String, CodingKey {
+        case userId = "user_id"
+        case nick
+    }
 }

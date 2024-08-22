@@ -31,8 +31,8 @@ final class CommentTableViewCell: BaseTableViewCell {
         
         profileImage.snp.makeConstraints { make in
             make.top.equalTo(contentView.safeAreaLayoutGuide).offset(8)
-            make.leading.equalTo(contentView.safeAreaLayoutGuide).offset(8)
-            make.size.equalTo(30)
+            make.leading.equalTo(contentView.safeAreaLayoutGuide).offset(16)
+            make.size.equalTo(36)
         }
         
         userName.snp.makeConstraints { make in
@@ -45,7 +45,12 @@ final class CommentTableViewCell: BaseTableViewCell {
             make.leading.equalTo(profileImage.snp.trailing).offset(12)
         }
         
-        
+        commentLabel.snp.makeConstraints { make in
+            make.top.equalTo(profileImage.snp.bottom).offset(16)
+            make.leading.equalTo(profileImage.snp.trailing).offset(12)
+            make.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(12)
+            make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(8)
+        }
         
     }
     
@@ -58,6 +63,8 @@ final class CommentTableViewCell: BaseTableViewCell {
         
         locationLabel.text = "제주시 월정리"
         locationLabel.font = .systemFont(ofSize: 14)
+        
+        commentLabel.numberOfLines = 0
         
     }
     

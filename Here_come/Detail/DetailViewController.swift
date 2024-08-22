@@ -38,8 +38,6 @@ final class DetailViewController: BaseViewController {
 
     let viewModel = DetailViewModel()
     let disposeBag = DisposeBag()
-    var data: Posts?
-    var transitionData = BehaviorRelay<[String]>(value: [])
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -141,7 +139,7 @@ final class DetailViewController: BaseViewController {
         commentTableView.snp.makeConstraints { make in
             make.top.equalTo(commentLabel.snp.bottom).offset(16)
             make.horizontalEdges.equalTo(contentView)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-80)
             make.height.equalTo(0)
         }
 
@@ -172,8 +170,6 @@ final class DetailViewController: BaseViewController {
 
     override func configureUI() {
 
-        guard let data else { return }
-
         categoryBackView.backgroundColor = .systemGray5
         categoryBackView.layer.masksToBounds = true
 
@@ -186,11 +182,9 @@ final class DetailViewController: BaseViewController {
         locationLabel.text = "제주시 애월읍"
         locationLabel.font = .systemFont(ofSize: 15)
 
-        titleLabel.text = data.title
         titleLabel.font = .systemFont(ofSize: 20, weight: .bold)
         titleLabel.numberOfLines = 0
 
-        contentLabel.text = data.content
         contentLabel.font = .systemFont(ofSize: 16)
         contentLabel.numberOfLines = 0
 
@@ -213,17 +207,25 @@ final class DetailViewController: BaseViewController {
 
     func bind() {
 
-        let input = DetailViewModel.Input(inputText: commentTextField.rx.text.orEmpty)
+        let input = DetailViewModel.Input(inputText: commentTextField.rx.text.orEmpty, inputButtonTap: sendButton.rx.tap)
         let output = viewModel.transform(input: input)
 
-        transitionData
-            .asObservable()
+        output.getPost
+            .compactMap{ $0 }
+            .bind(with: self) { owner, value in
+                owner.titleLabel.text = value.title
+                owner.contentLabel.text = value.content
+            }
+            .disposed(by: disposeBag)
+        
+        output.ImageArray
             .bind(to: imageCollectionView.rx.items(cellIdentifier: DetailCollectionViewCell.identifier, cellType: DetailCollectionViewCell.self)) { (item, element, cell) in
+                
                 cell.designCell(transition: element)
             }
             .disposed(by: disposeBag)
 
-        output.updateTableView
+        output.updateComment
             .bind(to: commentTableView.rx.items(cellIdentifier: CommentTableViewCell.identifier, cellType: CommentTableViewCell.self)) { (row, element, cell) in
                 
                 cell.designCell(transition: element)
@@ -238,6 +240,7 @@ final class DetailViewController: BaseViewController {
                 }
             })
             .disposed(by: disposeBag)
+        
     }
 }
 

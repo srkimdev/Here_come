@@ -119,8 +119,7 @@ final class SociallingViewController: BaseViewController {
             .bind(with: self) { owner, value in
                 let vc = DetailViewController()
                 
-                vc.transitionData.accept(value.files ?? [])
-                vc.data = value
+                vc.viewModel.currentPost.accept(value.post_id)
                 vc.hidesBottomBarWhenPushed = true
                 
                 owner.transitionScreen(vc: vc, style: .push)

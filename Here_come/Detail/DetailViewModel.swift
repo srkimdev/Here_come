@@ -13,35 +13,49 @@ final class DetailViewModel {
     
     var comment: [String] = []
     let disposeBag = DisposeBag()
+    var currentPost = BehaviorRelay<String>(value: "")
     
     struct Input {
         let inputText: ControlProperty<String>
+        let inputButtonTap: ControlEvent<Void>
     }
     
     struct Output {
-        let updateTableView: BehaviorSubject<[Comment]>
+        let getPost: PublishSubject<Posts?>
+        let ImageArray: PublishSubject<[String]>
+        let updateComment: PublishSubject<[Comment]>
     }
     
     func transform(input: Input) -> Output {
         
-        let updateTableView = BehaviorSubject<[Comment]>(value: [])
+        let getPost = PublishSubject<Posts?>()
+        let ImageArray = PublishSubject<[String]>()
+        let updateComment = PublishSubject<[Comment]>()
         
-        input.inputText
+        currentPost
             .bind(with: self) { owner, value in
-                
-//                NetworkManager.shared.makeComment(postId: "66c6ed92078fb670167b2cc3", comment: "ddd")
-                
-                NetworkManager.shared.readOnePost(postId: "66c6ed92078fb670167b2cc3") { value in
-                    print(value, "here")
-                    updateTableView.onNext(value.comments ?? [])
+                NetworkManager.shared.readOnePost(postId: value) { value in
+                    getPost.onNext(value)
+                    ImageArray.onNext(value.files ?? [])
+                    updateComment.onNext(value.comments ?? [])
                 }
-                
-//                owner.comment.append(value)
-//                updateTableView.onNext(owner.comment)
             }
             .disposed(by: disposeBag)
         
-        return Output(updateTableView: updateTableView)
+        input.inputButtonTap
+            .withLatestFrom(input.inputText)
+            .bind(with: self) { owner, value in
+                
+                NetworkManager.shared.makeComment(postId: owner.currentPost.value, comment: value) { value in
+                    NetworkManager.shared.readOnePost(postId: owner.currentPost.value) { value in
+                        updateComment.onNext(value.comments ?? [])
+                    }
+                }
+                
+            }
+            .disposed(by: disposeBag)
+        
+        return Output(getPost: getPost, ImageArray: ImageArray, updateComment: updateComment)
     }
     
 }
