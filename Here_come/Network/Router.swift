@@ -18,7 +18,7 @@ enum Router: TargetType {
     case readOnePost(postId: String)
     case readImage
     case deletePost(postId: String)
-    case makeComment
+    case makeComment(postId: String, query: CommentQuery)
     
     var method: Alamofire.HTTPMethod {
         switch self {
@@ -78,7 +78,15 @@ enum Router: TargetType {
             } catch {
                 return nil
             }
-//        case .makeComment()
+        case .makeComment(_, let query):
+            let encoder = JSONEncoder()
+            
+            do {
+                let data = try encoder.encode(query)
+                return data
+            } catch {
+                return nil
+            }
             
         default:
             return nil
@@ -105,6 +113,8 @@ enum Router: TargetType {
             return "/posts/\(postId)"
         case .deletePost(let postId):
             return "/posts/\(postId)"
+        case .makeComment(let postId, _):
+            return "/posts/\(postId)/comments"
         default:
             return ""
         }

@@ -28,6 +28,7 @@ final class CommentTableViewCell: BaseTableViewCell {
     }
     
     override func configureLayout() {
+        
         profileImage.snp.makeConstraints { make in
             make.top.equalTo(contentView.safeAreaLayoutGuide).offset(8)
             make.leading.equalTo(contentView.safeAreaLayoutGuide).offset(8)
@@ -39,10 +40,12 @@ final class CommentTableViewCell: BaseTableViewCell {
             make.leading.equalTo(profileImage.snp.trailing).offset(12)
         }
         
-        profileImage.snp.makeConstraints { make in
+        locationLabel.snp.makeConstraints { make in
             make.bottom.equalTo(profileImage.snp.bottom)
             make.leading.equalTo(profileImage.snp.trailing).offset(12)
         }
+        
+        
         
     }
     
@@ -58,8 +61,8 @@ final class CommentTableViewCell: BaseTableViewCell {
         
     }
     
-    func designCell(transition: String) {
-        commentLabel.text = transition
+    func designCell(transition: Comment) {
+        commentLabel.text = transition.content
     }
     
 }

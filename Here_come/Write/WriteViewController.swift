@@ -159,7 +159,7 @@ final class WriteViewController: BaseViewController {
                 
                 let vc = CategoryViewController()
                 
-                vc.viewModel.selectedValue.accept(owner.categoryLabel.text!)
+                vc.viewModel.selectedValue.accept(owner.categoryLabel.text ?? "")
                 
                 vc.categoryClosure = { value in
                     owner.categoryLabel.text = value

@@ -31,7 +31,7 @@ final class SociallingViewModel {
         
         input.networkTrigger
             .bind(with: self) { owner, _ in
-                NetworkManager.shared.readPost(productId: "herecome_맛집") { value in
+                NetworkManager.shared.readPost(productId: "herecome_저녁식사") { value in
                     tableViewList.onNext(value)
                 }
                 

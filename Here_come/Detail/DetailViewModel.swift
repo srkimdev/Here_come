@@ -19,19 +19,19 @@ final class DetailViewModel {
     }
     
     struct Output {
-        let updateTableView: PublishSubject<[Comment]>
+        let updateTableView: BehaviorSubject<[Comment]>
     }
     
     func transform(input: Input) -> Output {
         
-        let updateTableView = PublishSubject<[Comment]>()
+        let updateTableView = BehaviorSubject<[Comment]>(value: [])
         
         input.inputText
             .bind(with: self) { owner, value in
                 
-              //  NetworkManager.shared.makeComment(postId: "66c2fd902c592d8184499959", comment: "ddd")
+//                NetworkManager.shared.makeComment(postId: "66c6ed92078fb670167b2cc3", comment: "ddd")
                 
-                NetworkManager.shared.readOnePost(postId: "66c2fd902c592d8184499959") { value in
+                NetworkManager.shared.readOnePost(postId: "66c6ed92078fb670167b2cc3") { value in
                     print(value, "here")
                     updateTableView.onNext(value.comments ?? [])
                 }
