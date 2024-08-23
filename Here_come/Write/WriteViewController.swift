@@ -101,6 +101,8 @@ final class WriteViewController: BaseViewController {
     override func configureUI() {
         navigationItem.title = "글쓰기"
         
+        categoryLabel.text = "서핑"
+        
         categoryButton.layer.borderWidth = 1
         categoryButton.layer.borderColor = UIColor.systemGray5.cgColor
         
@@ -133,17 +135,16 @@ final class WriteViewController: BaseViewController {
         item.rx.tap
             .bind(with: self) { owner, _ in
                 
-                // Network
                 NetworkManager.shared.uploadImage(images: owner.selectedImage) { value in
                     
-//                    dump(value)
+                    let postQuery = PostQuery(title: owner.titleTextField.text!, content: "#" + owner.categoryLabel.text!, content1: self.contentTextView.text! ,product_id: "herecome", files: value)
                     
-                    let postQuery = PostQuery(title: self.titleTextField.text!, content: self.contentTextView.text!, product_id: "herecome_" + self.categoryLabel.text!, files: value)
-                    
-                    NetworkManager.shared.uploadPost(query: postQuery)
+                    NetworkManager.shared.uploadPost(query: postQuery) { value in
+                        NotificationCenter.default.post(name: NSNotification.Name("update"), object: nil, userInfo: nil)
+                        owner.navigationController?.popViewController(animated: true)
+                    }
                 }
                 
-                owner.navigationController?.popViewController(animated: true)
             }
             .disposed(by: disposeBag)
         
@@ -158,7 +159,6 @@ final class WriteViewController: BaseViewController {
             .bind(with: self) { owner, _ in
                 
                 let vc = CategoryViewController()
-                
                 vc.viewModel.selectedValue.accept(owner.categoryLabel.text ?? "")
                 
                 vc.categoryClosure = { value in

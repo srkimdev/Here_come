@@ -12,7 +12,7 @@ import RxCocoa
 final class SociallingViewModel {
     
     let disposeBag = DisposeBag()
-    var selectedIndexPath = BehaviorRelay<Int>(value: 0)
+    var selectedValue = BehaviorRelay<String>(value: "전체")
     
     struct Input {
         let networkTrigger: Observable<Void>
@@ -31,17 +31,28 @@ final class SociallingViewModel {
         
         input.networkTrigger
             .bind(with: self) { owner, _ in
-                NetworkManager.shared.readPost(productId: "herecome_저녁식사") { value in
+                NetworkManager.shared.readPost(productId: "herecome") { value in
                     tableViewList.onNext(value)
                 }
                 
-                collectionViewList.onNext(categories)
+//                collectionViewList.onNext(categories)
             }
             .disposed(by: disposeBag)
+    
         
         input.pullToRefresh
             .bind(with: self) { owner, _ in
-                NetworkManager.shared.readPost(productId: "herecome_맛집") { value in
+                
+                NetworkManager.shared.readPost(productId: "herecome") { value in
+                    tableViewList.onNext(value)
+                }
+            }
+            .disposed(by: disposeBag)
+
+        		
+        selectedValue
+            .bind(with: self) { owner, value in
+                NetworkManager.shared.readPost(productId: "herecome_\(value)") { value in
                     tableViewList.onNext(value)
                 }
             }

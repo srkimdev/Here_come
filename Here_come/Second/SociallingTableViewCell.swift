@@ -38,7 +38,8 @@ final class SociallingTableViewCell: BaseTableViewCell {
     }
     
     override func configureHierarchy() {
-        contentView.addSubview(categoryLabel)
+        contentView.addSubview(categoryView)
+        categoryView.addSubview(categoryLabel)
         contentView.addSubview(titleLabel)
         contentView.addSubview(contentLabel)
         contentView.addSubview(locationLabel)
@@ -53,10 +54,15 @@ final class SociallingTableViewCell: BaseTableViewCell {
     
     override func configureLayout() {
         
-        categoryLabel.snp.makeConstraints { make in
-            make.top.equalTo(contentView.safeAreaLayoutGuide).offset(16)
+        categoryView.snp.makeConstraints { make in
+            make.top.equalTo(contentView.safeAreaLayoutGuide).offset(12)
             make.leading.equalTo(contentView.safeAreaLayoutGuide).offset(16)
             make.height.equalTo(20)
+        }
+        
+        categoryLabel.snp.makeConstraints { make in
+            make.horizontalEdges.equalTo(categoryView).inset(4)
+            make.centerY.equalTo(categoryView)
         }
         
         titleLabel.snp.makeConstraints { make in
@@ -86,25 +92,25 @@ final class SociallingTableViewCell: BaseTableViewCell {
         }
         
         likeImage.snp.makeConstraints { make in
-            make.top.equalTo(contentLabel.snp.bottom).offset(4)
+            make.bottom.equalTo(locationLabel.snp.bottom)
             make.trailing.equalTo(likeCount.snp.leading).offset(-2)
             make.size.equalTo(16)
         }
         
         likeCount.snp.makeConstraints { make in
-            make.top.equalTo(contentLabel.snp.bottom).offset(4)
+            make.bottom.equalTo(locationLabel.snp.bottom)
             make.trailing.equalTo(commentImage.snp.leading).offset(-4)
             make.height.equalTo(16)
         }
         
         commentImage.snp.makeConstraints { make in
-            make.top.equalTo(contentLabel.snp.bottom).offset(4)
+            make.bottom.equalTo(locationLabel.snp.bottom)
             make.trailing.equalTo(commentCount.snp.leading).offset(-2)
             make.size.equalTo(16)
         }
         
         commentCount.snp.makeConstraints { make in
-            make.top.equalTo(contentLabel.snp.bottom).offset(4)
+            make.bottom.equalTo(locationLabel.snp.bottom)
             make.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(16)
             make.height.equalTo(16)
         }
@@ -112,12 +118,14 @@ final class SociallingTableViewCell: BaseTableViewCell {
     }
     
     override func configureUI() {
+        
+        categoryView.layer.masksToBounds = true
+        categoryView.layer.cornerRadius = 2
+        categoryView.backgroundColor = .systemGray5
+        
         categoryLabel.text = "여름휴가"
-        categoryLabel.backgroundColor = .systemGray6
+        categoryLabel.font = .systemFont(ofSize: 13)
         
-        titleLabel.text = "여름휴가 후기를 들려주세요!"
-        
-        contentLabel.text = "4명정도 작게 모여서 저녁 조금 늦게 야식 드실분 신림쪽에서 모이고, 모각코 일정은 주 ㅣ1회 대면"
         contentLabel.font = .systemFont(ofSize: 13)
         
         locationLabel.text = "제주시 애월읍"
@@ -129,24 +137,28 @@ final class SociallingTableViewCell: BaseTableViewCell {
         likeImage.image = UIImage(systemName: "heart")
         likeImage.tintColor = .black
 
-        likeCount.text = "3"
         likeCount.font = .systemFont(ofSize: 13)
         
         commentImage.image = UIImage(systemName: "bubble.right")
         commentImage.tintColor = .black
         
-        commentCount.text = "3"
         commentCount.font = .systemFont(ofSize: 13)
     }
     
     func designCell(transition: Posts) {
         
-        titleLabel.text = transition.title
+        categoryLabel.text = transition.content
         
-        contentLabel.text = transition.content
+        titleLabel.text = transition.title
+
+        contentLabel.text = transition.content1
         
         let url = URL(string: APIKey.baseURL + "v1/" + (transition.files?[0] ?? ""))!
         optionalImage.kf.setImage(with: url, options: [.requestModifier(KingfisherManager.shared.modifier)])
+        
+        likeCount.text = "\(transition.likes.count)"
+        
+        commentCount.text = "\(transition.comments!.count )"
         
     }
     

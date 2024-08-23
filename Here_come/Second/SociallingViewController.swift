@@ -30,12 +30,7 @@ final class SociallingViewController: BaseViewController {
         
         bind()
         
-//        NetworkManager.shared.deletePost(postId: "66c43a4197d02bf91e201b01")
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-//        networkTrigger.onNext(())
+//        NetworkManager.shared.deletePost(postId: "66c6ed92078fb670167b2cc3")
     }
     
     override func configureHierarchy() {
@@ -67,6 +62,8 @@ final class SociallingViewController: BaseViewController {
         
         topicTableView.rowHeight = 120
         
+        NotificationCenter.default.addObserver(self, selector: #selector(receivedNotification), name: NSNotification.Name("update"), object: nil)
+        
     }
     
     override func configureAction() {
@@ -85,6 +82,11 @@ final class SociallingViewController: BaseViewController {
         }
     }
     
+    @objc func receivedNotification() {
+        networkTrigger.onNext(())
+//        topicTableView.reloadData()
+    }
+    
     private func bind() {
         
         let input = SociallingViewModel.Input(networkTrigger: networkTrigger, pullToRefresh: self.pullToRefresh)
@@ -93,6 +95,7 @@ final class SociallingViewController: BaseViewController {
         output.tableViewList
             .bind(to: topicTableView.rx.items(cellIdentifier: SociallingTableViewCell.identifier, cellType: SociallingTableViewCell.self)) { (row, element, cell) in
 
+                print("here")
                 cell.designCell(transition: element)
                 
             }
@@ -101,16 +104,16 @@ final class SociallingViewController: BaseViewController {
         output.collectionViewList
             .bind(to: sociallingCollectionView.rx.items(cellIdentifier: SociallingCollectionViewCell.identifier, cellType: SociallingCollectionViewCell.self)) { (item, element, cell) in
                 
-                cell.designCell(transition: item, selectedIndex: self.viewModel.selectedIndexPath.value)
+//                cell.designCell(transition: item, selectedIndex: self.viewModel.selectedIndexPath.value)
                 
             }
             .disposed(by: disposeBag)
         
-        sociallingCollectionView.rx.itemSelected
-            .map { indexPath in indexPath.row }
+        sociallingCollectionView.rx.modelSelected(Category.self)
+            .map { $0.rawValue }
             .bind(with: self) { owner, value in
                 
-                owner.viewModel.selectedIndexPath.accept(value)
+                owner.viewModel.selectedValue.accept(value)
                 owner.sociallingCollectionView.reloadData()
             }
             .disposed(by: disposeBag)
@@ -139,4 +142,19 @@ extension SociallingViewController: UICollectionViewDelegateFlowLayout {
         layout.scrollDirection = .horizontal
         return layout
     }
+}
+
+extension SociallingViewController {
+    
+    enum Category: String, CaseIterable {
+        case all = "전체"
+        case surfing = "서핑"
+        case hiking = "등산"
+        case camping = "캠핑"
+        case riding = "라이딩"
+        case running = "러닝"
+        case fishing = "낚시"
+        case driving = "드라이브"
+    }
+    
 }

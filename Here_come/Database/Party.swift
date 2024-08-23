@@ -16,10 +16,10 @@ struct Party {
     let explanation: String
 }
 
-struct Category {
-    let image: String
-    let name: String
-}
+//struct Category {
+//    let image: String
+//    let name: String
+//}
 
 let Parties: [Party] = [
      Party(Photos: [],
@@ -133,22 +133,14 @@ let Parties: [Party] = [
     
 ]
 
-//case all = "전체"
-//case surfing = "서핑"
-//case hiking = "등산"
-//case camping
-//case riding
-//case running
-//case fishing
-//case driving
 
-let categories: [Category] = [
-    Category(image: "", name: "전체"),
-    Category(image: "", name: "서핑"),
-    Category(image: "", name: "등산"),
-    Category(image: "", name: "캠핑"),
-    Category(image: "", name: "승마"),
-    Category(image: "", name: "러닝"),
-    Category(image: "", name: "낚시"),
-    Category(image: "", name: "드라이브"),
-]
+//let categories: [Category] = [
+//    Category(image: "", name: "전체"),
+//    Category(image: "", name: "서핑"),
+//    Category(image: "", name: "등산"),
+//    Category(image: "", name: "캠핑"),
+//    Category(image: "", name: "승마"),
+//    Category(image: "", name: "러닝"),
+//    Category(image: "", name: "낚시"),
+//    Category(image: "", name: "드라이브"),
+//]

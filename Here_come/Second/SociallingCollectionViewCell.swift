@@ -69,7 +69,7 @@ final class SociallingCollectionViewCell: BaseCollectionViewCell {
             backView.layer.borderWidth = 0
         }
         
-        categoryLabel.text = categories[transition].name
+//        categoryLabel.text = categories[transition].name
         
     }
 
