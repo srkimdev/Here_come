@@ -55,7 +55,7 @@ final class SociallingViewController: BaseViewController {
     }
         
     override func configureUI() {
-        let item = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(searchButtonTapped))
+        let item = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(writeButtonTapped))
         item.tintColor = .black
         navigationItem.rightBarButtonItem = item
         
@@ -69,7 +69,7 @@ final class SociallingViewController: BaseViewController {
         refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
     }
 
-    @objc func searchButtonTapped() {
+    @objc func writeButtonTapped() {
         let vc = WriteViewController()
         transitionScreen(vc: vc, style: .push)
     }

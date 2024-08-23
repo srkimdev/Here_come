@@ -138,7 +138,6 @@ enum Categories: String, CaseIterable {
     case surfing = "서핑"
     case hiking = "등산"
     case camping = "캠핑"
-    case riding = "라이딩"
     case running = "러닝"
     case fishing = "낚시"
     case driving = "드라이브"
@@ -146,15 +145,13 @@ enum Categories: String, CaseIterable {
     var imageIcon: String {
         switch self {
         case .all:
-            return ""
+            return "all"
         case .surfing:
             return "surfing"
         case .hiking:
             return "hiking"
         case .camping:
             return "camping"
-        case .riding:
-            return ""
         case .running:
             return "running"
         case .fishing:

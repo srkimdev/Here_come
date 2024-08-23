@@ -34,11 +34,22 @@ final class AccomodationViewController: BaseViewController {
     }
     
     override func configureUI() {
+        let item = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(writeButtonTapped))
+        item.tintColor = .black
+        navigationItem.rightBarButtonItem = item
+        
+        
+        
         
     }
     
     func bind() {
         
+    }
+    
+    @objc func writeButtonTapped() {
+        let vc = WriteReviewViewController()
+        transitionScreen(vc: vc, style: .push)
     }
     
 }

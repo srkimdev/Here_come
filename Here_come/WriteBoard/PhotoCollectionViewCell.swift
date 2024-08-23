@@ -56,9 +56,9 @@ final class PhotoCollectionViewCell: BaseCollectionViewCell {
         deleteButton.tintColor = .white
     }
     
-    func designCell(transition: String) {
+    func designCell(transition: UIImage) {
         
-        
+        photoImage.image = transition
         
     }
     

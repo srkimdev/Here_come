@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import RxSwift
+import RxCocoa
 import PhotosUI
 
 final class WriteViewController: BaseViewController {
@@ -22,17 +23,13 @@ final class WriteViewController: BaseViewController {
     lazy var photoCollectionView = UICollectionView(frame: .zero, collectionViewLayout: photoCollectionViewLayout())
     let imageButton = UIButton()
     
-    private let pickerSubject = PublishSubject<[UIImage]>()
+    let pickerSubject = BehaviorRelay<[UIImage]>(value: [])
     let viewModel = WriteViewModel()
     let disposeBag = DisposeBag()
-    
-    private var selectedImage: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        photoCollectionView.delegate = self
-        photoCollectionView.dataSource = self
         photoCollectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
         
         bindNavi()
@@ -135,11 +132,9 @@ final class WriteViewController: BaseViewController {
         item.rx.tap
             .bind(with: self) { owner, _ in
                 
-                NetworkManager.shared.uploadImage(images: owner.selectedImage) { value in
+                NetworkManager.shared.uploadImage(images: owner.pickerSubject.value) { value in
                     
                     let postQuery = PostQuery(title: owner.titleTextField.text!, content: "#" + owner.categoryLabel.text!, content1: self.contentTextView.text! ,product_id: "herecome", files: value)
-                    
-                    print(postQuery)
                     
                     NetworkManager.shared.uploadPost(query: postQuery) { value in
                         NotificationCenter.default.post(name: NSNotification.Name("update"), object: nil, userInfo: nil)
@@ -154,7 +149,7 @@ final class WriteViewController: BaseViewController {
     
     func bind() {
         
-        let input = WriteViewModel.Input(categoryButtonTap: categoryButton.rx.tap, imageButtonTap: imageButton.rx.tap)
+        let input = WriteViewModel.Input(categoryButtonTap: categoryButton.rx.tap, imageButtonTap: imageButton.rx.tap, pickerSubject: pickerSubject)
         let output = viewModel.transform(input: input)
         
         output.categoryButtonTap
@@ -191,16 +186,13 @@ final class WriteViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        
-        
-        
-//        output.photoCollectionView
-//            .bind(to: photoCollectionView.rx.items(cellIdentifier: PhotoCollectionViewCell.identifier, cellType: PhotoCollectionViewCell.self)) { (item, element, cell) in
-//                
-//                cell.designCell(transition: self.image[item])
-//                
-//            }
-//            .disposed(by: disposeBag)
+        output.photoCollectionView
+            .bind(to: photoCollectionView.rx.items(cellIdentifier: PhotoCollectionViewCell.identifier, cellType: PhotoCollectionViewCell.self)) { (item, element, cell) in
+                
+                cell.designCell(transition: element)
+                
+            }
+            .disposed(by: disposeBag)
         
     }
 
@@ -217,32 +209,19 @@ extension WriteViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension WriteViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return selectedImage.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = photoCollectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as! PhotoCollectionViewCell
-        
-        cell.photoImage.image = selectedImage[indexPath.item]
-        
-        return cell
-    }
-}
-
 extension WriteViewController: PHPickerViewControllerDelegate {
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true)
         
+        var selectedImage: [UIImage] = []
         let dispatchGroup = DispatchGroup()
         
         for result in results {
             dispatchGroup.enter()
-            result.itemProvider.loadObject(ofClass: UIImage.self) { [weak self] (object, error) in
+            result.itemProvider.loadObject(ofClass: UIImage.self) { (object, error) in
                 if let image = object as? UIImage {
-                    self?.selectedImage.append(image)
+                    selectedImage.append(image)
                 }
                 dispatchGroup.leave()
             }
@@ -250,7 +229,7 @@ extension WriteViewController: PHPickerViewControllerDelegate {
         }
         
         dispatchGroup.notify(queue: .main) {
-            self.photoCollectionView.reloadData()
+            self.pickerSubject.accept(selectedImage)
         }
         
     }

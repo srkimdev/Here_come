@@ -71,6 +71,9 @@
 		DC4150CD2C771D1C0008FAB3 /* CommentQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150CC2C771D1C0008FAB3 /* CommentQuery.swift */; };
 		DC4150CF2C775C360008FAB3 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150CE2C775C360008FAB3 /* CommentModel.swift */; };
 		DC4150D12C775D7C0008FAB3 /* ExtractSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150D02C775D7C0008FAB3 /* ExtractSentence.swift */; };
+		DC4150D72C786D5A0008FAB3 /* WriteReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150D62C786D5A0008FAB3 /* WriteReviewViewController.swift */; };
+		DC4150D92C787D670008FAB3 /* WriteReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150D82C787D670008FAB3 /* WriteReviewCollectionViewCell.swift */; };
+		DC4150DB2C787F800008FAB3 /* WriteReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150DA2C787F800008FAB3 /* WriteReviewViewModel.swift */; };
 		DC8C21FA2C747E31003FE59B /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -135,6 +138,9 @@
 		DC4150CC2C771D1C0008FAB3 /* CommentQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentQuery.swift; sourceTree = "<group>"; };
 		DC4150CE2C775C360008FAB3 /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 		DC4150D02C775D7C0008FAB3 /* ExtractSentence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractSentence.swift; sourceTree = "<group>"; };
+		DC4150D62C786D5A0008FAB3 /* WriteReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewViewController.swift; sourceTree = "<group>"; };
+		DC4150D82C787D670008FAB3 /* WriteReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		DC4150DA2C787F800008FAB3 /* WriteReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewViewModel.swift; sourceTree = "<group>"; };
 		DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -197,7 +203,8 @@
 				DC0769AA2C6CD2400025F939 /* Third */,
 				DC0769AB2C6CD2480025F939 /* Fourth */,
 				DC0769CD2C6F4EE50025F939 /* Search */,
-				DC0769DA2C70AE830025F939 /* Write */,
+				DC0769DA2C70AE830025F939 /* WriteBoard */,
+				DC4150D52C786BD90008FAB3 /* WriteReview */,
 				DC15FCE92C7368CD0049FEB5 /* Category */,
 				DC1143A52C75D95C00CEB325 /* Detail */,
 			);
@@ -350,14 +357,14 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
-		DC0769DA2C70AE830025F939 /* Write */ = {
+		DC0769DA2C70AE830025F939 /* WriteBoard */ = {
 			isa = PBXGroup;
 			children = (
 				DC0769DB2C70AE940025F939 /* WriteViewController.swift */,
 				DC0769DF2C71A8250025F939 /* PhotoCollectionViewCell.swift */,
 				DC0769DD2C70F6A10025F939 /* WriteViewModel.swift */,
 			);
-			path = Write;
+			path = WriteBoard;
 			sourceTree = "<group>";
 		};
 		DC1143A52C75D95C00CEB325 /* Detail */ = {
@@ -380,6 +387,16 @@
 				DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */,
 			);
 			path = Category;
+			sourceTree = "<group>";
+		};
+		DC4150D52C786BD90008FAB3 /* WriteReview */ = {
+			isa = PBXGroup;
+			children = (
+				DC4150D62C786D5A0008FAB3 /* WriteReviewViewController.swift */,
+				DC4150D82C787D670008FAB3 /* WriteReviewCollectionViewCell.swift */,
+				DC4150DA2C787F800008FAB3 /* WriteReviewViewModel.swift */,
+			);
+			path = WriteReview;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -507,12 +524,15 @@
 				DC2E073F2C7637F9007589E9 /* DetailViewModel.swift in Sources */,
 				DC15FCE02C7329450049FEB5 /* ReadPostModel.swift in Sources */,
 				DC07695D2C6C77D30025F939 /* SceneDelegate.swift in Sources */,
+				DC4150D72C786D5A0008FAB3 /* WriteReviewViewController.swift in Sources */,
 				DC0769D12C6F51470025F939 /* SociallingTableViewCell.swift in Sources */,
 				DC0769A02C6C99610025F939 /* Header.swift in Sources */,
 				DC0769D92C709CDF0025F939 /* SociallingCollectionViewCell.swift in Sources */,
 				DC0769972C6C89F00025F939 /* LoginQuery.swift in Sources */,
 				DC15FCDC2C730F7E0049FEB5 /* PostModel.swift in Sources */,
 				DC0769922C6C83650025F939 /* APIKey.swift in Sources */,
+				DC4150D92C787D670008FAB3 /* WriteReviewCollectionViewCell.swift in Sources */,
+				DC4150DB2C787F800008FAB3 /* WriteReviewViewModel.swift in Sources */,
 				DC4150CF2C775C360008FAB3 /* CommentModel.swift in Sources */,
 				DC15FCDE2C731E3C0049FEB5 /* PostQuery.swift in Sources */,
 				DC0769CC2C6F43600025F939 /* RecommendCollectionViewCell.swift in Sources */,

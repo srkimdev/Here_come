@@ -55,7 +55,8 @@ final class SociallingCollectionViewCell: BaseCollectionViewCell {
         backView.layer.borderColor = UIColor.black.cgColor
         
         categoryImage.layer.masksToBounds = true
-        categoryImage.backgroundColor = .red
+        categoryImage.backgroundColor = .black
+        categoryImage.contentMode = .scaleAspectFill
         
         categoryLabel.font = .systemFont(ofSize: 14)
         
