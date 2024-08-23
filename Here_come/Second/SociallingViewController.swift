@@ -49,6 +49,7 @@ final class SociallingViewController: BaseViewController {
         topicTableView.snp.makeConstraints { make in
             make.top.equalTo(sociallingCollectionView.snp.bottom).offset(20)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
     }
@@ -57,8 +58,6 @@ final class SociallingViewController: BaseViewController {
         let item = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(searchButtonTapped))
         item.tintColor = .black
         navigationItem.rightBarButtonItem = item
-        
-        sociallingCollectionView.backgroundColor = .lightGray
         
         topicTableView.rowHeight = 120
         
@@ -84,7 +83,6 @@ final class SociallingViewController: BaseViewController {
     
     @objc func receivedNotification() {
         networkTrigger.onNext(())
-//        topicTableView.reloadData()
     }
     
     private func bind() {
@@ -95,7 +93,7 @@ final class SociallingViewController: BaseViewController {
         output.tableViewList
             .bind(to: topicTableView.rx.items(cellIdentifier: SociallingTableViewCell.identifier, cellType: SociallingTableViewCell.self)) { (row, element, cell) in
 
-                print("here")
+                print("???")
                 cell.designCell(transition: element)
                 
             }
@@ -104,15 +102,16 @@ final class SociallingViewController: BaseViewController {
         output.collectionViewList
             .bind(to: sociallingCollectionView.rx.items(cellIdentifier: SociallingCollectionViewCell.identifier, cellType: SociallingCollectionViewCell.self)) { (item, element, cell) in
                 
-//                cell.designCell(transition: item, selectedIndex: self.viewModel.selectedIndexPath.value)
+                cell.designCell(transition: element, selectedIndex: self.viewModel.selectedValue.value)
                 
             }
             .disposed(by: disposeBag)
         
-        sociallingCollectionView.rx.modelSelected(Category.self)
+        sociallingCollectionView.rx.modelSelected(Categories.self)
             .map { $0.rawValue }
             .bind(with: self) { owner, value in
                 
+                print(value)
                 owner.viewModel.selectedValue.accept(value)
                 owner.sociallingCollectionView.reloadData()
             }
@@ -136,7 +135,7 @@ final class SociallingViewController: BaseViewController {
 extension SociallingViewController: UICollectionViewDelegateFlowLayout {
     func sociallingCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 50, height: 110)
+        layout.itemSize = CGSize(width: 64, height: 110)
         layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         layout.minimumLineSpacing = 20
         layout.scrollDirection = .horizontal
@@ -144,17 +143,3 @@ extension SociallingViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension SociallingViewController {
-    
-    enum Category: String, CaseIterable {
-        case all = "전체"
-        case surfing = "서핑"
-        case hiking = "등산"
-        case camping = "캠핑"
-        case riding = "라이딩"
-        case running = "러닝"
-        case fishing = "낚시"
-        case driving = "드라이브"
-    }
-    
-}

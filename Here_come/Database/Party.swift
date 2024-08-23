@@ -133,14 +133,35 @@ let Parties: [Party] = [
     
 ]
 
+enum Categories: String, CaseIterable {
+    case all = "전체"
+    case surfing = "서핑"
+    case hiking = "등산"
+    case camping = "캠핑"
+    case riding = "라이딩"
+    case running = "러닝"
+    case fishing = "낚시"
+    case driving = "드라이브"
+    
+    var imageIcon: String {
+        switch self {
+        case .all:
+            return ""
+        case .surfing:
+            return "surfing"
+        case .hiking:
+            return "hiking"
+        case .camping:
+            return "camping"
+        case .riding:
+            return ""
+        case .running:
+            return "running"
+        case .fishing:
+            return "fishing"
+        case .driving:
+            return "driving"
+        }
+    }
+}
 
-//let categories: [Category] = [
-//    Category(image: "", name: "전체"),
-//    Category(image: "", name: "서핑"),
-//    Category(image: "", name: "등산"),
-//    Category(image: "", name: "캠핑"),
-//    Category(image: "", name: "승마"),
-//    Category(image: "", name: "러닝"),
-//    Category(image: "", name: "낚시"),
-//    Category(image: "", name: "드라이브"),
-//]

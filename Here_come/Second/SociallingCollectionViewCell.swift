@@ -33,14 +33,14 @@ final class SociallingCollectionViewCell: BaseCollectionViewCell {
     
     override func configureLayout() {
         backView.snp.makeConstraints { make in
-            make.top.equalTo(contentView.safeAreaLayoutGuide).offset(20)
+            make.top.equalTo(contentView.safeAreaLayoutGuide).offset(16)
             make.centerX.equalTo(contentView)
-            make.size.equalTo(54)
+            make.size.equalTo(64)
         }
         
         categoryImage.snp.makeConstraints { make in
             make.center.equalTo(backView)
-            make.size.equalTo(backView).multipliedBy(0.8)
+            make.size.equalTo(backView).multipliedBy(0.9)
         }
         
         categoryLabel.snp.makeConstraints { make in
@@ -61,15 +61,17 @@ final class SociallingCollectionViewCell: BaseCollectionViewCell {
         
     }
     
-    func designCell(transition: Int, selectedIndex: Int) {
+    func designCell(transition: Categories, selectedIndex: String) {
 
-        if transition == selectedIndex {
+        if transition.rawValue == selectedIndex {
             backView.layer.borderWidth = 1
         } else {
             backView.layer.borderWidth = 0
         }
         
-//        categoryLabel.text = categories[transition].name
+        categoryLabel.text = transition.rawValue
+        
+        categoryImage.image = UIImage(named: transition.imageIcon)
         
     }
 

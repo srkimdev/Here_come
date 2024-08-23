@@ -103,7 +103,7 @@ final class NetworkManager {
                 .responseDecodable(of: ReadPostModel.self) { response in
                     switch response.result {
                     case .success(let value):
-                        dump(value.data)
+//                        dump(value.data)
                         completionHandler(value.data)
                     case .failure(let error):
                         print(error)
@@ -128,6 +128,28 @@ final class NetworkManager {
                     case .success(let value):
                         dump(value)
                         completionHandler(value)
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+            
+        } catch {
+            print(error)
+        }
+        
+    }
+    
+    func readHashTag(hashTag: String, completionHandler: @escaping ([Posts]) -> Void) {
+        
+        do {
+            let request = try Router.readHashTag(hashTag: hashTag).asURLRequest()
+            
+            AF.request(request)
+                .validate(statusCode: 200..<300)
+                .responseDecodable(of: ReadPostModel.self) { response in
+                    switch response.result {
+                    case .success(let value):
+                        completionHandler(value.data)
                     case .failure(let error):
                         print(error)
                     }

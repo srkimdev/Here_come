@@ -229,6 +229,7 @@ final class DetailViewController: BaseViewController {
             .bind(to: commentTableView.rx.items(cellIdentifier: CommentTableViewCell.identifier, cellType: CommentTableViewCell.self)) { (row, element, cell) in
                 
                 cell.designCell(transition: element)
+                
             }
             .disposed(by: disposeBag)
         
@@ -238,6 +239,8 @@ final class DetailViewController: BaseViewController {
                 self.commentTableView.snp.updateConstraints { make in
                     make.height.equalTo(size.height)
                 }
+                commentTextField.text = nil
+                
             })
             .disposed(by: disposeBag)
         

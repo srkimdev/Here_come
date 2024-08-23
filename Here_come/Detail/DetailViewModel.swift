@@ -49,6 +49,7 @@ final class DetailViewModel {
                 NetworkManager.shared.makeComment(postId: owner.currentPost.value, comment: value) { value in
                     NetworkManager.shared.readOnePost(postId: owner.currentPost.value) { value in
                         updateComment.onNext(value.comments ?? [])
+                        NotificationCenter.default.post(name: NSNotification.Name("update"), object: nil, userInfo: nil)
                     }
                 }
                 

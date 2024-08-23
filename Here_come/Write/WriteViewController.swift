@@ -139,6 +139,8 @@ final class WriteViewController: BaseViewController {
                     
                     let postQuery = PostQuery(title: owner.titleTextField.text!, content: "#" + owner.categoryLabel.text!, content1: self.contentTextView.text! ,product_id: "herecome", files: value)
                     
+                    print(postQuery)
+                    
                     NetworkManager.shared.uploadPost(query: postQuery) { value in
                         NotificationCenter.default.post(name: NSNotification.Name("update"), object: nil, userInfo: nil)
                         owner.navigationController?.popViewController(animated: true)

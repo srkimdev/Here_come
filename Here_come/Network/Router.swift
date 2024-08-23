@@ -17,6 +17,7 @@ enum Router: TargetType {
     case readPost(productId: String)
     case readOnePost(postId: String)
     case readImage
+    case readHashTag(hashTag: String)
     case deletePost(postId: String)
     case makeComment(postId: String, query: CommentQuery)
     
@@ -36,6 +37,8 @@ enum Router: TargetType {
             return .get
         case .readImage:
             return .get
+        case .readHashTag:
+            return .get
         case .deletePost:
             return .delete
         case .makeComment:
@@ -51,7 +54,10 @@ enum Router: TargetType {
         switch self {
         case .readPost(let productId):
             return [URLQueryItem(name: "product_id", value: productId)]
-            
+        
+        case .readHashTag(let hashTag):
+            return [URLQueryItem(name: "hashTag", value: hashTag)]
+        
         default:
             return nil
         }
@@ -78,6 +84,7 @@ enum Router: TargetType {
             } catch {
                 return nil
             }
+            
         case .makeComment(_, let query):
             let encoder = JSONEncoder()
             
@@ -111,6 +118,8 @@ enum Router: TargetType {
             return "/posts"
         case .readOnePost(let postId):
             return "/posts/\(postId)"
+        case .readHashTag:
+            return "/posts/hashtags"
         case .deletePost(let postId):
             return "/posts/\(postId)"
         case .makeComment(let postId, _):
@@ -145,7 +154,7 @@ enum Router: TargetType {
                 Header.contentType.rawValue: Header.json.rawValue,
                 Header.sesacKey.rawValue: APIKey.Key
             ]
-        case .readPost, .readOnePost, .readImage, .deletePost:
+        case .readPost, .readOnePost, .readImage, .readHashTag, .deletePost:
             return [
                 Header.authorization.rawValue: UserDefaultsManager.shared.token,
                 Header.sesacKey.rawValue: APIKey.Key

@@ -21,40 +21,52 @@ final class SociallingViewModel {
     
     struct Output {
         let tableViewList: BehaviorSubject<[Posts]>
-        let collectionViewList: BehaviorSubject<[Category]>
+        let collectionViewList: BehaviorSubject<[Categories]>
     }
     
     func transform(input: Input) -> Output {
         
         let tableViewList = BehaviorSubject<[Posts]>(value: [])
-        let collectionViewList = BehaviorSubject<[Category]>(value: [])
+        let collectionViewList = BehaviorSubject<[Categories]>(value: [])
         
         input.networkTrigger
             .bind(with: self) { owner, _ in
                 NetworkManager.shared.readPost(productId: "herecome") { value in
+                    print("가져오기")
                     tableViewList.onNext(value)
                 }
-                
-//                collectionViewList.onNext(categories)
             }
             .disposed(by: disposeBag)
     
         
         input.pullToRefresh
             .bind(with: self) { owner, _ in
-                
+
                 NetworkManager.shared.readPost(productId: "herecome") { value in
                     tableViewList.onNext(value)
                 }
             }
             .disposed(by: disposeBag)
 
-        		
         selectedValue
             .bind(with: self) { owner, value in
-                NetworkManager.shared.readPost(productId: "herecome_\(value)") { value in
-                    tableViewList.onNext(value)
+
+                if value == "전체" {
+                    NetworkManager.shared.readPost(productId: "herecome") { value in
+                        tableViewList.onNext(value)
+                    }
+                } else {
+                    NetworkManager.shared.readHashTag(hashTag: value) { value in
+                        tableViewList.onNext(value)
+                    }
                 }
+
+            }
+            .disposed(by: disposeBag)
+        
+        Observable.just(Categories.allCases)
+            .bind(with: self) { owner, value in
+                collectionViewList.onNext(value)
             }
             .disposed(by: disposeBag)
         
