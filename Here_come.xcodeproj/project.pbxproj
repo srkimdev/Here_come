@@ -41,7 +41,7 @@
 		DC0769B52C6CD4800025F939 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769B42C6CD4800025F939 /* UIViewController+Extension.swift */; };
 		DC0769B72C6CD7720025F939 /* Accomodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769B62C6CD7720025F939 /* Accomodations.swift */; };
 		DC0769C02C6DF6250025F939 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = DC0769BF2C6DF6250025F939 /* IQKeyboardManagerSwift */; };
-		DC0769C22C6E10840025F939 /* AccomodationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769C12C6E10840025F939 /* AccomodationCollectionViewCell.swift */; };
+		DC0769C22C6E10840025F939 /* AccomodationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769C12C6E10840025F939 /* AccomodationTableViewCell.swift */; };
 		DC0769C42C6E10D60025F939 /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769C32C6E10D60025F939 /* ReusableProtocol.swift */; };
 		DC0769C62C6E13E40025F939 /* AccomodationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769C52C6E13E40025F939 /* AccomodationViewModel.swift */; };
 		DC0769C82C6E5E740025F939 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769C72C6E5E740025F939 /* ImageCollectionViewCell.swift */; };
@@ -70,10 +70,10 @@
 		DC2E07412C763B1D007589E9 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E07402C763B1D007589E9 /* CommentTableViewCell.swift */; };
 		DC4150CD2C771D1C0008FAB3 /* CommentQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150CC2C771D1C0008FAB3 /* CommentQuery.swift */; };
 		DC4150CF2C775C360008FAB3 /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150CE2C775C360008FAB3 /* CommentModel.swift */; };
-		DC4150D12C775D7C0008FAB3 /* ExtractSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150D02C775D7C0008FAB3 /* ExtractSentence.swift */; };
 		DC4150D72C786D5A0008FAB3 /* WriteReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150D62C786D5A0008FAB3 /* WriteReviewViewController.swift */; };
 		DC4150D92C787D670008FAB3 /* WriteReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150D82C787D670008FAB3 /* WriteReviewCollectionViewCell.swift */; };
 		DC4150DB2C787F800008FAB3 /* WriteReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150DA2C787F800008FAB3 /* WriteReviewViewModel.swift */; };
+		DC4150DD2C78C56B0008FAB3 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150DC2C78C56B0008FAB3 /* ProfileModel.swift */; };
 		DC8C21FA2C747E31003FE59B /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -108,7 +108,7 @@
 		DC0769B22C6CD3A30025F939 /* ProfileManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManageViewController.swift; sourceTree = "<group>"; };
 		DC0769B42C6CD4800025F939 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		DC0769B62C6CD7720025F939 /* Accomodations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accomodations.swift; sourceTree = "<group>"; };
-		DC0769C12C6E10840025F939 /* AccomodationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomodationCollectionViewCell.swift; sourceTree = "<group>"; };
+		DC0769C12C6E10840025F939 /* AccomodationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomodationTableViewCell.swift; sourceTree = "<group>"; };
 		DC0769C32C6E10D60025F939 /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 		DC0769C52C6E13E40025F939 /* AccomodationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomodationViewModel.swift; sourceTree = "<group>"; };
 		DC0769C72C6E5E740025F939 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -137,10 +137,10 @@
 		DC2E07402C763B1D007589E9 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		DC4150CC2C771D1C0008FAB3 /* CommentQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentQuery.swift; sourceTree = "<group>"; };
 		DC4150CE2C775C360008FAB3 /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
-		DC4150D02C775D7C0008FAB3 /* ExtractSentence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractSentence.swift; sourceTree = "<group>"; };
 		DC4150D62C786D5A0008FAB3 /* WriteReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewViewController.swift; sourceTree = "<group>"; };
 		DC4150D82C787D670008FAB3 /* WriteReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC4150DA2C787F800008FAB3 /* WriteReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewViewModel.swift; sourceTree = "<group>"; };
+		DC4150DC2C78C56B0008FAB3 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -246,7 +246,6 @@
 			isa = PBXGroup;
 			children = (
 				DC15FCE72C735B3A0049FEB5 /* KingfisherManager.swift */,
-				DC4150D02C775D7C0008FAB3 /* ExtractSentence.swift */,
 			);
 			path = Singleton;
 			sourceTree = "<group>";
@@ -296,6 +295,7 @@
 				DC15FCDB2C730F7E0049FEB5 /* PostModel.swift */,
 				DC15FCDF2C7329450049FEB5 /* ReadPostModel.swift */,
 				DC4150CE2C775C360008FAB3 /* CommentModel.swift */,
+				DC4150DC2C78C56B0008FAB3 /* ProfileModel.swift */,
 			);
 			path = ResponseModel;
 			sourceTree = "<group>";
@@ -312,7 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				DC0769AC2C6CD2B60025F939 /* AccomodationViewController.swift */,
-				DC0769C12C6E10840025F939 /* AccomodationCollectionViewCell.swift */,
+				DC0769C12C6E10840025F939 /* AccomodationTableViewCell.swift */,
 				DC0769C72C6E5E740025F939 /* ImageCollectionViewCell.swift */,
 				DC0769C52C6E13E40025F939 /* AccomodationViewModel.swift */,
 			);
@@ -495,6 +495,7 @@
 				DC0769B32C6CD3A30025F939 /* ProfileManageViewController.swift in Sources */,
 				DC0769C42C6E10D60025F939 /* ReusableProtocol.swift in Sources */,
 				DC0769942C6C84280025F939 /* NetworkManager.swift in Sources */,
+				DC4150DD2C78C56B0008FAB3 /* ProfileModel.swift in Sources */,
 				DC0769C62C6E13E40025F939 /* AccomodationViewModel.swift in Sources */,
 				DC0769A72C6CD1FC0025F939 /* TabBarViewController.swift in Sources */,
 				DC0769742C6C78D10025F939 /* BaseViewController.swift in Sources */,
@@ -518,7 +519,6 @@
 				DC15FCED2C736A3B0049FEB5 /* CategoryViewController.swift in Sources */,
 				DC8C21FA2C747E31003FE59B /* CategoryViewModel.swift in Sources */,
 				DC0769A42C6C9DB00025F939 /* LoginViewModel.swift in Sources */,
-				DC4150D12C775D7C0008FAB3 /* ExtractSentence.swift in Sources */,
 				DC0769C82C6E5E740025F939 /* ImageCollectionViewCell.swift in Sources */,
 				DC15FCE82C735B3A0049FEB5 /* KingfisherManager.swift in Sources */,
 				DC2E073F2C7637F9007589E9 /* DetailViewModel.swift in Sources */,
@@ -541,7 +541,7 @@
 				DC2E07412C763B1D007589E9 /* CommentTableViewCell.swift in Sources */,
 				DC0769D52C6F72500025F939 /* SociallingViewModel.swift in Sources */,
 				DC07699C2C6C8BA00025F939 /* Router.swift in Sources */,
-				DC0769C22C6E10840025F939 /* AccomodationCollectionViewCell.swift in Sources */,
+				DC0769C22C6E10840025F939 /* AccomodationTableViewCell.swift in Sources */,
 				DC0769E42C71DF730025F939 /* FilesModel.swift in Sources */,
 				DC4150CD2C771D1C0008FAB3 /* CommentQuery.swift in Sources */,
 			);

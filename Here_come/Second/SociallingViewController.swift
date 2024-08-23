@@ -93,7 +93,6 @@ final class SociallingViewController: BaseViewController {
         output.tableViewList
             .bind(to: topicTableView.rx.items(cellIdentifier: SociallingTableViewCell.identifier, cellType: SociallingTableViewCell.self)) { (row, element, cell) in
 
-                print("???")
                 cell.designCell(transition: element)
                 
             }

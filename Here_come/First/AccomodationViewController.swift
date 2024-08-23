@@ -11,24 +11,28 @@ import RxSwift
 
 final class AccomodationViewController: BaseViewController {
     
-    lazy var postCollectionView = UICollectionView(frame: .zero, collectionViewLayout: postCollectionViewLayout())
+    let viewModel = AccomodationViewModel()
+    let disposeBag = DisposeBag()
+    
+    let networkTrigger = BehaviorSubject<Void>(value: ())
+    let pullToRefresh = PublishSubject<Void>()
+    
+    let postTableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        postCollectionView.delegate = self
-        postCollectionView.dataSource = self
-        postCollectionView.register(AccomodationCollectionViewCell.self, forCellWithReuseIdentifier: AccomodationCollectionViewCell.identifier)
+        postTableView.register(AccomodationTableViewCell.self, forCellReuseIdentifier: AccomodationTableViewCell.identifier)
         
         bind()
     }
     
     override func configureHierarchy() {
-        view.addSubview(postCollectionView)
+        view.addSubview(postTableView)
     }
     
     override func configureLayout() {
-        postCollectionView.snp.makeConstraints { make in
+        postTableView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
@@ -38,12 +42,26 @@ final class AccomodationViewController: BaseViewController {
         item.tintColor = .black
         navigationItem.rightBarButtonItem = item
         
+        postTableView.rowHeight = UITableView.automaticDimension
         
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(receivedNotification), name: NSNotification.Name("updatePost"), object: nil)
         
     }
     
     func bind() {
+        
+        let input = AccomodationViewModel.Input(networkTrigger: networkTrigger, pullToRefresh: pullToRefresh)
+        let output = viewModel.transform(input: input)
+        
+        output.collectionViewList
+            .bind(to: postTableView.rx.items(cellIdentifier: AccomodationTableViewCell.identifier, cellType: AccomodationTableViewCell.self)) { (item, element, cell) in
+                
+                cell.designCell(transition: element)
+                
+            }
+            .disposed(by: disposeBag)
+        
+        networkTrigger.onNext(())
         
     }
     
@@ -52,30 +70,11 @@ final class AccomodationViewController: BaseViewController {
         transitionScreen(vc: vc, style: .push)
     }
     
-}
-
-extension AccomodationViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = postCollectionView.dequeueReusableCell(withReuseIdentifier: AccomodationCollectionViewCell.identifier, for: indexPath)
-        
-        return cell
+    @objc func receivedNotification() {
+        networkTrigger.onNext(())
     }
     
 }
 
-extension AccomodationViewController: UICollectionViewDelegateFlowLayout {
-    private func postCollectionViewLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: view.bounds.width, height: 500)
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.scrollDirection = .vertical
-        return layout
-    }
-}
 
 

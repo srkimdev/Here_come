@@ -215,6 +215,7 @@ final class DetailViewController: BaseViewController {
             .bind(with: self) { owner, value in
                 owner.titleLabel.text = value.title
                 owner.contentLabel.text = value.content
+                owner.userName.text = value.creator.nick
             }
             .disposed(by: disposeBag)
         

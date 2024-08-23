@@ -58,7 +58,6 @@ final class CommentTableViewCell: BaseTableViewCell {
         
         profileImage.image = UIImage(named: "profile_10")
         
-        userName.text = "야옹"
         userName.font = .systemFont(ofSize: 14)
         
         locationLabel.text = "제주시 월정리"
@@ -69,6 +68,9 @@ final class CommentTableViewCell: BaseTableViewCell {
     }
     
     func designCell(transition: Comment) {
+        
+        userName.text = transition.creator.nick
+        
         commentLabel.text = transition.content
     }
     

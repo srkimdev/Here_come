@@ -134,7 +134,7 @@ final class WriteViewController: BaseViewController {
                 
                 NetworkManager.shared.uploadImage(images: owner.pickerSubject.value) { value in
                     
-                    let postQuery = PostQuery(title: owner.titleTextField.text!, content: "#" + owner.categoryLabel.text!, content1: self.contentTextView.text! ,product_id: "herecome", files: value)
+                    let postQuery = PostQuery(title: owner.titleTextField.text!, content: "#" + owner.categoryLabel.text!, content1: self.contentTextView.text!, product_id: "herecome", files: value)
                     
                     NetworkManager.shared.uploadPost(query: postQuery) { value in
                         NotificationCenter.default.post(name: NSNotification.Name("update"), object: nil, userInfo: nil)

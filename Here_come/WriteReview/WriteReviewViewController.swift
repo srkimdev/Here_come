@@ -36,6 +36,7 @@ final class WriteReviewViewController: BaseViewController {
         imageCollectionView.register(WriteReviewCollectionViewCell.self, forCellWithReuseIdentifier: WriteReviewCollectionViewCell.identifier)
         
         bind()
+        bindNavi()
         
     }
     
@@ -101,13 +102,15 @@ final class WriteReviewViewController: BaseViewController {
         
         contentTextView.snp.makeConstraints { make in
             make.top.equalTo(imageCollectionView.snp.bottom).offset(16)
-            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).offset(16)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
     }
     
     override func configureUI() {
+        
+        navigationItem.title = "글쓰기"
         
         locationButton.layer.borderWidth = 1
         locationButton.layer.borderColor = UIColor.systemGray4.cgColor
@@ -132,8 +135,35 @@ final class WriteReviewViewController: BaseViewController {
         contentTextView.text = "숙소, 생활 관련 후기를 작성해주세요"
         contentTextView.textColor = .lightGray
         contentTextView.font = .systemFont(ofSize: 15)
+        contentTextView.delegate = self
         
     }
+    
+    func bindNavi() {
+        let item = UIBarButtonItem(title: "완료", style: .plain, target: self, action: nil)
+        item.tintColor = .black
+        navigationItem.rightBarButtonItem = item
+        
+        item.rx.tap
+            .bind(with: self) { owner, _ in
+                
+                NetworkManager.shared.uploadImage(images: owner.pickerSubject.value) { value in
+                    
+                    let postQuery = PostQuery(title: "", content: "#" + owner.locationLabel.text!, content1: self.contentTextView.text!, product_id: "herecomePost", files: value)
+                    
+                    NetworkManager.shared.uploadPost(query: postQuery) { value in
+                        print(value)
+                        NotificationCenter.default.post(name: NSNotification.Name("updatePost"), object: nil, userInfo: nil)
+                        owner.navigationController?.popViewController(animated: true)
+                    }
+                    
+                }
+                
+            }
+            .disposed(by: disposeBag)
+        
+    }
+    
     
     func bind() {
         
@@ -202,4 +232,26 @@ extension WriteReviewViewController: PHPickerViewControllerDelegate {
         }
         
     }
+}
+
+extension WriteReviewViewController: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        
+        if textView.textColor == .lightGray {
+            textView.text = nil
+            textView.textColor = .black
+        }
+        
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        
+        if textView.text.isEmpty {
+            textView.text = "숙소, 생활 관련 후기를 작성해주세요"
+            textView.textColor = .lightGray
+        }
+        
+    }
+    
 }

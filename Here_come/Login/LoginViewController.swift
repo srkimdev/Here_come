@@ -67,7 +67,7 @@ final class LoginViewController: BaseViewController {
         loginButton.backgroundColor = .black
         loginButton.setTitle("로그인하기", for: .normal)
         
-        idTextField.text = "compose@coffee.com"
+        idTextField.text = "compose1@coffee.com"
         passwordTextField.text = "1234"
         
     }

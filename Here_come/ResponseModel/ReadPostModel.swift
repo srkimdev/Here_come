@@ -19,7 +19,7 @@ struct Posts: Decodable {
     let content: String
     let content1: String
     let createdAt: String
-//    let creator: User
+    let creator: User
     let files: [String]?
     let likes: [String]
     let comments: [Comment]?
@@ -28,7 +28,7 @@ struct Posts: Decodable {
 struct User: Decodable {
     let user_id: String
     let nick: String
-    let profileImage: String
+    let profileImage: String?
 }
 
 struct Comment: Codable {

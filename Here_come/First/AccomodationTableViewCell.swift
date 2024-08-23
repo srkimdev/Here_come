@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class AccomodationCollectionViewCell: BaseCollectionViewCell {
+final class AccomodationTableViewCell: BaseTableViewCell {
     
     let profileImage = UIImageView()
     let userName = UILabel()
@@ -25,8 +25,8 @@ final class AccomodationCollectionViewCell: BaseCollectionViewCell {
     
     lazy var imageCollectionView = UICollectionView(frame: .zero, collectionViewLayout: imageCollectionViewLayout())
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         imageCollectionView.isPagingEnabled = true
         imageCollectionView.delegate = self
@@ -115,7 +115,7 @@ final class AccomodationCollectionViewCell: BaseCollectionViewCell {
         descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(imageCollectionView.snp.bottom).offset(16)
             make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(16)
-            make.bottom.equalTo(likeImage.snp.top).offset(-12)
+            make.bottom.equalTo(likeImage.snp.top).offset(-20)
         }
         
     }
@@ -124,7 +124,6 @@ final class AccomodationCollectionViewCell: BaseCollectionViewCell {
         profileImage.image = UIImage(named: "profile_10") //
         profileImage.layer.masksToBounds = true
         
-        userName.text = "Carribean"
         userName.font = .systemFont(ofSize: 13)
         
         locationLabel.text = "제주시 월정리"
@@ -132,23 +131,34 @@ final class AccomodationCollectionViewCell: BaseCollectionViewCell {
         
         descriptionLabel.font = .systemFont(ofSize: 15)
         descriptionLabel.numberOfLines = 0
-        descriptionLabel.text = "결국 혼자 다녀오게 되었지만.. 컨디션 유지 위해 한번 쉰 것 외에는 쉼 없이 걸었는데 ... 의미가 담긴 에 완주 해싸. 뮤지컬 영웅 를 들으면 앞만 보거나 한강 풍경 보면서 걸었다. 그리고 나에게 집중하는 시간을 가졌다. 매우 만족 어린 자녀들과 함께 와주신 부모님들이 많았는데 참 보기 좋았던 것 같다. 완보 메달도 태극기 모양이라 다른 대회와 색달라서 꼭 소유하고 싶었는데 잘 취득"
         
         likeImage.image = UIImage(systemName: "heart")
         likeImage.tintColor = .black
-        likeCount.text = "10"
         
         commentImage.image = UIImage(systemName: "bubble.right")
         commentImage.tintColor = .black
-        commentCount.text = "1"
         
         locationImage.image = UIImage(systemName: "map")
         locationImage.tintColor = .black
     }
     
+    func designCell(transition: Posts) {
+        
+        userName.text = transition.creator.nick
+        
+        
+        descriptionLabel.text = transition.content1
+        
+        likeCount.text = "\(transition.likes.count)"
+        
+        commentCount.text = "\(transition.comments!.count)"
+        
+    }
+    
+    
 }
 
-extension AccomodationCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension AccomodationTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2
     }
@@ -160,7 +170,7 @@ extension AccomodationCollectionViewCell: UICollectionViewDelegate, UICollection
     }
 }
 
-extension AccomodationCollectionViewCell: UICollectionViewDelegateFlowLayout {
+extension AccomodationTableViewCell: UICollectionViewDelegateFlowLayout {
     private func imageCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: contentView.bounds.width, height: 260)

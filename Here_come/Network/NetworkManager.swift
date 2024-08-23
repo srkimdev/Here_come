@@ -84,6 +84,7 @@ final class NetworkManager {
                         completionHandler(value)
                     case .failure(let error):
                         print(error)
+                        print("upload 실패")
                     }
                 }
             
