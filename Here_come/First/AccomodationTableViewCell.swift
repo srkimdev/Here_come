@@ -172,6 +172,10 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         
         commentCount.text = "\(transition.comments!.count)"
         
+        likeImage.image = UserDefaults.standard.bool(forKey: transition.post_id) ? UIImage(systemName: "heart") : UIImage(systemName: "heart.fill")
+        
+        likeImage.tintColor = .black
+        
     }
     
 }

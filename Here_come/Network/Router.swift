@@ -19,6 +19,7 @@ enum Router: TargetType {
     case readImage
     case readHashTag(hashTag: String)
     case deletePost(postId: String)
+    case likePost(postId: String)
     case makeComment(postId: String, query: CommentQuery)
     
     var method: Alamofire.HTTPMethod {
@@ -41,6 +42,8 @@ enum Router: TargetType {
             return .get
         case .deletePost:
             return .delete
+        case .likePost:
+            return .post
         case .makeComment:
             return .post
         }
@@ -122,6 +125,8 @@ enum Router: TargetType {
             return "/posts/hashtags"
         case .deletePost(let postId):
             return "/posts/\(postId)"
+        case .likePost(let postId):
+            return "/posts/\(postId)/like"
         case .makeComment(let postId, _):
             return "/posts/\(postId)/comments"
         default:
@@ -154,7 +159,7 @@ enum Router: TargetType {
                 Header.contentType.rawValue: Header.json.rawValue,
                 Header.sesacKey.rawValue: APIKey.Key
             ]
-        case .readPost, .readOnePost, .readImage, .readHashTag, .deletePost:
+        case .readPost, .readOnePost, .readImage, .readHashTag, .deletePost, .likePost:
             return [
                 Header.authorization.rawValue: UserDefaultsManager.shared.token,
                 Header.sesacKey.rawValue: APIKey.Key

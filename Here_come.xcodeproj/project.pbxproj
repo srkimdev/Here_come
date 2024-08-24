@@ -77,6 +77,7 @@
 		DC4150E22C79B20A0008FAB3 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150E12C79B20A0008FAB3 /* CommentViewController.swift */; };
 		DC4150E42C79BD310008FAB3 /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150E32C79BD310008FAB3 /* CommentViewModel.swift */; };
 		DC4150E62C79BF0A0008FAB3 /* CommentPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150E52C79BF090008FAB3 /* CommentPostTableViewCell.swift */; };
+		DC4150E82C79CF230008FAB3 /* LikeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150E72C79CF220008FAB3 /* LikeModel.swift */; };
 		DC8C21FA2C747E31003FE59B /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -147,6 +148,7 @@
 		DC4150E12C79B20A0008FAB3 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		DC4150E32C79BD310008FAB3 /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
 		DC4150E52C79BF090008FAB3 /* CommentPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPostTableViewCell.swift; sourceTree = "<group>"; };
+		DC4150E72C79CF220008FAB3 /* LikeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeModel.swift; sourceTree = "<group>"; };
 		DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -303,6 +305,7 @@
 				DC15FCDB2C730F7E0049FEB5 /* PostModel.swift */,
 				DC15FCDF2C7329450049FEB5 /* ReadPostModel.swift */,
 				DC4150CE2C775C360008FAB3 /* CommentModel.swift */,
+				DC4150E72C79CF220008FAB3 /* LikeModel.swift */,
 			);
 			path = ResponseModel;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				DC0769C82C6E5E740025F939 /* ImageCollectionViewCell.swift in Sources */,
 				DC15FCE82C735B3A0049FEB5 /* KingfisherManager.swift in Sources */,
 				DC2E073F2C7637F9007589E9 /* DetailViewModel.swift in Sources */,
+				DC4150E82C79CF230008FAB3 /* LikeModel.swift in Sources */,
 				DC15FCE02C7329450049FEB5 /* ReadPostModel.swift in Sources */,
 				DC07695D2C6C77D30025F939 /* SceneDelegate.swift in Sources */,
 				DC4150D72C786D5A0008FAB3 /* WriteReviewViewController.swift in Sources */,

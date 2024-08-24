@@ -78,6 +78,12 @@ final class AccomodationViewController: BaseViewController {
                     }
                     .disposed(by: cell.disposeBag)
                 
+                cell.likeButton.rx.tap
+                    .bind(with: self) { owner, _ in
+                        owner.viewModel.likeButtonTap.accept(element.post_id)
+                    }
+                    .disposed(by: cell.disposeBag)
+                
             }
             .disposed(by: disposeBag)
         

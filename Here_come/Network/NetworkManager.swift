@@ -184,6 +184,28 @@ final class NetworkManager {
         
     }
     
+    func likePost(postId: String, completionHandler: @escaping (LikeModel) -> Void) {
+        
+        do {
+            let request = try Router.likePost(postId: postId).asURLRequest()
+            
+            AF.request(request)
+                .validate(statusCode: 200..<300)
+                .responseDecodable(of: LikeModel.self) { response in
+                    switch response.result {
+                    case .success(let value):
+                        completionHandler(value)
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+            
+        } catch {
+            print(error)
+        }
+        
+    }
+    
     func makeComment(postId: String, comment: String, completionHandler: @escaping (CommentResponse) -> Void) {
         
         do {
