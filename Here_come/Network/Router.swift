@@ -18,7 +18,6 @@ enum Router: TargetType {
     case readOnePost(postId: String)
     case readImage
     case readHashTag(hashTag: String)
-    case readProfile
     case deletePost(postId: String)
     case makeComment(postId: String, query: CommentQuery)
     
@@ -39,8 +38,6 @@ enum Router: TargetType {
         case .readImage:
             return .get
         case .readHashTag:
-            return .get
-        case .readProfile:
             return .get
         case .deletePost:
             return .delete
@@ -123,8 +120,6 @@ enum Router: TargetType {
             return "/posts/\(postId)"
         case .readHashTag:
             return "/posts/hashtags"
-        case .readProfile:
-            return "/users/me/profile"
         case .deletePost(let postId):
             return "/posts/\(postId)"
         case .makeComment(let postId, _):
@@ -159,7 +154,7 @@ enum Router: TargetType {
                 Header.contentType.rawValue: Header.json.rawValue,
                 Header.sesacKey.rawValue: APIKey.Key
             ]
-        case .readPost, .readOnePost, .readImage, .readHashTag, .readProfile, .deletePost:
+        case .readPost, .readOnePost, .readImage, .readHashTag, .deletePost:
             return [
                 Header.authorization.rawValue: UserDefaultsManager.shared.token,
                 Header.sesacKey.rawValue: APIKey.Key

@@ -30,7 +30,8 @@ final class SociallingViewController: BaseViewController {
         
         bind()
         
-//        NetworkManager.shared.deletePost(postId: "66c6ed92078fb670167b2cc3")
+//        NetworkManager.shared.deletePost(postId: "66c80fcb5056517017a3ba2b")
+
     }
     
     override func configureHierarchy() {

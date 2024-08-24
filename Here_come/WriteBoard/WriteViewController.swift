@@ -235,6 +235,27 @@ extension WriteViewController: PHPickerViewControllerDelegate {
     }
 }
 
+extension WriteViewController: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        
+        if textView.textColor == .lightGray {
+            textView.text = nil
+            textView.textColor = .black
+        }
+        
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        
+        if textView.text.isEmpty {
+            textView.text = "숙소, 생활 관련 후기를 작성해주세요"
+            textView.textColor = .lightGray
+        }
+        
+    }
+    
+}
 
 
 

@@ -126,7 +126,7 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         
         userName.font = .systemFont(ofSize: 13)
         
-        locationLabel.text = "제주시 월정리"
+//        locationLabel.text = "제주시 월정리"
         locationLabel.font = .systemFont(ofSize: 13)
         
         descriptionLabel.font = .systemFont(ofSize: 15)
@@ -144,8 +144,11 @@ final class AccomodationTableViewCell: BaseTableViewCell {
     
     func designCell(transition: Posts) {
         
-        userName.text = transition.creator.nick
+        let nicklocation = ExtractSentence.shared.splitString(transition.creator.nick)
         
+        userName.text = nicklocation[0]
+     
+        locationLabel.text = nicklocation[1] + " " + nicklocation[2]
         
         descriptionLabel.text = transition.content1
         

@@ -60,7 +60,6 @@ final class CommentTableViewCell: BaseTableViewCell {
         
         userName.font = .systemFont(ofSize: 14)
         
-        locationLabel.text = "제주시 월정리"
         locationLabel.font = .systemFont(ofSize: 14)
         
         commentLabel.numberOfLines = 0
@@ -69,7 +68,11 @@ final class CommentTableViewCell: BaseTableViewCell {
     
     func designCell(transition: Comment) {
         
-        userName.text = transition.creator.nick
+        let nicklocation = ExtractSentence.shared.splitString(transition.creator.nick)
+        
+        userName.text = nicklocation[0]
+        
+        locationLabel.text = nicklocation[1] + " " + nicklocation[2]
         
         commentLabel.text = transition.content
     }

@@ -49,7 +49,7 @@ final class DetailViewController: BaseViewController {
     }
 
     override func viewDidLayoutSubviews() {
-        categoryBackView.layer.cornerRadius = categoryBackView.frame.width / 2
+        categoryBackView.layer.cornerRadius = categoryBackView.frame.height / 2
         profileImage.layer.cornerRadius = profileImage.frame.width / 2
     }
 
@@ -88,8 +88,12 @@ final class DetailViewController: BaseViewController {
         categoryBackView.snp.makeConstraints { make in
             make.top.equalTo(contentView.snp.top).offset(20)
             make.leading.equalTo(contentView.snp.leading).offset(16)
-            make.height.equalTo(20)
-            make.width.equalTo(20)
+            make.height.equalTo(24)
+        }
+        
+        categoryLabel.snp.makeConstraints { make in
+            make.horizontalEdges.equalTo(categoryBackView).inset(8)
+            make.centerY.equalTo(categoryBackView)
         }
 
         profileImage.snp.makeConstraints { make in
@@ -172,14 +176,14 @@ final class DetailViewController: BaseViewController {
 
         categoryBackView.backgroundColor = .systemGray5
         categoryBackView.layer.masksToBounds = true
+        
+        categoryLabel.font = .systemFont(ofSize: 15)
 
         profileImage.layer.masksToBounds = true
         profileImage.image = UIImage(named: "profile_10")
 
-        userName.text = "말챠"
         userName.font = .systemFont(ofSize: 15, weight: .bold)
 
-        locationLabel.text = "제주시 애월읍"
         locationLabel.font = .systemFont(ofSize: 15)
 
         titleLabel.font = .systemFont(ofSize: 20, weight: .bold)
@@ -213,9 +217,14 @@ final class DetailViewController: BaseViewController {
         output.getPost
             .compactMap{ $0 }
             .bind(with: self) { owner, value in
+                
+                let nicklocation = ExtractSentence.shared.splitString(value.creator.nick)
+                
+                owner.categoryLabel.text = value.content
                 owner.titleLabel.text = value.title
-                owner.contentLabel.text = value.content
-                owner.userName.text = value.creator.nick
+                owner.contentLabel.text = value.content1
+                owner.userName.text = nicklocation[0]
+                owner.locationLabel.text = nicklocation[1] + " " + nicklocation[2]
             }
             .disposed(by: disposeBag)
         

@@ -128,7 +128,6 @@ final class SociallingTableViewCell: BaseTableViewCell {
         
         contentLabel.font = .systemFont(ofSize: 13)
         
-        locationLabel.text = "제주시 애월읍"
         locationLabel.font = .systemFont(ofSize: 13)
         
         optionalImage.layer.masksToBounds = true
@@ -147,11 +146,15 @@ final class SociallingTableViewCell: BaseTableViewCell {
     
     func designCell(transition: Posts) {
         
+        let nicklocation = ExtractSentence.shared.splitString(transition.creator.nick)
+        
         categoryLabel.text = transition.content
         
         titleLabel.text = transition.title
 
         contentLabel.text = transition.content1
+        
+        locationLabel.text = nicklocation[1] + " " + nicklocation[2]
         
         let url = URL(string: APIKey.baseURL + "v1/" + (transition.files?[0] ?? ""))!
         optionalImage.kf.setImage(with: url, options: [.requestModifier(KingfisherManager.shared.modifier)])

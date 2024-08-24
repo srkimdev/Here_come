@@ -24,6 +24,8 @@ final class AccomodationViewController: BaseViewController {
         
         postTableView.register(AccomodationTableViewCell.self, forCellReuseIdentifier: AccomodationTableViewCell.identifier)
         
+//        NetworkManager.shared.deletePost(postId: "66c97139078fb670167c4231")
+        
         bind()
     }
     

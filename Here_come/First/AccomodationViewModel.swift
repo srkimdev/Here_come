@@ -41,6 +41,8 @@ final class AccomodationViewModel {
             }
             .disposed(by: disposeBag)
         
+        
+        
         return Output(collectionViewList: collectionViewList)
     }
     

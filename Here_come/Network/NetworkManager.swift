@@ -104,7 +104,7 @@ final class NetworkManager {
                 .responseDecodable(of: ReadPostModel.self) { response in
                     switch response.result {
                     case .success(let value):
-//                        dump(value.data)
+                        dump(value.data)
                         completionHandler(value.data)
                     case .failure(let error):
                         print(error)

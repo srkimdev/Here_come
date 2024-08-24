@@ -73,7 +73,7 @@
 		DC4150D72C786D5A0008FAB3 /* WriteReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150D62C786D5A0008FAB3 /* WriteReviewViewController.swift */; };
 		DC4150D92C787D670008FAB3 /* WriteReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150D82C787D670008FAB3 /* WriteReviewCollectionViewCell.swift */; };
 		DC4150DB2C787F800008FAB3 /* WriteReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150DA2C787F800008FAB3 /* WriteReviewViewModel.swift */; };
-		DC4150DD2C78C56B0008FAB3 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150DC2C78C56B0008FAB3 /* ProfileModel.swift */; };
+		DC4150DF2C79A4C80008FAB3 /* ExtractSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150DE2C79A4C80008FAB3 /* ExtractSentence.swift */; };
 		DC8C21FA2C747E31003FE59B /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -140,7 +140,7 @@
 		DC4150D62C786D5A0008FAB3 /* WriteReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewViewController.swift; sourceTree = "<group>"; };
 		DC4150D82C787D670008FAB3 /* WriteReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC4150DA2C787F800008FAB3 /* WriteReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewViewModel.swift; sourceTree = "<group>"; };
-		DC4150DC2C78C56B0008FAB3 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		DC4150DE2C79A4C80008FAB3 /* ExtractSentence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractSentence.swift; sourceTree = "<group>"; };
 		DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -246,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				DC15FCE72C735B3A0049FEB5 /* KingfisherManager.swift */,
+				DC4150DE2C79A4C80008FAB3 /* ExtractSentence.swift */,
 			);
 			path = Singleton;
 			sourceTree = "<group>";
@@ -295,7 +296,6 @@
 				DC15FCDB2C730F7E0049FEB5 /* PostModel.swift */,
 				DC15FCDF2C7329450049FEB5 /* ReadPostModel.swift */,
 				DC4150CE2C775C360008FAB3 /* CommentModel.swift */,
-				DC4150DC2C78C56B0008FAB3 /* ProfileModel.swift */,
 			);
 			path = ResponseModel;
 			sourceTree = "<group>";
@@ -495,7 +495,6 @@
 				DC0769B32C6CD3A30025F939 /* ProfileManageViewController.swift in Sources */,
 				DC0769C42C6E10D60025F939 /* ReusableProtocol.swift in Sources */,
 				DC0769942C6C84280025F939 /* NetworkManager.swift in Sources */,
-				DC4150DD2C78C56B0008FAB3 /* ProfileModel.swift in Sources */,
 				DC0769C62C6E13E40025F939 /* AccomodationViewModel.swift in Sources */,
 				DC0769A72C6CD1FC0025F939 /* TabBarViewController.swift in Sources */,
 				DC0769742C6C78D10025F939 /* BaseViewController.swift in Sources */,
@@ -519,6 +518,7 @@
 				DC15FCED2C736A3B0049FEB5 /* CategoryViewController.swift in Sources */,
 				DC8C21FA2C747E31003FE59B /* CategoryViewModel.swift in Sources */,
 				DC0769A42C6C9DB00025F939 /* LoginViewModel.swift in Sources */,
+				DC4150DF2C79A4C80008FAB3 /* ExtractSentence.swift in Sources */,
 				DC0769C82C6E5E740025F939 /* ImageCollectionViewCell.swift in Sources */,
 				DC15FCE82C735B3A0049FEB5 /* KingfisherManager.swift in Sources */,
 				DC2E073F2C7637F9007589E9 /* DetailViewModel.swift in Sources */,
