@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 final class AccomodationTableViewCell: BaseTableViewCell {
     
@@ -25,6 +26,13 @@ final class AccomodationTableViewCell: BaseTableViewCell {
     
     lazy var imageCollectionView = UICollectionView(frame: .zero, collectionViewLayout: imageCollectionViewLayout())
     
+    var disposeBag = DisposeBag()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -32,8 +40,6 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
         imageCollectionView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.identifier)
-        
-        contentView.backgroundColor = .lightGray
         
     }
     
@@ -60,6 +66,7 @@ final class AccomodationTableViewCell: BaseTableViewCell {
     }
     
     override func configureLayout() {
+        
         profileImage.snp.makeConstraints { make in
             make.top.equalTo(contentView.safeAreaLayoutGuide).offset(12)
             make.leading.equalTo(contentView.safeAreaLayoutGuide).offset(12)
@@ -100,6 +107,12 @@ final class AccomodationTableViewCell: BaseTableViewCell {
             make.size.equalTo(24)
         }
         
+        commentButton.snp.makeConstraints { make in
+            make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(16)
+            make.leading.equalTo(likeCount.snp.trailing).offset(12)
+            make.size.equalTo(24)
+        }
+        
         commentCount.snp.makeConstraints { make in
             make.centerY.equalTo(likeImage)
             make.leading.equalTo(commentImage.snp.trailing).offset(4)
@@ -121,12 +134,14 @@ final class AccomodationTableViewCell: BaseTableViewCell {
     }
     
     override func configureUI() {
-        profileImage.image = UIImage(named: "profile_10") //
+        
+        selectionStyle = .none
+        
+        profileImage.image = UIImage(named: "profile_10")
         profileImage.layer.masksToBounds = true
         
         userName.font = .systemFont(ofSize: 13)
         
-//        locationLabel.text = "제주시 월정리"
         locationLabel.font = .systemFont(ofSize: 13)
         
         descriptionLabel.font = .systemFont(ofSize: 15)
@@ -140,6 +155,7 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         
         locationImage.image = UIImage(systemName: "map")
         locationImage.tintColor = .black
+        
     }
     
     func designCell(transition: Posts) {
@@ -157,7 +173,6 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         commentCount.text = "\(transition.comments!.count)"
         
     }
-    
     
 }
 

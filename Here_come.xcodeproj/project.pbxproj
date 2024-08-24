@@ -74,6 +74,9 @@
 		DC4150D92C787D670008FAB3 /* WriteReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150D82C787D670008FAB3 /* WriteReviewCollectionViewCell.swift */; };
 		DC4150DB2C787F800008FAB3 /* WriteReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150DA2C787F800008FAB3 /* WriteReviewViewModel.swift */; };
 		DC4150DF2C79A4C80008FAB3 /* ExtractSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150DE2C79A4C80008FAB3 /* ExtractSentence.swift */; };
+		DC4150E22C79B20A0008FAB3 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150E12C79B20A0008FAB3 /* CommentViewController.swift */; };
+		DC4150E42C79BD310008FAB3 /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150E32C79BD310008FAB3 /* CommentViewModel.swift */; };
+		DC4150E62C79BF0A0008FAB3 /* CommentPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150E52C79BF090008FAB3 /* CommentPostTableViewCell.swift */; };
 		DC8C21FA2C747E31003FE59B /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +144,9 @@
 		DC4150D82C787D670008FAB3 /* WriteReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC4150DA2C787F800008FAB3 /* WriteReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewViewModel.swift; sourceTree = "<group>"; };
 		DC4150DE2C79A4C80008FAB3 /* ExtractSentence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtractSentence.swift; sourceTree = "<group>"; };
+		DC4150E12C79B20A0008FAB3 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		DC4150E32C79BD310008FAB3 /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
+		DC4150E52C79BF090008FAB3 /* CommentPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPostTableViewCell.swift; sourceTree = "<group>"; };
 		DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -207,6 +213,7 @@
 				DC4150D52C786BD90008FAB3 /* WriteReview */,
 				DC15FCE92C7368CD0049FEB5 /* Category */,
 				DC1143A52C75D95C00CEB325 /* Detail */,
+				DC4150E02C79B1F60008FAB3 /* Comment */,
 			);
 			path = Here_come;
 			sourceTree = "<group>";
@@ -399,6 +406,16 @@
 			path = WriteReview;
 			sourceTree = "<group>";
 		};
+		DC4150E02C79B1F60008FAB3 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				DC4150E12C79B20A0008FAB3 /* CommentViewController.swift */,
+				DC4150E52C79BF090008FAB3 /* CommentPostTableViewCell.swift */,
+				DC4150E32C79BD310008FAB3 /* CommentViewModel.swift */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -496,12 +513,14 @@
 				DC0769C42C6E10D60025F939 /* ReusableProtocol.swift in Sources */,
 				DC0769942C6C84280025F939 /* NetworkManager.swift in Sources */,
 				DC0769C62C6E13E40025F939 /* AccomodationViewModel.swift in Sources */,
+				DC4150E22C79B20A0008FAB3 /* CommentViewController.swift in Sources */,
 				DC0769A72C6CD1FC0025F939 /* TabBarViewController.swift in Sources */,
 				DC0769742C6C78D10025F939 /* BaseViewController.swift in Sources */,
 				DC0769B52C6CD4800025F939 /* UIViewController+Extension.swift in Sources */,
 				DC07695B2C6C77D30025F939 /* AppDelegate.swift in Sources */,
 				DC0769AD2C6CD2B60025F939 /* AccomodationViewController.swift in Sources */,
 				DC0769A22C6C9A6E0025F939 /* UserDefaultsManager.swift in Sources */,
+				DC4150E62C79BF0A0008FAB3 /* CommentPostTableViewCell.swift in Sources */,
 				DC0769B12C6CD3880025F939 /* FreeBoardViewController.swift in Sources */,
 				DC0769DE2C70F6A10025F939 /* WriteViewModel.swift in Sources */,
 				DC0769AF2C6CD3460025F939 /* SociallingViewController.swift in Sources */,
@@ -533,6 +552,7 @@
 				DC0769922C6C83650025F939 /* APIKey.swift in Sources */,
 				DC4150D92C787D670008FAB3 /* WriteReviewCollectionViewCell.swift in Sources */,
 				DC4150DB2C787F800008FAB3 /* WriteReviewViewModel.swift in Sources */,
+				DC4150E42C79BD310008FAB3 /* CommentViewModel.swift in Sources */,
 				DC4150CF2C775C360008FAB3 /* CommentModel.swift in Sources */,
 				DC15FCDE2C731E3C0049FEB5 /* PostQuery.swift in Sources */,
 				DC0769CC2C6F43600025F939 /* RecommendCollectionViewCell.swift in Sources */,

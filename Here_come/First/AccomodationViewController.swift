@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import RxSwift
+import RxCocoa
 
 final class AccomodationViewController: BaseViewController {
     
@@ -55,10 +56,27 @@ final class AccomodationViewController: BaseViewController {
         let input = AccomodationViewModel.Input(networkTrigger: networkTrigger, pullToRefresh: pullToRefresh)
         let output = viewModel.transform(input: input)
         
-        output.collectionViewList
+        output.tableViewList
             .bind(to: postTableView.rx.items(cellIdentifier: AccomodationTableViewCell.identifier, cellType: AccomodationTableViewCell.self)) { (item, element, cell) in
                 
                 cell.designCell(transition: element)
+                
+                cell.commentButton.rx.tap
+                    .bind(with: self) { owner, _ in
+                        
+                        let vc = CommentViewController()
+                        
+                        vc.viewModel.networkTrigger.accept(element.post_id)
+                        
+                        if let sheet = vc.sheetPresentationController {
+                            sheet.detents = [.large()]
+                            sheet.prefersGrabberVisible = true
+                        }
+                        
+                        owner.transitionScreen(vc: vc, style: .presentNavigation)
+                        
+                    }
+                    .disposed(by: cell.disposeBag)
                 
             }
             .disposed(by: disposeBag)

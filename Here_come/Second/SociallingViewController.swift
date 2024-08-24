@@ -111,7 +111,6 @@ final class SociallingViewController: BaseViewController {
             .map { $0.rawValue }
             .bind(with: self) { owner, value in
                 
-                print(value)
                 owner.viewModel.selectedValue.accept(value)
                 owner.sociallingCollectionView.reloadData()
             }

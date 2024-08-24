@@ -18,17 +18,17 @@ final class AccomodationViewModel {
     }
     
     struct Output {
-        let collectionViewList: BehaviorSubject<[Posts]>
+        let tableViewList: BehaviorSubject<[Posts]>
     }
     
     func transform(input: Input) -> Output {
         
-        let collectionViewList = BehaviorSubject<[Posts]>(value: [])
+        let tableViewList = BehaviorSubject<[Posts]>(value: [])
         
         input.networkTrigger
             .bind(with: self) { owner, _ in
                 NetworkManager.shared.readPost(productId: "herecomePost") { value in
-                    collectionViewList.onNext(value)
+                    tableViewList.onNext(value)
                 }
             }
             .disposed(by: disposeBag)
@@ -36,14 +36,14 @@ final class AccomodationViewModel {
         input.pullToRefresh
             .bind(with: self) { owner, _ in
                 NetworkManager.shared.readPost(productId: "herecomePost") { value in
-                    collectionViewList.onNext(value)
+                    tableViewList.onNext(value)
                 }
             }
             .disposed(by: disposeBag)
         
         
         
-        return Output(collectionViewList: collectionViewList)
+        return Output(tableViewList: tableViewList)
     }
     
 }

@@ -225,7 +225,6 @@ extension WriteViewController: PHPickerViewControllerDelegate {
                 }
                 dispatchGroup.leave()
             }
-            
         }
         
         dispatchGroup.notify(queue: .main) {
