@@ -104,7 +104,7 @@ final class NetworkManager {
                 .responseDecodable(of: ReadPostModel.self) { response in
                     switch response.result {
                     case .success(let value):
-                        dump(value.data)
+//                        dump(value.data)
                         completionHandler(value.data)
                     case .failure(let error):
                         print(error)
@@ -127,7 +127,7 @@ final class NetworkManager {
                 .responseDecodable(of: Posts.self) { response in
                     switch response.result {
                     case .success(let value):
-                        dump(value)
+//                        dump(value)
                         completionHandler(value)
                     case .failure(let error):
                         print(error)
@@ -187,7 +187,8 @@ final class NetworkManager {
     func likePost(postId: String, completionHandler: @escaping (LikeModel) -> Void) {
         
         do {
-            let request = try Router.likePost(postId: postId).asURLRequest()
+            let query = LikeQuery(like_status: UserDefaults.standard.bool(forKey: postId))
+            let request = try Router.likePost(postId: postId, query: query).asURLRequest()
             
             AF.request(request)
                 .validate(statusCode: 200..<300)
@@ -197,6 +198,7 @@ final class NetworkManager {
                         completionHandler(value)
                     case .failure(let error):
                         print(error)
+                        print("좋아요 실패")
                     }
                 }
             

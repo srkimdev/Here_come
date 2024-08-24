@@ -25,6 +25,7 @@ final class AccomodationTableViewCell: BaseTableViewCell {
     let descriptionLabel = UILabel()
     
     lazy var imageCollectionView = UICollectionView(frame: .zero, collectionViewLayout: imageCollectionViewLayout())
+    let updateImage = PublishSubject<[String]>()
     
     var disposeBag = DisposeBag()
     
@@ -37,9 +38,9 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         imageCollectionView.isPagingEnabled = true
-        imageCollectionView.delegate = self
-        imageCollectionView.dataSource = self
         imageCollectionView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.identifier)
+        
+        bind()
         
     }
     
@@ -49,6 +50,7 @@ final class AccomodationTableViewCell: BaseTableViewCell {
     }
     
     override func configureHierarchy() {
+        
         contentView.addSubview(profileImage)
         contentView.addSubview(userName)
         contentView.addSubview(locationLabel)
@@ -63,6 +65,7 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         contentView.addSubview(locationButton)
         contentView.addSubview(locationLabel)
         contentView.addSubview(descriptionLabel)
+        
     }
     
     override func configureLayout() {
@@ -86,10 +89,16 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         imageCollectionView.snp.makeConstraints { make in
             make.top.equalTo(profileImage.snp.bottom).offset(12)
             make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide)
-            make.height.equalTo(260)
+            make.height.equalTo(contentView.bounds.width)
         }
         
         likeImage.snp.makeConstraints { make in
+            make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(16)
+            make.leading.equalTo(contentView.safeAreaLayoutGuide).offset(16)
+            make.size.equalTo(24)
+        }
+        
+        likeButton.snp.makeConstraints { make in
             make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(16)
             make.leading.equalTo(contentView.safeAreaLayoutGuide).offset(16)
             make.size.equalTo(24)
@@ -99,6 +108,7 @@ final class AccomodationTableViewCell: BaseTableViewCell {
             make.centerY.equalTo(likeImage)
             make.leading.equalTo(likeImage.snp.trailing).offset(4)
             make.height.equalTo(24)
+            make.width.equalTo(10)
         }
         
         commentImage.snp.makeConstraints { make in
@@ -117,6 +127,7 @@ final class AccomodationTableViewCell: BaseTableViewCell {
             make.centerY.equalTo(likeImage)
             make.leading.equalTo(commentImage.snp.trailing).offset(4)
             make.height.equalTo(24)
+            make.width.equalTo(10)
         }
         
         locationImage.snp.makeConstraints { make in
@@ -148,7 +159,6 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         descriptionLabel.numberOfLines = 0
         
         likeImage.image = UIImage(systemName: "heart")
-        likeImage.tintColor = .black
         
         commentImage.image = UIImage(systemName: "bubble.right")
         commentImage.tintColor = .black
@@ -173,29 +183,32 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         commentCount.text = "\(transition.comments!.count)"
         
         likeImage.image = UserDefaults.standard.bool(forKey: transition.post_id) ? UIImage(systemName: "heart") : UIImage(systemName: "heart.fill")
+        likeImage.tintColor = UserDefaults.standard.bool(forKey: transition.post_id) ? .black : .red
         
-        likeImage.tintColor = .black
+        print("update")
+        updateImage.onNext(transition.files ?? [])
         
     }
     
-}
+    func bind() {
+        
+        updateImage
+            .bind(to: imageCollectionView.rx.items(cellIdentifier: ImageCollectionViewCell.identifier, cellType: ImageCollectionViewCell.self)) { (item, element, cell) in
 
-extension AccomodationTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+                print("ehre")
+                cell.designCell(transition: element)
+                
+            }
+            .disposed(by: disposeBag)
+        
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.identifier, for: indexPath)
-        
-        return cell
-    }
 }
 
 extension AccomodationTableViewCell: UICollectionViewDelegateFlowLayout {
     private func imageCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: contentView.bounds.width, height: 260)
+        layout.itemSize = CGSize(width: contentView.bounds.width, height: contentView.bounds.width)
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.minimumLineSpacing = 0
         layout.scrollDirection = .horizontal

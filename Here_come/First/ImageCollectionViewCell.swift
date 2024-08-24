@@ -7,10 +7,18 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
+import RxSwift
 
 final class ImageCollectionViewCell: BaseCollectionViewCell {
     
     let imageView = UIImageView()
+    var disposeBag = DisposeBag()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,7 +36,12 @@ final class ImageCollectionViewCell: BaseCollectionViewCell {
     }
     
     override func configureUI() {
-        imageView.backgroundColor = .brown
+        
+    }
+    
+    func designCell(transition: String) {
+        let url = URL(string: APIKey.baseURL + "v1/" + transition)!
+        imageView.kf.setImage(with: url, options: [.requestModifier(KingfisherManager.shared.modifier)])
     }
     
 }

@@ -87,7 +87,11 @@ final class AccomodationViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        networkTrigger.onNext(())
+        output.updateLike
+            .bind(with: self) { owner, _ in
+                owner.networkTrigger.onNext(())
+            }
+            .disposed(by: disposeBag)
         
     }
     

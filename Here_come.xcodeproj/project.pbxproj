@@ -78,6 +78,7 @@
 		DC4150E42C79BD310008FAB3 /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150E32C79BD310008FAB3 /* CommentViewModel.swift */; };
 		DC4150E62C79BF0A0008FAB3 /* CommentPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150E52C79BF090008FAB3 /* CommentPostTableViewCell.swift */; };
 		DC4150E82C79CF230008FAB3 /* LikeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150E72C79CF220008FAB3 /* LikeModel.swift */; };
+		DC4150EA2C79FE810008FAB3 /* LikeQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150E92C79FE810008FAB3 /* LikeQuery.swift */; };
 		DC8C21FA2C747E31003FE59B /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -149,6 +150,7 @@
 		DC4150E32C79BD310008FAB3 /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
 		DC4150E52C79BF090008FAB3 /* CommentPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPostTableViewCell.swift; sourceTree = "<group>"; };
 		DC4150E72C79CF220008FAB3 /* LikeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeModel.swift; sourceTree = "<group>"; };
+		DC4150E92C79FE810008FAB3 /* LikeQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeQuery.swift; sourceTree = "<group>"; };
 		DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -293,6 +295,7 @@
 				DC0769962C6C89F00025F939 /* LoginQuery.swift */,
 				DC15FCDD2C731E3C0049FEB5 /* PostQuery.swift */,
 				DC4150CC2C771D1C0008FAB3 /* CommentQuery.swift */,
+				DC4150E92C79FE810008FAB3 /* LikeQuery.swift */,
 			);
 			path = RequestModel;
 			sourceTree = "<group>";
@@ -563,6 +566,7 @@
 				DC0769782C6C79AC0025F939 /* BaseCollectionViewCell.swift in Sources */,
 				DC0769D72C6F73140025F939 /* Party.swift in Sources */,
 				DC2E07412C763B1D007589E9 /* CommentTableViewCell.swift in Sources */,
+				DC4150EA2C79FE810008FAB3 /* LikeQuery.swift in Sources */,
 				DC0769D52C6F72500025F939 /* SociallingViewModel.swift in Sources */,
 				DC07699C2C6C8BA00025F939 /* Router.swift in Sources */,
 				DC0769C22C6E10840025F939 /* AccomodationTableViewCell.swift in Sources */,

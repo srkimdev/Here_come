@@ -19,7 +19,7 @@ enum Router: TargetType {
     case readImage
     case readHashTag(hashTag: String)
     case deletePost(postId: String)
-    case likePost(postId: String)
+    case likePost(postId: String, query: LikeQuery)
     case makeComment(postId: String, query: CommentQuery)
     
     var method: Alamofire.HTTPMethod {
@@ -88,6 +88,16 @@ enum Router: TargetType {
                 return nil
             }
             
+        case .likePost(_, let query):
+            let encoder = JSONEncoder()
+            
+            do {
+                let data = try encoder.encode(query)
+                return data
+            } catch {
+                return nil
+            }
+            
         case .makeComment(_, let query):
             let encoder = JSONEncoder()
             
@@ -125,7 +135,7 @@ enum Router: TargetType {
             return "/posts/hashtags"
         case .deletePost(let postId):
             return "/posts/\(postId)"
-        case .likePost(let postId):
+        case .likePost(let postId, _):
             return "/posts/\(postId)/like"
         case .makeComment(let postId, _):
             return "/posts/\(postId)/comments"
@@ -153,13 +163,13 @@ enum Router: TargetType {
                 Header.contentType.rawValue: Header.multipart.rawValue,
                 Header.sesacKey.rawValue: APIKey.Key
             ]
-        case .uploadPost, .makeComment:
+        case .uploadPost, .likePost, .makeComment:
             return [
                 Header.authorization.rawValue: UserDefaultsManager.shared.token,
                 Header.contentType.rawValue: Header.json.rawValue,
                 Header.sesacKey.rawValue: APIKey.Key
             ]
-        case .readPost, .readOnePost, .readImage, .readHashTag, .deletePost, .likePost:
+        case .readPost, .readOnePost, .readImage, .readHashTag, .deletePost:
             return [
                 Header.authorization.rawValue: UserDefaultsManager.shared.token,
                 Header.sesacKey.rawValue: APIKey.Key

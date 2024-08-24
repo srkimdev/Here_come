@@ -50,8 +50,8 @@ final class AccomodationViewModel {
             .bind(with: self) { owner, _ in
                 NetworkManager.shared.likePost(postId: owner.likeButtonTap.value) { value in
                     currentLike.onNext(value.like_status)
-                    var bool = UserDefaults.standard.bool(forKey: self.likeButtonTap.value)
-                    UserDefaults.standard.set(bool.toggle(), forKey: self.likeButtonTap.value)
+                    let bool = UserDefaults.standard.bool(forKey: self.likeButtonTap.value)
+                    UserDefaults.standard.set(!bool, forKey: self.likeButtonTap.value)
                 }
             }
             .disposed(by: disposeBag)
