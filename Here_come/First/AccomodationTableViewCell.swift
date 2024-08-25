@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import RxSwift
+import RxCocoa
 
 final class AccomodationTableViewCell: BaseTableViewCell {
     
@@ -40,7 +41,6 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         imageCollectionView.isPagingEnabled = true
         imageCollectionView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.identifier)
         
-        bind()
         
     }
     
@@ -89,7 +89,7 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         imageCollectionView.snp.makeConstraints { make in
             make.top.equalTo(profileImage.snp.bottom).offset(12)
             make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide)
-            make.height.equalTo(contentView.bounds.width)
+            make.height.equalTo(UIScreen.main.bounds.width)
         }
         
         likeImage.snp.makeConstraints { make in
@@ -185,7 +185,7 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         likeImage.image = UserDefaults.standard.bool(forKey: transition.post_id) ? UIImage(systemName: "heart") : UIImage(systemName: "heart.fill")
         likeImage.tintColor = UserDefaults.standard.bool(forKey: transition.post_id) ? .black : .red
         
-        print("update")
+        bind()
         updateImage.onNext(transition.files ?? [])
         
     }
@@ -193,9 +193,9 @@ final class AccomodationTableViewCell: BaseTableViewCell {
     func bind() {
         
         updateImage
+            .observe(on: MainScheduler.instance)
             .bind(to: imageCollectionView.rx.items(cellIdentifier: ImageCollectionViewCell.identifier, cellType: ImageCollectionViewCell.self)) { (item, element, cell) in
 
-                print("ehre")
                 cell.designCell(transition: element)
                 
             }
@@ -207,11 +207,14 @@ final class AccomodationTableViewCell: BaseTableViewCell {
 
 extension AccomodationTableViewCell: UICollectionViewDelegateFlowLayout {
     private func imageCollectionViewLayout() -> UICollectionViewLayout {
+        
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: contentView.bounds.width, height: contentView.bounds.width)
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
+        
         return layout
     }
 }

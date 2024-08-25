@@ -31,12 +31,12 @@ final class ImageCollectionViewCell: BaseCollectionViewCell {
     
     override func configureLayout() {
         imageView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalTo(contentView.safeAreaLayoutGuide)
         }
     }
     
     override func configureUI() {
-        
+        imageView.contentMode = .scaleAspectFill
     }
     
     func designCell(transition: String) {

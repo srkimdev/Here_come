@@ -35,12 +35,15 @@ final class AccomodationViewController: BaseViewController {
     }
     
     override func configureLayout() {
+        
         postTableView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
+        
     }
     
     override func configureUI() {
+        
         let item = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(writeButtonTapped))
         item.tintColor = .black
         navigationItem.rightBarButtonItem = item
