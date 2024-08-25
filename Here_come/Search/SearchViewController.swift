@@ -25,8 +25,8 @@ final class SearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        recentTextCollectionView.delegate = self
-        recentTextCollectionView.dataSource = self
+//        recentTextCollectionView.delegate = self
+//        recentTextCollectionView.dataSource = self
         recentTextCollectionView.register(RecentTextCollectionViewCell.self, forCellWithReuseIdentifier: RecentTextCollectionViewCell.identifier)
 //        recommendTextCollectionView.register(RecommendCollectionViewCell.self, forCellWithReuseIdentifier: RecommendCollectionViewCell.identifier)
         
@@ -140,16 +140,4 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
 //    }
 }
 
-extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return list.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = recentTextCollectionView.dequeueReusableCell(withReuseIdentifier: RecentTextCollectionViewCell.identifier, for: indexPath) as! RecentTextCollectionViewCell
-        
-        cell.designCell(transition: list[indexPath.row])
-        
-        return cell
-    }
-}
+

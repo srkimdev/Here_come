@@ -7,131 +7,23 @@
 
 import Foundation
 
-struct Party {
-    let Photos: [String]
-    let whom: String
-    let place: String
-    let time: String
-    let activity: String
-    let explanation: String
+struct House {
+    let image: String
+    let location: String
+    let title: String
+    let price: String
 }
 
-//struct Category {
-//    let image: String
-//    let name: String
-//}
-
-let Parties: [Party] = [
-     Party(Photos: [],
-           whom: "",
-           place: "",
-           time: "",
-           activity: "",
-           explanation: ""),
-     Party(Photos: [],
-           whom: "",
-           place: "",
-           time: "",
-           activity: "",
-           explanation: ""),
-     Party(Photos: [],
-           whom: "",
-           place: "",
-           time: "",
-           activity: "",
-           explanation: ""),
-     Party(Photos: [],
-           whom: "",
-           place: "",
-           time: "",
-           activity: "",
-           explanation: ""),
-     Party(Photos: [],
-           whom: "",
-           place: "",
-           time: "",
-           activity: "",
-           explanation: ""),
-     Party(Photos: [],
-           whom: "",
-           place: "",
-           time: "",
-           activity: "",
-           explanation: ""),
-     Party(Photos: [],
-           whom: "",
-           place: "",
-           time: "",
-           activity: "",
-           explanation: ""),
-     Party(Photos: [],
-           whom: "",
-           place: "",
-           time: "",
-           activity: "",
-           explanation: ""),
-     Party(Photos: [],
-           whom: "",
-           place: "",
-           time: "",
-           activity: "",
-           explanation: ""),
-     Party(Photos: [],
-           whom: "",
-           place: "",
-           time: "",
-           activity: "",
-           explanation: ""),
-     Party(Photos: [],
-           whom: "",
-           place: "",
-           time: "",
-           activity: "",
-           explanation: ""),
-     Party(Photos: [],
-           whom: "",
-           place: "",
-           time: "",
-           activity: "",
-           explanation: ""),
-     Party(Photos: [],
-           whom: "",
-           place: "",
-           time: "",
-           activity: "",
-           explanation: ""),
-     Party(Photos: [],
-           whom: "",
-           place: "",
-           time: "",
-           activity: "",
-           explanation: ""),
-     Party(Photos: [],
-           whom: "",
-           place: "",
-           time: "",
-           activity: "",
-           explanation: ""),
-     Party(Photos: [],
-           whom: "",
-           place: "",
-           time: "",
-           activity: "",
-           explanation: ""),
-     Party(Photos: [],
-           whom: "",
-           place: "",
-           time: "",
-           activity: "",
-           explanation: ""),
-     Party(Photos: [],
-           whom: "",
-           place: "",
-           time: "",
-           activity: "",
-           explanation: "")
-    
+let houses: [House] = [
+    House(image: "", location: "", title: "", price: ""),
+    House(image: "", location: "", title: "", price: ""),
+    House(image: "", location: "", title: "", price: ""),
+    House(image: "", location: "", title: "", price: ""),
+    House(image: "", location: "", title: "", price: ""),
+    House(image: "", location: "", title: "", price: ""),
 ]
+
+
 
 enum Categories: String, CaseIterable {
     case all = "전체"

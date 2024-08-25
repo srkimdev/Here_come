@@ -23,9 +23,9 @@ final class TabBarViewController: UITabBarController {
         let nav2 = UINavigationController(rootViewController: second)
         nav2.tabBarItem = UITabBarItem(title: "소셜링", image: UIImage(systemName: "leaf"), selectedImage: UIImage(systemName: "leaf.fill"))
         
-        let third = FreeBoardViewController()
+        let third = SellingViewController()
         let nav3 = UINavigationController(rootViewController: third)
-        nav3.tabBarItem = UITabBarItem(title: "게시판", image: UIImage(systemName: "newspaper"), selectedImage: UIImage(systemName: "newspaper.fill"))
+        nav3.tabBarItem = UITabBarItem(title: "숙소검색", image: UIImage(systemName: "magnifyingglass.circle"), selectedImage: UIImage(systemName: "magnifyingglass.circle.fill"))
         
         let fourth = ProfileManageViewController()
         let nav4 = UINavigationController(rootViewController: fourth)

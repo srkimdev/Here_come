@@ -36,7 +36,7 @@
 		DC0769A72C6CD1FC0025F939 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769A62C6CD1FC0025F939 /* TabBarViewController.swift */; };
 		DC0769AD2C6CD2B60025F939 /* AccomodationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769AC2C6CD2B60025F939 /* AccomodationViewController.swift */; };
 		DC0769AF2C6CD3460025F939 /* SociallingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769AE2C6CD3460025F939 /* SociallingViewController.swift */; };
-		DC0769B12C6CD3880025F939 /* FreeBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769B02C6CD3880025F939 /* FreeBoardViewController.swift */; };
+		DC0769B12C6CD3880025F939 /* SellingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769B02C6CD3880025F939 /* SellingViewController.swift */; };
 		DC0769B32C6CD3A30025F939 /* ProfileManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769B22C6CD3A30025F939 /* ProfileManageViewController.swift */; };
 		DC0769B52C6CD4800025F939 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769B42C6CD4800025F939 /* UIViewController+Extension.swift */; };
 		DC0769B72C6CD7720025F939 /* Accomodations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769B62C6CD7720025F939 /* Accomodations.swift */; };
@@ -79,6 +79,9 @@
 		DC4150E62C79BF0A0008FAB3 /* CommentPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150E52C79BF090008FAB3 /* CommentPostTableViewCell.swift */; };
 		DC4150E82C79CF230008FAB3 /* LikeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150E72C79CF220008FAB3 /* LikeModel.swift */; };
 		DC4150EA2C79FE810008FAB3 /* LikeQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150E92C79FE810008FAB3 /* LikeQuery.swift */; };
+		DC4150EC2C7B041B0008FAB3 /* ShowMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150EB2C7B041B0008FAB3 /* ShowMapViewController.swift */; };
+		DC4150EF2C7B3C9A0008FAB3 /* HouseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150EE2C7B3C990008FAB3 /* HouseCollectionViewCell.swift */; };
+		DC4150F12C7B424C0008FAB3 /* SellingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150F02C7B424C0008FAB3 /* SellingViewModel.swift */; };
 		DC8C21FA2C747E31003FE59B /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -109,7 +112,7 @@
 		DC0769A62C6CD1FC0025F939 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		DC0769AC2C6CD2B60025F939 /* AccomodationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomodationViewController.swift; sourceTree = "<group>"; };
 		DC0769AE2C6CD3460025F939 /* SociallingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SociallingViewController.swift; sourceTree = "<group>"; };
-		DC0769B02C6CD3880025F939 /* FreeBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreeBoardViewController.swift; sourceTree = "<group>"; };
+		DC0769B02C6CD3880025F939 /* SellingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellingViewController.swift; sourceTree = "<group>"; };
 		DC0769B22C6CD3A30025F939 /* ProfileManageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManageViewController.swift; sourceTree = "<group>"; };
 		DC0769B42C6CD4800025F939 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		DC0769B62C6CD7720025F939 /* Accomodations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accomodations.swift; sourceTree = "<group>"; };
@@ -151,6 +154,9 @@
 		DC4150E52C79BF090008FAB3 /* CommentPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPostTableViewCell.swift; sourceTree = "<group>"; };
 		DC4150E72C79CF220008FAB3 /* LikeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeModel.swift; sourceTree = "<group>"; };
 		DC4150E92C79FE810008FAB3 /* LikeQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeQuery.swift; sourceTree = "<group>"; };
+		DC4150EB2C7B041B0008FAB3 /* ShowMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMapViewController.swift; sourceTree = "<group>"; };
+		DC4150EE2C7B3C990008FAB3 /* HouseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseCollectionViewCell.swift; sourceTree = "<group>"; };
+		DC4150F02C7B424C0008FAB3 /* SellingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellingViewModel.swift; sourceTree = "<group>"; };
 		DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -218,6 +224,7 @@
 				DC15FCE92C7368CD0049FEB5 /* Category */,
 				DC1143A52C75D95C00CEB325 /* Detail */,
 				DC4150E02C79B1F60008FAB3 /* Comment */,
+				DC4150ED2C7B04210008FAB3 /* Map */,
 			);
 			path = Here_come;
 			sourceTree = "<group>";
@@ -346,7 +353,10 @@
 		DC0769AA2C6CD2400025F939 /* Third */ = {
 			isa = PBXGroup;
 			children = (
-				DC0769B02C6CD3880025F939 /* FreeBoardViewController.swift */,
+				DC0769B02C6CD3880025F939 /* SellingViewController.swift */,
+				DC4150EE2C7B3C990008FAB3 /* HouseCollectionViewCell.swift */,
+				DC0769C92C6F2E3D0025F939 /* RecentTextCollectionViewCell.swift */,
+				DC4150F02C7B424C0008FAB3 /* SellingViewModel.swift */,
 			);
 			path = Third;
 			sourceTree = "<group>";
@@ -364,7 +374,6 @@
 			isa = PBXGroup;
 			children = (
 				DC0769CE2C6F4F020025F939 /* SearchViewController.swift */,
-				DC0769C92C6F2E3D0025F939 /* RecentTextCollectionViewCell.swift */,
 				DC0769CB2C6F43600025F939 /* RecommendCollectionViewCell.swift */,
 			);
 			path = Search;
@@ -420,6 +429,14 @@
 				DC4150E32C79BD310008FAB3 /* CommentViewModel.swift */,
 			);
 			path = Comment;
+			sourceTree = "<group>";
+		};
+		DC4150ED2C7B04210008FAB3 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				DC4150EB2C7B041B0008FAB3 /* ShowMapViewController.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -527,7 +544,7 @@
 				DC0769AD2C6CD2B60025F939 /* AccomodationViewController.swift in Sources */,
 				DC0769A22C6C9A6E0025F939 /* UserDefaultsManager.swift in Sources */,
 				DC4150E62C79BF0A0008FAB3 /* CommentPostTableViewCell.swift in Sources */,
-				DC0769B12C6CD3880025F939 /* FreeBoardViewController.swift in Sources */,
+				DC0769B12C6CD3880025F939 /* SellingViewController.swift in Sources */,
 				DC0769DE2C70F6A10025F939 /* WriteViewModel.swift in Sources */,
 				DC0769AF2C6CD3460025F939 /* SociallingViewController.swift in Sources */,
 				DC0769CA2C6F2E3D0025F939 /* RecentTextCollectionViewCell.swift in Sources */,
@@ -536,11 +553,13 @@
 				DC0769DC2C70AE940025F939 /* WriteViewController.swift in Sources */,
 				DC0769CF2C6F4F020025F939 /* SearchViewController.swift in Sources */,
 				DC0769E22C71C61B0025F939 /* SettingTableViewCell.swift in Sources */,
+				DC4150F12C7B424C0008FAB3 /* SellingViewModel.swift in Sources */,
 				DC0769762C6C79280025F939 /* BaseTableViewCell.swift in Sources */,
 				DC07698B2C6C815E0025F939 /* UITextField+Extension.swift in Sources */,
 				DC0769E02C71A8260025F939 /* PhotoCollectionViewCell.swift in Sources */,
 				DC15FCEF2C7371CB0049FEB5 /* CategoryTableViewCell.swift in Sources */,
 				DC15FCED2C736A3B0049FEB5 /* CategoryViewController.swift in Sources */,
+				DC4150EF2C7B3C9A0008FAB3 /* HouseCollectionViewCell.swift in Sources */,
 				DC8C21FA2C747E31003FE59B /* CategoryViewModel.swift in Sources */,
 				DC0769A42C6C9DB00025F939 /* LoginViewModel.swift in Sources */,
 				DC4150DF2C79A4C80008FAB3 /* ExtractSentence.swift in Sources */,
@@ -561,6 +580,7 @@
 				DC4150DB2C787F800008FAB3 /* WriteReviewViewModel.swift in Sources */,
 				DC4150E42C79BD310008FAB3 /* CommentViewModel.swift in Sources */,
 				DC4150CF2C775C360008FAB3 /* CommentModel.swift in Sources */,
+				DC4150EC2C7B041B0008FAB3 /* ShowMapViewController.swift in Sources */,
 				DC15FCDE2C731E3C0049FEB5 /* PostQuery.swift in Sources */,
 				DC0769CC2C6F43600025F939 /* RecommendCollectionViewCell.swift in Sources */,
 				DC0769782C6C79AC0025F939 /* BaseCollectionViewCell.swift in Sources */,

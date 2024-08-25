@@ -16,11 +16,13 @@ final class WriteReviewViewModel {
     struct Input {
         let addButtonTap: ControlEvent<Void>
         let pickerSubject: BehaviorRelay<[UIImage]>
+        let locationButtonTap: ControlEvent<Void>
     }
     
     struct Output {
         let addButtonTap: ControlEvent<Void>
         let imageCollectionView: PublishSubject<[UIImage]>
+        let locationButtonTap: ControlEvent<Void>
     }
     
     func transform(input: Input) -> Output {
@@ -33,7 +35,7 @@ final class WriteReviewViewModel {
             }
             .disposed(by: disposeBag)
         
-        return Output(addButtonTap: input.addButtonTap, imageCollectionView: imageCollectionView)
+        return Output(addButtonTap: input.addButtonTap, imageCollectionView: imageCollectionView, locationButtonTap: input.locationButtonTap)
     }
     
 }
