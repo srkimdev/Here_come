@@ -83,6 +83,8 @@
 		DC4150EF2C7B3C9A0008FAB3 /* HouseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150EE2C7B3C990008FAB3 /* HouseCollectionViewCell.swift */; };
 		DC4150F12C7B424C0008FAB3 /* SellingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150F02C7B424C0008FAB3 /* SellingViewModel.swift */; };
 		DC8C21FA2C747E31003FE59B /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */; };
+		DCEE48352C7C5A5700D745EB /* StarStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE48342C7C5A5700D745EB /* StarStackView.swift */; };
+		DCEE48372C7C5E6D00D745EB /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE48362C7C5E6D00D745EB /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -158,6 +160,8 @@
 		DC4150EE2C7B3C990008FAB3 /* HouseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC4150F02C7B424C0008FAB3 /* SellingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellingViewModel.swift; sourceTree = "<group>"; };
 		DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
+		DCEE48342C7C5A5700D745EB /* StarStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarStackView.swift; sourceTree = "<group>"; };
+		DCEE48362C7C5E6D00D745EB /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,6 +278,7 @@
 			children = (
 				DC07698A2C6C815E0025F939 /* UITextField+Extension.swift */,
 				DC0769B42C6CD4800025F939 /* UIViewController+Extension.swift */,
+				DCEE48362C7C5E6D00D745EB /* UIColor+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -357,6 +362,7 @@
 				DC4150EE2C7B3C990008FAB3 /* HouseCollectionViewCell.swift */,
 				DC0769C92C6F2E3D0025F939 /* RecentTextCollectionViewCell.swift */,
 				DC4150F02C7B424C0008FAB3 /* SellingViewModel.swift */,
+				DCEE48342C7C5A5700D745EB /* StarStackView.swift */,
 			);
 			path = Third;
 			sourceTree = "<group>";
@@ -529,6 +535,7 @@
 				DC07697B2C6C7CAD0025F939 /* LoginViewController.swift in Sources */,
 				DC07699A2C6C8A580025F939 /* LoginModel.swift in Sources */,
 				DC0769B72C6CD7720025F939 /* Accomodations.swift in Sources */,
+				DCEE48352C7C5A5700D745EB /* StarStackView.swift in Sources */,
 				DC1143A92C75E24A00CEB325 /* DetailCollectionViewCell.swift in Sources */,
 				DC07695F2C6C77D30025F939 /* ViewController.swift in Sources */,
 				DC15FCF12C7371D50049FEB5 /* CategoryCollectionViewCell.swift in Sources */,
@@ -580,6 +587,7 @@
 				DC4150DB2C787F800008FAB3 /* WriteReviewViewModel.swift in Sources */,
 				DC4150E42C79BD310008FAB3 /* CommentViewModel.swift in Sources */,
 				DC4150CF2C775C360008FAB3 /* CommentModel.swift in Sources */,
+				DCEE48372C7C5E6D00D745EB /* UIColor+Extension.swift in Sources */,
 				DC4150EC2C7B041B0008FAB3 /* ShowMapViewController.swift in Sources */,
 				DC15FCDE2C731E3C0049FEB5 /* PostQuery.swift in Sources */,
 				DC0769CC2C6F43600025F939 /* RecommendCollectionViewCell.swift in Sources */,

@@ -7,12 +7,19 @@
 
 import UIKit
 import SnapKit
+import RxSwift
 
 final class RecentTextCollectionViewCell: BaseCollectionViewCell {
     
-    let backView = UIView()
     let recentText = UILabel()
     let deleteButton = UIButton()
+    
+    var disposeBag = DisposeBag()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,26 +27,22 @@ final class RecentTextCollectionViewCell: BaseCollectionViewCell {
     }
     
     override func configureHierarchy() {
-        contentView.addSubview(backView)
-        backView.addSubview(recentText)
-        backView.addSubview(deleteButton)
+        contentView.addSubview(recentText)
+        contentView.addSubview(deleteButton)
     }
     
     override func configureLayout() {
-        backView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-            make.height.equalTo(28)
-        }
+
         
         recentText.snp.makeConstraints { make in
-            make.verticalEdges.equalTo(backView)
-            make.leading.equalToSuperview().inset(10)
-            make.trailing.equalTo(deleteButton.snp.leading).offset(-4)
+            make.verticalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(4)
+            make.leading.equalTo(contentView.safeAreaLayoutGuide).offset(10)
+            make.trailing.equalTo(contentView.safeAreaLayoutGuide).offset(-24)
         }
         
         deleteButton.snp.makeConstraints { make in
-            make.centerY.equalTo(backView)
-            make.trailing.equalTo(backView.snp.trailing).inset(10)
+            make.centerY.equalTo(contentView)
+            make.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(10)
             make.size.equalTo(10)
         }
         
@@ -47,20 +50,21 @@ final class RecentTextCollectionViewCell: BaseCollectionViewCell {
     
     override func configureUI() {
         
-        backView.layer.masksToBounds = true
-        backView.layer.cornerRadius = 14
-        backView.layer.borderWidth = 1
-        backView.layer.borderColor = UIColor.lightGray.cgColor
+        contentView.layer.masksToBounds = true
+        contentView.layer.cornerRadius = 14
+        contentView.layer.borderWidth = 1
+        contentView.layer.borderColor = UIColor.lightGray.cgColor
         
         recentText.font = .systemFont(ofSize: 15)
+        recentText.numberOfLines = 1
         
         deleteButton.setImage(UIImage(systemName: "xmark"), for: .normal)
-        
         
     }
     
     func designCell(transition: String) {
         recentText.text = transition
+//        recentText.sizeToFit()
     }
     
 }

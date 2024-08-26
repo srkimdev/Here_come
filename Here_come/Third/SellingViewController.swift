@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import RxSwift
+import RxCocoa
 
 final class SellingViewController: BaseViewController {
     
@@ -24,14 +25,12 @@ final class SellingViewController: BaseViewController {
     let viewModel = SellingViewModel()
     let disposeBag = DisposeBag()
     let networkTrigger = PublishSubject<Void>()
-    
-    let list = ["밥", "된장찌개", "계란말이", "교촌허니콤보", "떡볶이"]
+    let inputText = PublishSubject<String>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        recentTextCollectionView.delegate = self
-        recentTextCollectionView.dataSource = self
+        searchBar.delegate = self
         recentTextCollectionView.register(RecentTextCollectionViewCell.self, forCellWithReuseIdentifier: RecentTextCollectionViewCell.identifier)
         houseCollectionView.register(HouseCollectionViewCell.self, forCellWithReuseIdentifier: HouseCollectionViewCell.identifier)
         
@@ -115,7 +114,7 @@ final class SellingViewController: BaseViewController {
     
     func bind() {
         
-        let input = SellingViewModel.Input(networkTrigger: networkTrigger)
+        let input = SellingViewModel.Input(networkTrigger: networkTrigger, inputText: inputText)
         let output = viewModel.transform(input: input)
         
         output.updateTableView
@@ -126,10 +125,26 @@ final class SellingViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        output.updateRecentText
+            .observe(on: MainScheduler.instance)
+            .bind(to: recentTextCollectionView.rx.items(cellIdentifier: RecentTextCollectionViewCell.identifier, cellType: RecentTextCollectionViewCell.self)) { (item, element, cell) in
+
+                cell.designCell(transition: element)
+                
+            }
+            .disposed(by: disposeBag)
+        
         networkTrigger.onNext(())
         
     }
     
+}
+
+extension SellingViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text else { return }
+        inputText.onNext(searchText)
+    }
 }
 
 extension SellingViewController: UICollectionViewDelegateFlowLayout {
@@ -146,24 +161,11 @@ extension SellingViewController: UICollectionViewDelegateFlowLayout {
     
     func recentTextCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 8
+//        layout.minimumInteritemSpacing = 8
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)
         return layout
     }
     
-}
-
-extension SellingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return list.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = recentTextCollectionView.dequeueReusableCell(withReuseIdentifier: RecentTextCollectionViewCell.identifier, for: indexPath) as! RecentTextCollectionViewCell
-        
-        cell.designCell(transition: list[indexPath.row])
-        
-        return cell
-    }
 }

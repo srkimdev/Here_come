@@ -12,6 +12,7 @@ import RxCocoa
 
 final class CommentViewController: BaseViewController {
     
+    let commentLabel = UILabel()
     let commentTableView = UITableView()
     let belowView = UIView()
     let textFieldView = UIView()
@@ -31,6 +32,7 @@ final class CommentViewController: BaseViewController {
     
     override func configureHierarchy() {
         
+        view.addSubview(commentLabel)
         view.addSubview(commentTableView)
         view.addSubview(belowView)
         view.addSubview(textFieldView)
@@ -41,8 +43,14 @@ final class CommentViewController: BaseViewController {
     
     override func configureLayout() {
         
+        commentLabel.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(30)
+            make.centerX.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(20)
+        }
+        
         commentTableView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+            make.top.equalTo(commentLabel.snp.bottom).offset(20)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
             make.bottom.equalTo(belowView.snp.top)
         }
@@ -75,7 +83,8 @@ final class CommentViewController: BaseViewController {
     
     override func configureUI() {
         
-        navigationItem.title = "댓글"
+        commentLabel.text = "댓글"
+        commentLabel.font = .systemFont(ofSize: 16, weight: .bold)
         
         commentTableView.separatorStyle = .none
         

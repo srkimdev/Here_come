@@ -15,6 +15,7 @@ final class HouseCollectionViewCell: BaseCollectionViewCell {
     let locationLabel = UILabel()
     let titleLabel = UILabel()
     let priceLabel = UILabel()
+    let startStackView = StarRatingView()
     
     var disposeBag = DisposeBag()
     
@@ -34,6 +35,7 @@ final class HouseCollectionViewCell: BaseCollectionViewCell {
         contentView.addSubview(locationLabel)
         contentView.addSubview(titleLabel)
         contentView.addSubview(priceLabel)
+        contentView.addSubview(startStackView)
         
     }
     
@@ -52,12 +54,17 @@ final class HouseCollectionViewCell: BaseCollectionViewCell {
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(locationLabel.snp.bottom).offset(12)
-            make.leading.equalTo(contentView.safeAreaLayoutGuide).offset(12)
-            make.height.equalTo(20)
+            make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(12)
+        }
+        
+        startStackView.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(16)
+            make.leading.equalTo(contentView.safeAreaLayoutGuide).offset(10)
+            make.height.equalTo(12)
         }
         
         priceLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(12)
+            make.top.equalTo(startStackView.snp.bottom).offset(12)
             make.leading.equalTo(contentView.safeAreaLayoutGuide).offset(12)
             make.height.equalTo(20)
         }
@@ -69,8 +76,11 @@ final class HouseCollectionViewCell: BaseCollectionViewCell {
         houseImage.backgroundColor = .lightGray
         
         locationLabel.text = "제주시 애월읍"
+        locationLabel.textColor = .lightGray
+        locationLabel.font = .systemFont(ofSize: 14)
         
         titleLabel.text = "독채 펜션 불명 바베큐 동쪽"
+        titleLabel.numberOfLines = 2
         
         priceLabel.text = "200,000원"
         

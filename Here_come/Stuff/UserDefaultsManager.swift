@@ -36,4 +36,13 @@ final class UserDefaultsManager {
         }
     }
     
+    var searchTextStore: [String] {
+        get {
+            UserDefaults.standard.stringArray(forKey: "searchTextStore") ?? []
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "searchTextStore")
+        }
+    }
+    
 }

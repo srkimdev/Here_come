@@ -76,7 +76,7 @@ final class AccomodationViewController: BaseViewController {
                             sheet.prefersGrabberVisible = true
                         }
                         
-                        owner.transitionScreen(vc: vc, style: .presentNavigation)
+                        owner.transitionScreen(vc: vc, style: .present)
                         
                     }
                     .disposed(by: cell.disposeBag)
