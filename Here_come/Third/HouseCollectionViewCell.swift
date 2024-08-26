@@ -73,20 +73,22 @@ final class HouseCollectionViewCell: BaseCollectionViewCell {
     
     override func configureUI() {
         
-        houseImage.backgroundColor = .lightGray
-        
-        locationLabel.text = "제주시 애월읍"
         locationLabel.textColor = .lightGray
         locationLabel.font = .systemFont(ofSize: 14)
         
-        titleLabel.text = "독채 펜션 불명 바베큐 동쪽"
         titleLabel.numberOfLines = 2
-        
-        priceLabel.text = "200,000원"
         
     }
     
     func designCell(transition: House) {
+        
+        houseImage.image = UIImage(named: transition.image[0])
+        
+        locationLabel.text = transition.location
+        
+        titleLabel.text = transition.title
+        
+        priceLabel.text = transition.price
         
     }
     

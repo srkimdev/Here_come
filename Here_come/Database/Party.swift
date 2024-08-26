@@ -7,24 +7,6 @@
 
 import Foundation
 
-struct House {
-    let image: String
-    let location: String
-    let title: String
-    let price: String
-}
-
-let houses: [House] = [
-    House(image: "", location: "", title: "", price: ""),
-    House(image: "", location: "", title: "", price: ""),
-    House(image: "", location: "", title: "", price: ""),
-    House(image: "", location: "", title: "", price: ""),
-    House(image: "", location: "", title: "", price: ""),
-    House(image: "", location: "", title: "", price: ""),
-]
-
-
-
 enum Categories: String, CaseIterable {
     case all = "전체"
     case surfing = "서핑"

@@ -166,6 +166,8 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         locationImage.image = UIImage(systemName: "map")
         locationImage.tintColor = .black
         
+        imageCollectionView.showsHorizontalScrollIndicator = false
+        
     }
     
     func designCell(transition: Posts) {

@@ -56,11 +56,15 @@ final class SociallingViewController: BaseViewController {
     }
         
     override func configureUI() {
+        
         let item = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(writeButtonTapped))
         item.tintColor = .black
         navigationItem.rightBarButtonItem = item
         
+        sociallingCollectionView.showsHorizontalScrollIndicator = false
+        
         topicTableView.rowHeight = 120
+        topicTableView.showsVerticalScrollIndicator = false
         
         NotificationCenter.default.addObserver(self, selector: #selector(receivedNotification), name: NSNotification.Name("update"), object: nil)
         
@@ -76,10 +80,7 @@ final class SociallingViewController: BaseViewController {
     }
     
     @objc func refreshData() {
-        pullToRefresh.onNext(())
-        DispatchQueue.main.asyncAfter(deadline: .now()) {
-            self.refreshControl.endRefreshing()
-        }
+        networkTrigger.onNext(())
     }
     
     @objc func receivedNotification() {
@@ -88,7 +89,7 @@ final class SociallingViewController: BaseViewController {
     
     private func bind() {
         
-        let input = SociallingViewModel.Input(networkTrigger: networkTrigger, pullToRefresh: self.pullToRefresh)
+        let input = SociallingViewModel.Input(networkTrigger: networkTrigger)
         let output = viewModel.transform(input: input)
         
         output.tableViewList
@@ -125,6 +126,12 @@ final class SociallingViewController: BaseViewController {
                 
                 owner.transitionScreen(vc: vc, style: .push)
             }
+            .disposed(by: disposeBag)
+        
+        output.tableViewList
+            .subscribe(onNext: { [weak self] _ in
+                self?.refreshControl.endRefreshing()
+            })
             .disposed(by: disposeBag)
             
     }

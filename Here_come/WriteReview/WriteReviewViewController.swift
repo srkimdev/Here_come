@@ -137,6 +137,8 @@ final class WriteReviewViewController: BaseViewController {
         contentTextView.font = .systemFont(ofSize: 15)
         contentTextView.delegate = self
         
+        imageCollectionView.showsHorizontalScrollIndicator = false
+        
     }
     
     func bindNavi() {

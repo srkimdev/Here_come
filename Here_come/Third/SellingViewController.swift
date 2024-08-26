@@ -110,11 +110,17 @@ final class SellingViewController: BaseViewController {
         dateButton.layer.masksToBounds = true
         dateButton.layer.borderWidth = 1
         
+        recentTextCollectionView.showsHorizontalScrollIndicator = false
+        
+        houseCollectionView.showsVerticalScrollIndicator = false
+        
     }
     
     func bind() {
         
-        let input = SellingViewModel.Input(networkTrigger: networkTrigger, inputText: inputText)
+        let cellDeleteButton = PublishSubject<Int>()
+        
+        let input = SellingViewModel.Input(networkTrigger: networkTrigger, inputText: inputText, deleteAllButtonTap: deleteButton.rx.tap, cellDeleteButton: cellDeleteButton)
         let output = viewModel.transform(input: input)
         
         output.updateTableView
@@ -130,6 +136,12 @@ final class SellingViewController: BaseViewController {
             .bind(to: recentTextCollectionView.rx.items(cellIdentifier: RecentTextCollectionViewCell.identifier, cellType: RecentTextCollectionViewCell.self)) { (item, element, cell) in
 
                 cell.designCell(transition: element)
+                
+                cell.deleteButton.rx.tap
+                    .bind(with: self) { owner, _ in
+                        cellDeleteButton.onNext(item)
+                    }
+                    .disposed(by: cell.disposeBag)
                 
             }
             .disposed(by: disposeBag)
@@ -152,7 +164,7 @@ extension SellingViewController: UICollectionViewDelegateFlowLayout {
     func houseCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         let width = view.bounds.width / 2 - 2
-        layout.itemSize = CGSize(width: width, height: width * 2)
+        layout.itemSize = CGSize(width: width, height: width * 2 - 20)
         layout.minimumInteritemSpacing = 1
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.scrollDirection = .vertical
@@ -161,7 +173,6 @@ extension SellingViewController: UICollectionViewDelegateFlowLayout {
     
     func recentTextCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-//        layout.minimumInteritemSpacing = 8
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)

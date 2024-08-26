@@ -99,12 +99,14 @@ final class NetworkManager {
         do {
             let request = try Router.readPost(productId: productId).asURLRequest()
             
+            print("pass?")
+            
             AF.request(request)
                 .validate(statusCode: 200..<300)
                 .responseDecodable(of: ReadPostModel.self) { response in
                     switch response.result {
                     case .success(let value):
-//                        dump(value.data)
+                        dump(value.data)
                         completionHandler(value.data)
                     case .failure(let error):
                         print(error)

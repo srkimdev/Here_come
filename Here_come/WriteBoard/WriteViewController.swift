@@ -96,6 +96,7 @@ final class WriteViewController: BaseViewController {
     }
     
     override func configureUI() {
+        
         navigationItem.title = "글쓰기"
         
         categoryLabel.text = "서핑"
@@ -116,6 +117,8 @@ final class WriteViewController: BaseViewController {
         imageButton.backgroundColor = .lightGray
         imageButton.layer.masksToBounds = true
         imageButton.setImage(UIImage(systemName: "photo.badge.plus"), for: .normal)
+        
+        photoCollectionView.showsHorizontalScrollIndicator = false
         
     }
     

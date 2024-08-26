@@ -12,11 +12,17 @@ import RxCocoa
 final class SellingViewModel {
     
     let disposeBag = DisposeBag()
-    var textStore: [String] = UserDefaultsManager.shared.searchTextStore
+    var textStore: [String] = UserDefaultsManager.shared.searchTextStore {
+        didSet {
+            UserDefaultsManager.shared.searchTextStore = textStore
+        }
+    }
     
     struct Input {
         let networkTrigger: PublishSubject<Void>
         let inputText: PublishSubject<String>
+        let deleteAllButtonTap: ControlEvent<Void>
+        let cellDeleteButton: PublishSubject<Int>
     }
     
     struct Output {
@@ -42,6 +48,20 @@ final class SellingViewModel {
             }
             .disposed(by: disposeBag)
         
+        input.deleteAllButtonTap
+            .bind(with: self) { owner, _ in
+                owner.textStore.removeAll()
+                updateRecentText.onNext(owner.textStore)
+            }
+            .disposed(by: disposeBag)
+        
+        input.cellDeleteButton
+            .bind(with: self) { owner, value in
+                owner.textStore.remove(at: value)
+                updateRecentText.onNext(owner.textStore)
+            }
+            .disposed(by: disposeBag)
+        
         return Output(updateTableView: updateTableView, updateRecentText: updateRecentText)
     }
     
@@ -50,7 +70,6 @@ final class SellingViewModel {
             textStore.remove(at: index)
         }
         textStore.insert(search, at: 0)
-        UserDefaultsManager.shared.searchTextStore = textStore
     }
     
 }

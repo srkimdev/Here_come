@@ -25,7 +25,7 @@ final class AccomodationViewController: BaseViewController {
         
         postTableView.register(AccomodationTableViewCell.self, forCellReuseIdentifier: AccomodationTableViewCell.identifier)
         
-//        NetworkManager.shared.deletePost(postId: "66c97139078fb670167c4231")
+        NetworkManager.shared.deletePost(postId: "66cae6a35056517017a5495f")
         
         bind()
     }
@@ -49,6 +49,7 @@ final class AccomodationViewController: BaseViewController {
         navigationItem.rightBarButtonItem = item
         
         postTableView.rowHeight = UITableView.automaticDimension
+        postTableView.showsVerticalScrollIndicator = false
         
         NotificationCenter.default.addObserver(self, selector: #selector(receivedNotification), name: NSNotification.Name("updatePost"), object: nil)
         

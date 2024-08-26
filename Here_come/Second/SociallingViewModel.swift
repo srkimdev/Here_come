@@ -16,7 +16,6 @@ final class SociallingViewModel {
     
     struct Input {
         let networkTrigger: Observable<Void>
-        let pullToRefresh: PublishSubject<Void>
     }
     
     struct Output {
@@ -31,16 +30,6 @@ final class SociallingViewModel {
         
         input.networkTrigger
             .bind(with: self) { owner, _ in
-                NetworkManager.shared.readPost(productId: "herecome") { value in
-                    tableViewList.onNext(value)
-                }
-            }
-            .disposed(by: disposeBag)
-    
-        
-        input.pullToRefresh
-            .bind(with: self) { owner, _ in
-
                 NetworkManager.shared.readPost(productId: "herecome") { value in
                     tableViewList.onNext(value)
                 }
