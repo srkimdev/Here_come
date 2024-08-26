@@ -146,6 +146,17 @@ final class SellingViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        houseCollectionView.rx.modelSelected(House.self)
+            .bind(with: self) { owner, value in
+                
+                let vc = DetailHouseViewController()
+                vc.data = value
+                
+                owner.transitionScreen(vc: vc, style: .push)
+                
+            }
+            .disposed(by: disposeBag)
+        
         networkTrigger.onNext(())
         
     }

@@ -85,6 +85,8 @@
 		DC8C21FA2C747E31003FE59B /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */; };
 		DCEE48352C7C5A5700D745EB /* StarStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE48342C7C5A5700D745EB /* StarStackView.swift */; };
 		DCEE48372C7C5E6D00D745EB /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE48362C7C5E6D00D745EB /* UIColor+Extension.swift */; };
+		DCEE483A2C7C7FB400D745EB /* DetailHouseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE48392C7C7FB400D745EB /* DetailHouseViewController.swift */; };
+		DCEE483C2C7CB09A00D745EB /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE483B2C7CB09A00D745EB /* UIButton+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -162,6 +164,8 @@
 		DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		DCEE48342C7C5A5700D745EB /* StarStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarStackView.swift; sourceTree = "<group>"; };
 		DCEE48362C7C5E6D00D745EB /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		DCEE48392C7C7FB400D745EB /* DetailHouseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHouseViewController.swift; sourceTree = "<group>"; };
+		DCEE483B2C7CB09A00D745EB /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +231,7 @@
 				DC4150D52C786BD90008FAB3 /* WriteReview */,
 				DC15FCE92C7368CD0049FEB5 /* Category */,
 				DC1143A52C75D95C00CEB325 /* Detail */,
+				DCEE48382C7C7F8300D745EB /* Detail House */,
 				DC4150E02C79B1F60008FAB3 /* Comment */,
 				DC4150ED2C7B04210008FAB3 /* Map */,
 			);
@@ -279,6 +284,7 @@
 				DC07698A2C6C815E0025F939 /* UITextField+Extension.swift */,
 				DC0769B42C6CD4800025F939 /* UIViewController+Extension.swift */,
 				DCEE48362C7C5E6D00D745EB /* UIColor+Extension.swift */,
+				DCEE483B2C7CB09A00D745EB /* UIButton+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -445,6 +451,14 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		DCEE48382C7C7F8300D745EB /* Detail House */ = {
+			isa = PBXGroup;
+			children = (
+				DCEE48392C7C7FB400D745EB /* DetailHouseViewController.swift */,
+			);
+			path = "Detail House";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -545,6 +559,7 @@
 				DC0769C62C6E13E40025F939 /* AccomodationViewModel.swift in Sources */,
 				DC4150E22C79B20A0008FAB3 /* CommentViewController.swift in Sources */,
 				DC0769A72C6CD1FC0025F939 /* TabBarViewController.swift in Sources */,
+				DCEE483C2C7CB09A00D745EB /* UIButton+Extension.swift in Sources */,
 				DC0769742C6C78D10025F939 /* BaseViewController.swift in Sources */,
 				DC0769B52C6CD4800025F939 /* UIViewController+Extension.swift in Sources */,
 				DC07695B2C6C77D30025F939 /* AppDelegate.swift in Sources */,
@@ -569,6 +584,7 @@
 				DC4150EF2C7B3C9A0008FAB3 /* HouseCollectionViewCell.swift in Sources */,
 				DC8C21FA2C747E31003FE59B /* CategoryViewModel.swift in Sources */,
 				DC0769A42C6C9DB00025F939 /* LoginViewModel.swift in Sources */,
+				DCEE483A2C7C7FB400D745EB /* DetailHouseViewController.swift in Sources */,
 				DC4150DF2C79A4C80008FAB3 /* ExtractSentence.swift in Sources */,
 				DC0769C82C6E5E740025F939 /* ImageCollectionViewCell.swift in Sources */,
 				DC15FCE82C735B3A0049FEB5 /* KingfisherManager.swift in Sources */,

@@ -30,6 +30,7 @@ final class WriteViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        contentTextView.delegate = self
         photoCollectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.identifier)
         
         bindNavi()
@@ -110,7 +111,7 @@ final class WriteViewController: BaseViewController {
         titleTextField.placeholder = "제목을 입력하세요"
         titleTextField.font = .systemFont(ofSize: 20, weight: .bold)
         
-        contentTextView.text = "환영합니다"
+        contentTextView.text = "여러가지 활동들을 모집해보세요"
         contentTextView.textColor = .lightGray
         contentTextView.font = .systemFont(ofSize: 15)
         
@@ -251,7 +252,7 @@ extension WriteViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         
         if textView.text.isEmpty {
-            textView.text = "숙소, 생활 관련 후기를 작성해주세요"
+            textView.text = "여러가지 활동들을 모집해보세요"
             textView.textColor = .lightGray
         }
         
