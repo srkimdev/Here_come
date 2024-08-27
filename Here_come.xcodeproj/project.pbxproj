@@ -85,6 +85,7 @@
 		DC8C21FA2C747E31003FE59B /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */; };
 		DCB4B2422C7DB17700DED0D2 /* DetailHouseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB4B2412C7DB17700DED0D2 /* DetailHouseViewModel.swift */; };
 		DCB4B2442C7DB5A900DED0D2 /* HouseImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB4B2432C7DB5A900DED0D2 /* HouseImageCollectionViewCell.swift */; };
+		DCB4B24C2C7DCDB000DED0D2 /* NMapsMap in Frameworks */ = {isa = PBXBuildFile; productRef = DCB4B24B2C7DCDB000DED0D2 /* NMapsMap */; };
 		DCEE48352C7C5A5700D745EB /* StarStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE48342C7C5A5700D745EB /* StarStackView.swift */; };
 		DCEE48372C7C5E6D00D745EB /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE48362C7C5E6D00D745EB /* UIColor+Extension.swift */; };
 		DCEE483A2C7C7FB400D745EB /* DetailHouseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE48392C7C7FB400D745EB /* DetailHouseViewController.swift */; };
@@ -180,6 +181,7 @@
 				DC0769842C6C7E4B0025F939 /* SnapKit in Frameworks */,
 				DC0769812C6C7E400025F939 /* Kingfisher in Frameworks */,
 				DC0769892C6C7E6C0025F939 /* RxSwift in Frameworks */,
+				DCB4B24C2C7DCDB000DED0D2 /* NMapsMap in Frameworks */,
 				DC0769872C6C7E6C0025F939 /* RxCocoa in Frameworks */,
 				DC07697E2C6C7E350025F939 /* Alamofire in Frameworks */,
 				DC0769C02C6DF6250025F939 /* IQKeyboardManagerSwift in Frameworks */,
@@ -488,6 +490,7 @@
 				DC0769862C6C7E6C0025F939 /* RxCocoa */,
 				DC0769882C6C7E6C0025F939 /* RxSwift */,
 				DC0769BF2C6DF6250025F939 /* IQKeyboardManagerSwift */,
+				DCB4B24B2C7DCDB000DED0D2 /* NMapsMap */,
 			);
 			productName = Here_come;
 			productReference = DC0769572C6C77D30025F939 /* Here_come.app */;
@@ -523,6 +526,7 @@
 				DC0769822C6C7E4B0025F939 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				DC0769852C6C7E6C0025F939 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				DC0769BE2C6DF6250025F939 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				DCB4B24A2C7DCDB000DED0D2 /* XCRemoteSwiftPackageReference "NMapsMap" */,
 			);
 			productRefGroup = DC0769582C6C77D30025F939 /* Products */;
 			projectDirPath = "";
@@ -896,6 +900,14 @@
 				minimumVersion = 7.1.1;
 			};
 		};
+		DCB4B24A2C7DCDB000DED0D2 /* XCRemoteSwiftPackageReference "NMapsMap" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jaemyeong/NMapsMap.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.17.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -928,6 +940,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DC0769BE2C6DF6250025F939 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		DCB4B24B2C7DCDB000DED0D2 /* NMapsMap */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DCB4B24A2C7DCDB000DED0D2 /* XCRemoteSwiftPackageReference "NMapsMap" */;
+			productName = NMapsMap;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

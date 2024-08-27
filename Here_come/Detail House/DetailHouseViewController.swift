@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import MapKit
 import RxSwift
+import NMapsMap
 
 final class DetailHouseViewController: BaseViewController {
     
@@ -32,7 +33,7 @@ final class DetailHouseViewController: BaseViewController {
     let seperateLine2 = UIView()
     
     let locationInfoLabel = UILabel()
-    let mapView = MKMapView()
+    let mapView = NMFMapView()
     let addressLabel = UILabel()
     
     let likeButton = UIButton()
@@ -47,6 +48,7 @@ final class DetailHouseViewController: BaseViewController {
         
         houseImageCollectionView.register(HouseImageCollectionViewCell.self, forCellWithReuseIdentifier: HouseImageCollectionViewCell.identifier)
         
+        setMarker()
         bind()
     }
     
@@ -225,9 +227,11 @@ final class DetailHouseViewController: BaseViewController {
         
         mapView.layer.masksToBounds = true
         mapView.layer.cornerRadius = 5
-        mapView.backgroundColor = .lightGray
         
-        addressLabel.text = "인천광역시 연수구 컨벤시아대로 165"
+        let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: data.latitude, lng: data.longitude))
+        mapView.moveCamera(cameraUpdate)
+        
+        addressLabel.text = data.address
         addressLabel.font = .systemFont(ofSize: 14)
         
     }
@@ -245,6 +249,20 @@ final class DetailHouseViewController: BaseViewController {
                 
             }
             .disposed(by: disposeBag)
+        
+    }
+    
+    private func setMarker() {
+        
+        guard let data else { return }
+        
+        let marker = NMFMarker()
+        marker.position = NMGLatLng(lat: data.latitude, lng: data.longitude)
+        marker.iconImage = NMF_MARKER_IMAGE_BLACK
+        marker.iconTintColor = UIColor.red
+        marker.width = 30
+        marker.height = 40
+        marker.mapView = mapView
         
     }
     
