@@ -83,6 +83,8 @@
 		DC4150EF2C7B3C9A0008FAB3 /* HouseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150EE2C7B3C990008FAB3 /* HouseCollectionViewCell.swift */; };
 		DC4150F12C7B424C0008FAB3 /* SellingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4150F02C7B424C0008FAB3 /* SellingViewModel.swift */; };
 		DC8C21FA2C747E31003FE59B /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */; };
+		DCB4B2422C7DB17700DED0D2 /* DetailHouseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB4B2412C7DB17700DED0D2 /* DetailHouseViewModel.swift */; };
+		DCB4B2442C7DB5A900DED0D2 /* HouseImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB4B2432C7DB5A900DED0D2 /* HouseImageCollectionViewCell.swift */; };
 		DCEE48352C7C5A5700D745EB /* StarStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE48342C7C5A5700D745EB /* StarStackView.swift */; };
 		DCEE48372C7C5E6D00D745EB /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE48362C7C5E6D00D745EB /* UIColor+Extension.swift */; };
 		DCEE483A2C7C7FB400D745EB /* DetailHouseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE48392C7C7FB400D745EB /* DetailHouseViewController.swift */; };
@@ -162,6 +164,8 @@
 		DC4150EE2C7B3C990008FAB3 /* HouseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC4150F02C7B424C0008FAB3 /* SellingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellingViewModel.swift; sourceTree = "<group>"; };
 		DC8C21F92C747E31003FE59B /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
+		DCB4B2412C7DB17700DED0D2 /* DetailHouseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHouseViewModel.swift; sourceTree = "<group>"; };
+		DCB4B2432C7DB5A900DED0D2 /* HouseImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		DCEE48342C7C5A5700D745EB /* StarStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarStackView.swift; sourceTree = "<group>"; };
 		DCEE48362C7C5E6D00D745EB /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		DCEE48392C7C7FB400D745EB /* DetailHouseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHouseViewController.swift; sourceTree = "<group>"; };
@@ -455,6 +459,8 @@
 			isa = PBXGroup;
 			children = (
 				DCEE48392C7C7FB400D745EB /* DetailHouseViewController.swift */,
+				DCB4B2412C7DB17700DED0D2 /* DetailHouseViewModel.swift */,
+				DCB4B2432C7DB5A900DED0D2 /* HouseImageCollectionViewCell.swift */,
 			);
 			path = "Detail House";
 			sourceTree = "<group>";
@@ -586,6 +592,7 @@
 				DC0769A42C6C9DB00025F939 /* LoginViewModel.swift in Sources */,
 				DCEE483A2C7C7FB400D745EB /* DetailHouseViewController.swift in Sources */,
 				DC4150DF2C79A4C80008FAB3 /* ExtractSentence.swift in Sources */,
+				DCB4B2422C7DB17700DED0D2 /* DetailHouseViewModel.swift in Sources */,
 				DC0769C82C6E5E740025F939 /* ImageCollectionViewCell.swift in Sources */,
 				DC15FCE82C735B3A0049FEB5 /* KingfisherManager.swift in Sources */,
 				DC2E073F2C7637F9007589E9 /* DetailViewModel.swift in Sources */,
@@ -608,6 +615,7 @@
 				DC15FCDE2C731E3C0049FEB5 /* PostQuery.swift in Sources */,
 				DC0769CC2C6F43600025F939 /* RecommendCollectionViewCell.swift in Sources */,
 				DC0769782C6C79AC0025F939 /* BaseCollectionViewCell.swift in Sources */,
+				DCB4B2442C7DB5A900DED0D2 /* HouseImageCollectionViewCell.swift in Sources */,
 				DC0769D72C6F73140025F939 /* Party.swift in Sources */,
 				DC2E07412C763B1D007589E9 /* CommentTableViewCell.swift in Sources */,
 				DC4150EA2C79FE810008FAB3 /* LikeQuery.swift in Sources */,

@@ -8,13 +8,14 @@
 import UIKit
 import SnapKit
 import MapKit
+import RxSwift
 
 final class DetailHouseViewController: BaseViewController {
     
     let scrollView = UIScrollView()
     let contentView = UIView()
     
-    let houseImageCollectionView = UICollectionView(frame: .zero, collectionViewLayout: <#T##UICollectionViewLayout#>)
+    lazy var houseImageCollectionView = UICollectionView(frame: .zero, collectionViewLayout: houseImageCollectionViewLayout())
     let houseName = UILabel()
     let locationLabel = UILabel()
     
@@ -37,17 +38,23 @@ final class DetailHouseViewController: BaseViewController {
     let likeButton = UIButton()
     
     var data: House?
+    let networkTrigger = BehaviorSubject<House?>(value: nil)
+    let viewModel = DetailHouseViewModel()
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        houseImageCollectionView.register(HouseImageCollectionViewCell.self, forCellWithReuseIdentifier: HouseImageCollectionViewCell.identifier)
+        
+        bind()
     }
     
     override func configureHierarchy() {
         
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
-        contentView.addSubview(houseImage)
+        contentView.addSubview(houseImageCollectionView)
         contentView.addSubview(houseName)
         contentView.addSubview(locationLabel)
         contentView.addSubview(likeButton)
@@ -77,22 +84,21 @@ final class DetailHouseViewController: BaseViewController {
             make.verticalEdges.equalTo(scrollView)
         }
         
-        houseImage.snp.makeConstraints { make in
+        houseImageCollectionView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(contentView)
             make.height.equalTo(250)
         }
         
-        houseName.snp.makeConstraints { make in
-            make.top.equalTo(houseImage.snp.bottom).offset(20)
-            make.leading.equalTo(contentView.snp.leading).offset(16)
-            make.trailing.equalTo(contentView.snp.trailing).inset(30)
-            make.height.equalTo(20)
-        }
-        
         likeButton.snp.makeConstraints { make in
-            make.top.equalTo(houseImage.snp.bottom).offset(14)
+            make.top.equalTo(houseImageCollectionView.snp.bottom).offset(14)
             make.trailing.equalTo(contentView).inset(16)
             make.size.equalTo(36)
+        }
+        
+        houseName.snp.makeConstraints { make in
+            make.top.equalTo(houseImageCollectionView.snp.bottom).offset(20)
+            make.leading.equalTo(contentView.snp.leading).offset(16)
+            make.trailing.equalTo(likeButton.snp.leading).offset(-16)
         }
         
         locationLabel.snp.makeConstraints { make in
@@ -179,12 +185,14 @@ final class DetailHouseViewController: BaseViewController {
         
         guard let data else { return }
         
-        houseImage.backgroundColor = .lightGray
-        
-        houseName.text = "오크우드 프리미어 인천"
+        houseName.text = data.title
         houseName.font = .systemFont(ofSize: 17)
+        houseName.numberOfLines = 0
         
-        locationLabel.text = "제주시 애월읍"
+        houseImageCollectionView.isPagingEnabled = true
+        houseImageCollectionView.showsHorizontalScrollIndicator = false
+        
+        locationLabel.text = data.location
         locationLabel.font = .systemFont(ofSize: 14)
         
         likeButton.configuration = .HeartButton()
@@ -224,13 +232,32 @@ final class DetailHouseViewController: BaseViewController {
         
     }
     
+    func bind() {
+        
+        let input = DetailHouseViewModel.Input(networkTrigger: networkTrigger)
+        let output = viewModel.transform(input: input)
+        
+        output.imageArray
+            .bind(to: houseImageCollectionView.rx.items(cellIdentifier: HouseImageCollectionViewCell.identifier, cellType: HouseImageCollectionViewCell.self)) {
+                (item, element, cell) in
+                
+                cell.designCell(transition: element)
+                
+            }
+            .disposed(by: disposeBag)
+        
+    }
+    
 }
 
 extension DetailHouseViewController: UICollectionViewDelegateFlowLayout {
     func houseImageCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 250)
-        
+        layout.minimumLineSpacing = 0
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        return layout
     }
 }
 
