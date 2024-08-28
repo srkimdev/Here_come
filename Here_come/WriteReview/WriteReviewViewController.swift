@@ -166,7 +166,6 @@ final class WriteReviewViewController: BaseViewController {
         
     }
     
-    
     func bind() {
         
         let input = WriteReviewViewModel.Input(addButtonTap: addImagebutton.rx.tap, pickerSubject: pickerSubject, locationButtonTap: locationButton.rx.tap)
@@ -196,7 +195,7 @@ final class WriteReviewViewController: BaseViewController {
         
         output.locationButtonTap
             .bind(with: self) { owner, _ in
-                let vc = ShowMapViewController()
+                let vc = ShowMapListViewController()
                 
                 owner.transitionScreen(vc: vc, style: .push)
             }

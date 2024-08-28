@@ -296,7 +296,7 @@ final class DetailHouseViewController: BaseViewController {
         
         pageControl.numberOfPages = data.image.count
         pageControl.currentPage = 0
-        pageControl.currentPageIndicatorTintColor = .blue
+        pageControl.currentPageIndicatorTintColor = .cyan
         pageControl.pageIndicatorTintColor = .lightGray
         
     }
