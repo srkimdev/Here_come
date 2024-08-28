@@ -59,6 +59,9 @@
 		DC0769E42C71DF730025F939 /* FilesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769E32C71DF730025F939 /* FilesModel.swift */; };
 		DC1143A72C75D96E00CEB325 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1143A62C75D96E00CEB325 /* DetailViewController.swift */; };
 		DC1143A92C75E24A00CEB325 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1143A82C75E24A00CEB325 /* DetailCollectionViewCell.swift */; };
+		DC15EC9B2C7EF800008CA735 /* ShowMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC15EC9A2C7EF800008CA735 /* ShowMapViewModel.swift */; };
+		DC15EC9D2C7EFD9D008CA735 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC15EC9C2C7EFD9D008CA735 /* MapModel.swift */; };
+		DC15EC9F2C7F0E14008CA735 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC15EC9E2C7F0E14008CA735 /* LocationTableViewCell.swift */; };
 		DC15FCDC2C730F7E0049FEB5 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC15FCDB2C730F7E0049FEB5 /* PostModel.swift */; };
 		DC15FCDE2C731E3C0049FEB5 /* PostQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC15FCDD2C731E3C0049FEB5 /* PostQuery.swift */; };
 		DC15FCE02C7329450049FEB5 /* ReadPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC15FCDF2C7329450049FEB5 /* ReadPostModel.swift */; };
@@ -141,6 +144,9 @@
 		DC0769E32C71DF730025F939 /* FilesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesModel.swift; sourceTree = "<group>"; };
 		DC1143A62C75D96E00CEB325 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DC1143A82C75E24A00CEB325 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		DC15EC9A2C7EF800008CA735 /* ShowMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMapViewModel.swift; sourceTree = "<group>"; };
+		DC15EC9C2C7EFD9D008CA735 /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
+		DC15EC9E2C7F0E14008CA735 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		DC15FCDB2C730F7E0049FEB5 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		DC15FCDD2C731E3C0049FEB5 /* PostQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostQuery.swift; sourceTree = "<group>"; };
 		DC15FCDF2C7329450049FEB5 /* ReadPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadPostModel.swift; sourceTree = "<group>"; };
@@ -333,6 +339,7 @@
 				DC15FCDF2C7329450049FEB5 /* ReadPostModel.swift */,
 				DC4150CE2C775C360008FAB3 /* CommentModel.swift */,
 				DC4150E72C79CF220008FAB3 /* LikeModel.swift */,
+				DC15EC9C2C7EFD9D008CA735 /* MapModel.swift */,
 			);
 			path = ResponseModel;
 			sourceTree = "<group>";
@@ -453,6 +460,8 @@
 			isa = PBXGroup;
 			children = (
 				DC4150EB2C7B041B0008FAB3 /* ShowMapViewController.swift */,
+				DC15EC9A2C7EF800008CA735 /* ShowMapViewModel.swift */,
+				DC15EC9E2C7F0E14008CA735 /* LocationTableViewCell.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -574,6 +583,7 @@
 				DC0769B52C6CD4800025F939 /* UIViewController+Extension.swift in Sources */,
 				DC07695B2C6C77D30025F939 /* AppDelegate.swift in Sources */,
 				DC0769AD2C6CD2B60025F939 /* AccomodationViewController.swift in Sources */,
+				DC15EC9D2C7EFD9D008CA735 /* MapModel.swift in Sources */,
 				DC0769A22C6C9A6E0025F939 /* UserDefaultsManager.swift in Sources */,
 				DC4150E62C79BF0A0008FAB3 /* CommentPostTableViewCell.swift in Sources */,
 				DC0769B12C6CD3880025F939 /* SellingViewController.swift in Sources */,
@@ -617,9 +627,11 @@
 				DCEE48372C7C5E6D00D745EB /* UIColor+Extension.swift in Sources */,
 				DC4150EC2C7B041B0008FAB3 /* ShowMapViewController.swift in Sources */,
 				DC15FCDE2C731E3C0049FEB5 /* PostQuery.swift in Sources */,
+				DC15EC9B2C7EF800008CA735 /* ShowMapViewModel.swift in Sources */,
 				DC0769CC2C6F43600025F939 /* RecommendCollectionViewCell.swift in Sources */,
 				DC0769782C6C79AC0025F939 /* BaseCollectionViewCell.swift in Sources */,
 				DCB4B2442C7DB5A900DED0D2 /* HouseImageCollectionViewCell.swift in Sources */,
+				DC15EC9F2C7F0E14008CA735 /* LocationTableViewCell.swift in Sources */,
 				DC0769D72C6F73140025F939 /* Party.swift in Sources */,
 				DC2E07412C763B1D007589E9 /* CommentTableViewCell.swift in Sources */,
 				DC4150EA2C79FE810008FAB3 /* LikeQuery.swift in Sources */,

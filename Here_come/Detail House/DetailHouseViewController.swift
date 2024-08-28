@@ -17,6 +17,7 @@ final class DetailHouseViewController: BaseViewController {
     let contentView = UIView()
     
     lazy var houseImageCollectionView = UICollectionView(frame: .zero, collectionViewLayout: houseImageCollectionViewLayout())
+    let pageControl = UIPageControl()
     let houseName = UILabel()
     let locationLabel = UILabel()
     
@@ -33,7 +34,7 @@ final class DetailHouseViewController: BaseViewController {
     let seperateLine2 = UIView()
     
     let locationInfoLabel = UILabel()
-    let mapView = NMFMapView()
+    let naverMapView = NMFNaverMapView()
     let addressLabel = UILabel()
     
     let likeButton = UIButton()
@@ -49,6 +50,7 @@ final class DetailHouseViewController: BaseViewController {
         houseImageCollectionView.register(HouseImageCollectionViewCell.self, forCellWithReuseIdentifier: HouseImageCollectionViewCell.identifier)
         
         setMarker()
+        setupPageControl()
         bind()
     }
     
@@ -57,6 +59,7 @@ final class DetailHouseViewController: BaseViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
         contentView.addSubview(houseImageCollectionView)
+        contentView.addSubview(pageControl)
         contentView.addSubview(houseName)
         contentView.addSubview(locationLabel)
         contentView.addSubview(likeButton)
@@ -70,7 +73,7 @@ final class DetailHouseViewController: BaseViewController {
         contentView.addSubview(personEditButton)
         contentView.addSubview(seperateLine2)
         contentView.addSubview(locationInfoLabel)
-        contentView.addSubview(mapView)
+        contentView.addSubview(naverMapView)
         contentView.addSubview(addressLabel)
         
     }
@@ -89,6 +92,12 @@ final class DetailHouseViewController: BaseViewController {
         houseImageCollectionView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(contentView)
             make.height.equalTo(250)
+        }
+        
+        pageControl.snp.makeConstraints { make in
+            make.bottom.equalTo(houseImageCollectionView.snp.bottom).inset(8)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(20)
         }
         
         likeButton.snp.makeConstraints { make in
@@ -169,14 +178,14 @@ final class DetailHouseViewController: BaseViewController {
             make.height.equalTo(20)
         }
         
-        mapView.snp.makeConstraints { make in
+        naverMapView.snp.makeConstraints { make in
             make.top.equalTo(locationInfoLabel.snp.bottom).offset(16)
             make.horizontalEdges.equalTo(contentView).inset(16)
             make.height.equalTo(180)
         }
         
         addressLabel.snp.makeConstraints { make in
-            make.top.equalTo(mapView.snp.bottom).offset(16)
+            make.top.equalTo(naverMapView.snp.bottom).offset(16)
             make.leading.equalTo(contentView).offset(16)
             make.bottom.equalToSuperview().offset(-20)
         }
@@ -186,6 +195,8 @@ final class DetailHouseViewController: BaseViewController {
     override func configureUI() {
         
         guard let data else { return }
+        
+        scrollView.showsVerticalScrollIndicator = false
         
         houseName.text = data.title
         houseName.font = .systemFont(ofSize: 17)
@@ -225,11 +236,11 @@ final class DetailHouseViewController: BaseViewController {
         locationInfoLabel.text = "위치"
         locationInfoLabel.font = .systemFont(ofSize: 17, weight: .bold)
         
-        mapView.layer.masksToBounds = true
-        mapView.layer.cornerRadius = 5
+        naverMapView.layer.masksToBounds = true
+        naverMapView.layer.cornerRadius = 5
         
         let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: data.latitude, lng: data.longitude))
-        mapView.moveCamera(cameraUpdate)
+        naverMapView.mapView.moveCamera(cameraUpdate)
         
         addressLabel.text = data.address
         addressLabel.font = .systemFont(ofSize: 14)
@@ -250,6 +261,19 @@ final class DetailHouseViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
+        houseImageCollectionView.rx.contentOffset
+            .map { [weak self] contentOffset in
+                guard let self = self else { return 0 }
+                
+                let width = self.houseImageCollectionView.frame.width
+                guard width > 0 else { return 0 }
+                
+                let pageIndex = round(contentOffset.x / width)
+                return Int(pageIndex)
+            }
+            .bind(to: pageControl.rx.currentPage)
+            .disposed(by: disposeBag)
+        
     }
     
     private func setMarker() {
@@ -262,7 +286,18 @@ final class DetailHouseViewController: BaseViewController {
         marker.iconTintColor = UIColor.red
         marker.width = 30
         marker.height = 40
-        marker.mapView = mapView
+        marker.mapView = self.naverMapView.mapView
+        
+    }
+    
+    private func setupPageControl() {
+        
+        guard let data else { return }
+        
+        pageControl.numberOfPages = data.image.count
+        pageControl.currentPage = 0
+        pageControl.currentPageIndicatorTintColor = .blue
+        pageControl.pageIndicatorTintColor = .lightGray
         
     }
     

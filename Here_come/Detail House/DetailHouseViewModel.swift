@@ -26,7 +26,6 @@ final class DetailHouseViewModel {
         
         input.networkTrigger
             .bind(with: self) { owner, value in
-                print(value, "networktrigger")
                 imageArray.onNext(value?.image ?? [])
             }
             .disposed(by: disposeBag)

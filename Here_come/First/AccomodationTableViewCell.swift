@@ -26,8 +26,9 @@ final class AccomodationTableViewCell: BaseTableViewCell {
     let descriptionLabel = UILabel()
     
     lazy var imageCollectionView = UICollectionView(frame: .zero, collectionViewLayout: imageCollectionViewLayout())
-    let updateImage = PublishSubject<[String]>()
+    let pageControl = UIPageControl()
     
+    let updateImage = BehaviorRelay<[String]>(value: [])
     var disposeBag = DisposeBag()
     
     override func prepareForReuse() {
@@ -41,6 +42,7 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         imageCollectionView.isPagingEnabled = true
         imageCollectionView.register(ImageCollectionViewCell.self, forCellWithReuseIdentifier: ImageCollectionViewCell.identifier)
         
+        setupPageControl()
         
     }
     
@@ -55,6 +57,7 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         contentView.addSubview(userName)
         contentView.addSubview(locationLabel)
         contentView.addSubview(imageCollectionView)
+        contentView.addSubview(pageControl)
         contentView.addSubview(likeImage)
         contentView.addSubview(likeButton)
         contentView.addSubview(likeCount)
@@ -90,6 +93,12 @@ final class AccomodationTableViewCell: BaseTableViewCell {
             make.top.equalTo(profileImage.snp.bottom).offset(12)
             make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide)
             make.height.equalTo(UIScreen.main.bounds.width)
+        }
+        
+        pageControl.snp.makeConstraints { make in
+            make.bottom.equalTo(imageCollectionView.snp.bottom).inset(8)
+            make.centerX.equalToSuperview()
+            make.height.equalTo(20)
         }
         
         likeImage.snp.makeConstraints { make in
@@ -168,6 +177,7 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         
         imageCollectionView.showsHorizontalScrollIndicator = false
         
+        pageControl.backgroundColor = .black
     }
     
     func designCell(transition: Posts) {
@@ -187,8 +197,8 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         likeImage.image = UserDefaults.standard.bool(forKey: transition.post_id) ? UIImage(systemName: "heart") : UIImage(systemName: "heart.fill")
         likeImage.tintColor = UserDefaults.standard.bool(forKey: transition.post_id) ? .black : .red
         
+        updateImage.accept(transition.files ?? [])
         bind()
-        updateImage.onNext(transition.files ?? [])
         
     }
     
@@ -202,6 +212,28 @@ final class AccomodationTableViewCell: BaseTableViewCell {
                 
             }
             .disposed(by: disposeBag)
+        
+        imageCollectionView.rx.contentOffset
+            .map { [weak self] contentOffset in
+                guard let self = self else { return 0 }
+                
+                let width = self.imageCollectionView.frame.width
+                guard width > 0 else { return 0 }
+                
+                let pageIndex = round(contentOffset.x / width)
+                return Int(pageIndex)
+            }
+            .bind(to: pageControl.rx.currentPage)
+            .disposed(by: disposeBag)
+        
+    }
+    
+    private func setupPageControl() {
+        
+        pageControl.numberOfPages = updateImage.value.count
+        pageControl.currentPage = 0
+        pageControl.currentPageIndicatorTintColor = .blue
+        pageControl.pageIndicatorTintColor = .lightGray
         
     }
     
