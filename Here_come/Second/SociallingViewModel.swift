@@ -30,9 +30,16 @@ final class SociallingViewModel {
         
         input.networkTrigger
             .bind(with: self) { owner, _ in
-                NetworkManager.shared.readPost(productId: "herecome") { value in
-                    tableViewList.onNext(value)
+                
+                NetworkManager.shared.callRequest(router: Router.readPost(productId: "herecome"), responseType: ReadPostModel.self) { response in
+                    switch response {
+                    case .success(let value):
+                        tableViewList.onNext(value.data)
+                    case .failure(let error):
+                        print(error)
+                    }
                 }
+                
             }
             .disposed(by: disposeBag)
 
@@ -40,12 +47,22 @@ final class SociallingViewModel {
             .bind(with: self) { owner, value in
 
                 if value == "전체" {
-                    NetworkManager.shared.readPost(productId: "herecome") { value in
-                        tableViewList.onNext(value)
+                    NetworkManager.shared.callRequest(router: Router.readPost(productId: "herecome"), responseType: ReadPostModel.self) { response in
+                        switch response {
+                        case .success(let value):
+                            tableViewList.onNext(value.data)
+                        case .failure(let error):
+                            print(error)
+                        }
                     }
                 } else {
-                    NetworkManager.shared.readHashTag(hashTag: value) { value in
-                        tableViewList.onNext(value)
+                    NetworkManager.shared.callRequest(router: Router.readHashTag(hashTag: value), responseType: ReadPostModel.self) { response in
+                        switch response {
+                        case .success(let value):
+                            tableViewList.onNext(value.data)
+                        case .failure(let error):
+                            print(error)
+                        }
                     }
                 }
 

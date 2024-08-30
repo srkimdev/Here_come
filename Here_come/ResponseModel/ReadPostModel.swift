@@ -16,8 +16,9 @@ struct Posts: Decodable {
     let post_id: String
     let product_id: String
     let title: String
-    let content: String
-    let content1: String
+    let content: String // #스테이조천407
+    let content1: String // 내용
+//    let content2: String // 주소
     let createdAt: String
     let creator: User
     let files: [String]?

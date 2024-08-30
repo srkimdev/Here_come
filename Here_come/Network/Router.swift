@@ -11,7 +11,7 @@ import Alamofire
 enum Router: TargetType {
 
     case login(query: LoginQuery)
-    case refresh
+    case accessToken
     case uploadImage
     case uploadPost(query: PostQuery)
     case readPost(productId: String)
@@ -27,7 +27,7 @@ enum Router: TargetType {
         switch self {
         case .login:
             return .post
-        case .refresh:
+        case .accessToken:
             return .get
         case .uploadImage:
             return .post
@@ -134,7 +134,7 @@ enum Router: TargetType {
         switch self {
         case .login:
             return "/users/login"
-        case .refresh:
+        case .accessToken:
             return "/auth/refresh"
         case .uploadImage:
             return "/posts/files"
@@ -159,14 +159,14 @@ enum Router: TargetType {
         }
     }
     
-    var header: [String : String] {
+    var header: [String: String] {
         switch self {
         case .login:
             return [
                 Header.contentType.rawValue: Header.json.rawValue,
                 Header.sesacKey.rawValue: APIKey.Key
             ]
-        case .refresh:
+        case .accessToken:
             return [
                 Header.authorization.rawValue: UserDefaultsManager.shared.token,
                 Header.refresh.rawValue: UserDefaultsManager.shared.refreshToken,

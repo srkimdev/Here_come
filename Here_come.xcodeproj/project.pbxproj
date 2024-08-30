@@ -97,6 +97,8 @@
 		DCF576242C8072E3007B839C /* PaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF576232C8072E2007B839C /* PaymentModel.swift */; };
 		DCF576272C8088CE007B839C /* iamport-ios in Frameworks */ = {isa = PBXBuildFile; productRef = DCF576262C8088CE007B839C /* iamport-ios */; };
 		DCF576292C809130007B839C /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF576282C809130007B839C /* PaymentViewController.swift */; };
+		DCF5762C2C819193007B839C /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = DCF5762B2C819193007B839C /* Toast */; };
+		DCF5762E2C81B857007B839C /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF5762D2C81B857007B839C /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -184,6 +186,7 @@
 		DCF576212C807234007B839C /* PaymentQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentQuery.swift; sourceTree = "<group>"; };
 		DCF576232C8072E2007B839C /* PaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModel.swift; sourceTree = "<group>"; };
 		DCF576282C809130007B839C /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		DCF5762D2C81B857007B839C /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +197,7 @@
 				DC0769842C6C7E4B0025F939 /* SnapKit in Frameworks */,
 				DC0769812C6C7E400025F939 /* Kingfisher in Frameworks */,
 				DC0769892C6C7E6C0025F939 /* RxSwift in Frameworks */,
+				DCF5762C2C819193007B839C /* Toast in Frameworks */,
 				DCB4B24C2C7DCDB000DED0D2 /* NMapsMap in Frameworks */,
 				DC0769872C6C7E6C0025F939 /* RxCocoa in Frameworks */,
 				DC07697E2C6C7E350025F939 /* Alamofire in Frameworks */,
@@ -275,6 +279,7 @@
 				DC07699B2C6C8BA00025F939 /* Router.swift */,
 				DC07699F2C6C99610025F939 /* Header.swift */,
 				DC07699D2C6C8C4D0025F939 /* TargetType.swift */,
+				DCF5762D2C81B857007B839C /* NetworkError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -504,6 +509,7 @@
 				DC0769BF2C6DF6250025F939 /* IQKeyboardManagerSwift */,
 				DCB4B24B2C7DCDB000DED0D2 /* NMapsMap */,
 				DCF576262C8088CE007B839C /* iamport-ios */,
+				DCF5762B2C819193007B839C /* Toast */,
 			);
 			productName = Here_come;
 			productReference = DC0769572C6C77D30025F939 /* Here_come.app */;
@@ -541,6 +547,7 @@
 				DC0769BE2C6DF6250025F939 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				DCB4B24A2C7DCDB000DED0D2 /* XCRemoteSwiftPackageReference "NMapsMap" */,
 				DCF576252C8088CE007B839C /* XCRemoteSwiftPackageReference "iamport-ios" */,
+				DCF5762A2C819193007B839C /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = DC0769582C6C77D30025F939 /* Products */;
 			projectDirPath = "";
@@ -591,6 +598,7 @@
 				DC0769AD2C6CD2B60025F939 /* AccomodationViewController.swift in Sources */,
 				DC15EC9D2C7EFD9D008CA735 /* MapModel.swift in Sources */,
 				DC0769A22C6C9A6E0025F939 /* UserDefaultsManager.swift in Sources */,
+				DCF5762E2C81B857007B839C /* NetworkError.swift in Sources */,
 				DC4150E62C79BF0A0008FAB3 /* CommentPostTableViewCell.swift in Sources */,
 				DC0769B12C6CD3880025F939 /* SellingViewController.swift in Sources */,
 				DC0769DE2C70F6A10025F939 /* WriteViewModel.swift in Sources */,
@@ -936,6 +944,14 @@
 				minimumVersion = 1.4.2;
 			};
 		};
+		DCF5762A2C819193007B839C /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -978,6 +994,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DCF576252C8088CE007B839C /* XCRemoteSwiftPackageReference "iamport-ios" */;
 			productName = "iamport-ios";
+		};
+		DCF5762B2C819193007B839C /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DCF5762A2C819193007B839C /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

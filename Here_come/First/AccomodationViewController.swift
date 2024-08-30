@@ -57,7 +57,7 @@ final class AccomodationViewController: BaseViewController {
     
     func bind() {
         
-        let input = AccomodationViewModel.Input(networkTrigger: networkTrigger, pullToRefresh: pullToRefresh)
+        let input = AccomodationViewModel.Input(networkTrigger: networkTrigger)
         let output = viewModel.transform(input: input)
         
         output.tableViewList

@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import WebKit
 import iamport_ios
+import Toast
 
 final class PaymentViewController: BaseViewController {
     
@@ -22,6 +23,8 @@ final class PaymentViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
     }
     
@@ -54,11 +57,19 @@ final class PaymentViewController: BaseViewController {
             
             NetworkManager.shared.payments(postId: data.postId, userId: (iamportResponse?.imp_uid)!) { value in
                 print(value)
+                self?.poptoast {
+                    self?.view.makeToast("결제가 완료되었습니다.", position: .bottom)
+                }
                 
             }
             
         }
         
+    }
+    
+    func poptoast(completionHandler: @escaping () -> Void) {
+        navigationController?.popViewController(animated: true)
+        completionHandler()
     }
     
 }

@@ -34,10 +34,15 @@ final class DetailViewModel {
         
         currentPost
             .bind(with: self) { owner, value in
-                NetworkManager.shared.readOnePost(postId: value) { value in
-                    getPost.onNext(value)
-                    ImageArray.onNext(value.files ?? [])
-                    updateComment.onNext(value.comments ?? [])
+                NetworkManager.shared.callRequest(router: Router.readOnePost(postId: value), responseType: Posts.self) { response in
+                    switch response {
+                    case .success(let value):
+                        getPost.onNext(value)
+                        ImageArray.onNext(value.files ?? [])
+                        updateComment.onNext(value.comments ?? [])
+                    case .failure(let error):
+                        print("readOnePost", error)
+                    }
                 }
             }
             .disposed(by: disposeBag)
@@ -46,10 +51,24 @@ final class DetailViewModel {
             .withLatestFrom(input.inputText)
             .bind(with: self) { owner, value in
                 
-                NetworkManager.shared.makeComment(postId: owner.currentPost.value, comment: value) { value in
-                    NetworkManager.shared.readOnePost(postId: owner.currentPost.value) { value in
-                        updateComment.onNext(value.comments ?? [])
-                        NotificationCenter.default.post(name: NSNotification.Name("update"), object: nil, userInfo: nil)
+                let query = CommentQuery(content: value)
+                
+                NetworkManager.shared.callRequest(router: Router.makeComment(postId: owner.currentPost.value, query: query), responseType: CommentResponse.self) { response in
+                    switch response {
+                    case .success(_):
+                        
+                        NetworkManager.shared.callRequest(router: Router.readOnePost(postId: owner.currentPost.value), responseType: Posts.self) { response in
+                            switch response {
+                            case .success(let value):
+                                updateComment.onNext(value.comments ?? [])
+                                NotificationCenter.default.post(name: NSNotification.Name("update"), object: nil, userInfo: nil)
+                            case .failure(let error):
+                                print(error)
+                            }
+                        }
+                        
+                    case .failure(let error):
+                        print(error)
                     }
                 }
                 

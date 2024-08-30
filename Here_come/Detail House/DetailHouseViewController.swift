@@ -80,6 +80,7 @@ final class DetailHouseViewController: BaseViewController {
         view.addSubview(belowView)
         belowView.addSubview(likeButton)
         belowView.addSubview(payButton)
+        
     }
     
     override func configureLayout() {
@@ -337,7 +338,7 @@ final class DetailHouseViewController: BaseViewController {
     }
     
     private func HeartButton() -> UIImage? {
-        var config = UIImage.SymbolConfiguration(pointSize: 25)
+        let config = UIImage.SymbolConfiguration(pointSize: 25)
         let image = UIImage(systemName: "heart")?.withConfiguration(config)
         
         return image

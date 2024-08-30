@@ -80,6 +80,7 @@ final class ShowMapViewController: BaseViewController {
                         
                         let vc = targetViewController as! WriteReviewViewController
                         vc.locationLabel.text = self.data?.place_name
+//                        vc.address = self.data.
                         
                         navigationController.popToViewController(targetViewController, animated: true)
                     }

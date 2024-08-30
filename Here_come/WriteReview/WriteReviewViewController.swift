@@ -29,6 +29,7 @@ final class WriteReviewViewController: BaseViewController {
     let viewModel = WriteReviewViewModel()
     let disposeBag = DisposeBag()
     let pickerSubject = BehaviorRelay<[UIImage]>(value: [])
+    let address: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -154,7 +155,6 @@ final class WriteReviewViewController: BaseViewController {
                     let postQuery = PostQuery(title: "", content: "#" + owner.locationLabel.text!, content1: self.contentTextView.text!, product_id: "herecomePost", files: value)
                     
                     NetworkManager.shared.uploadPost(query: postQuery) { value in
-                        print(value)
                         NotificationCenter.default.post(name: NSNotification.Name("updatePost"), object: nil, userInfo: nil)
                         owner.navigationController?.popViewController(animated: true)
                     }

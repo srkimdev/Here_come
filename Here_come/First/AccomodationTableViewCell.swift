@@ -15,13 +15,17 @@ final class AccomodationTableViewCell: BaseTableViewCell {
     let profileImage = UIImageView()
     let userName = UILabel()
     let locationLabel = UILabel()
+    let locationView = UIView()
+    let locationImage = UIImageView()
+    let locationName = UILabel()
+    let locationAddress = UILabel()
     let likeImage = UIImageView()
     let likeButton = UIButton()
     let likeCount = UILabel()
     let commentImage = UIImageView()
     let commentButton = UIButton()
     let commentCount = UILabel()
-    let locationImage = UIImageView()
+//    let locationImage = UIImageView()
     let locationButton = UIButton()
     let descriptionLabel = UILabel()
     
@@ -56,6 +60,10 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         contentView.addSubview(profileImage)
         contentView.addSubview(userName)
         contentView.addSubview(locationLabel)
+        contentView.addSubview(locationView)
+        locationView.addSubview(locationImage)
+        locationView.addSubview(locationName)
+        locationView.addSubview(locationAddress)
         contentView.addSubview(imageCollectionView)
         contentView.addSubview(pageControl)
         contentView.addSubview(likeImage)
@@ -64,7 +72,6 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         contentView.addSubview(commentImage)
         contentView.addSubview(commentButton)
         contentView.addSubview(commentCount)
-        contentView.addSubview(locationImage)
         contentView.addSubview(locationButton)
         contentView.addSubview(locationLabel)
         contentView.addSubview(descriptionLabel)
@@ -99,6 +106,28 @@ final class AccomodationTableViewCell: BaseTableViewCell {
             make.bottom.equalTo(imageCollectionView.snp.bottom).inset(8)
             make.centerX.equalToSuperview()
             make.height.equalTo(20)
+        }
+        
+        locationView.snp.makeConstraints { make in
+            make.top.equalTo(imageCollectionView.snp.bottom).offset(12)
+            make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(16)
+            make.height.equalTo(50)
+        }
+        
+        locationImage.snp.makeConstraints { make in
+            make.verticalEdges.equalTo(locationView).inset(4)
+            make.leading.equalTo(locationView.snp.leading).offset(4)
+            make.width.equalTo(44)
+        }
+        
+        locationName.snp.makeConstraints { make in
+            make.top.equalTo(locationView.snp.top).offset(8)
+            make.leading.equalTo(locationImage.snp.trailing).offset(16)
+        }
+        
+        locationAddress.snp.makeConstraints { make in
+            make.bottom.equalTo(locationView.snp.bottom).inset(8)
+            make.leading.equalTo(locationImage.snp.trailing).offset(16)
         }
         
         likeImage.snp.makeConstraints { make in
@@ -139,14 +168,8 @@ final class AccomodationTableViewCell: BaseTableViewCell {
             make.width.equalTo(10)
         }
         
-        locationImage.snp.makeConstraints { make in
-            make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(16)
-            make.leading.equalTo(commentCount.snp.trailing).offset(12)
-            make.size.equalTo(24)
-        }
-        
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(imageCollectionView.snp.bottom).offset(16)
+            make.top.equalTo(locationView.snp.bottom).offset(16)
             make.horizontalEdges.equalTo(contentView.safeAreaLayoutGuide).inset(16)
             make.bottom.equalTo(likeImage.snp.top).offset(-20)
         }
@@ -164,6 +187,20 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         
         locationLabel.font = .systemFont(ofSize: 13)
         
+        locationView.layer.masksToBounds = true
+        locationView.layer.cornerRadius = 5
+        locationView.layer.borderWidth = 1
+        locationView.layer.borderColor = UIColor.lightGray.cgColor
+        
+        locationImage.image = UIImage(named: "location")
+        
+        locationName.text = "김세중 미술관"
+        locationName.font = .systemFont(ofSize: 14, weight: .bold)
+        
+        locationAddress.text = "서울 용산구 효창동 5-390"
+        locationAddress.font = .systemFont(ofSize: 12)
+        locationAddress.textColor = .lightGray
+        
         descriptionLabel.font = .systemFont(ofSize: 15)
         descriptionLabel.numberOfLines = 0
         
@@ -171,9 +208,6 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         
         commentImage.image = UIImage(systemName: "bubble.right")
         commentImage.tintColor = .black
-        
-        locationImage.image = UIImage(systemName: "map")
-        locationImage.tintColor = .black
         
         imageCollectionView.showsHorizontalScrollIndicator = false
         

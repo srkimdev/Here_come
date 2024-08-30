@@ -29,8 +29,13 @@ final class CommentViewModel {
         
         networkTrigger
             .bind(with: self) { owner, value in
-                NetworkManager.shared.readOnePost(postId: value) { value in
-                    updateTableView.onNext(value.comments ?? [])
+                NetworkManager.shared.callRequest(router: Router.readOnePost(postId: value), responseType: Posts.self) { response in
+                    switch response {
+                    case .success(let value):
+                        updateTableView.onNext(value.comments ?? [])
+                    case .failure(let error):
+                        print(error)
+                    }
                 }
             }
             .disposed(by: disposeBag)
@@ -38,10 +43,25 @@ final class CommentViewModel {
         input.sendButtonTap
             .withLatestFrom(input.inputText)
             .bind(with: self) { owner, value in
-                NetworkManager.shared.makeComment(postId: owner.networkTrigger.value, comment: value) { value in
-                    NetworkManager.shared.readOnePost(postId: owner.networkTrigger.value) { value in
-                        updateTableView.onNext(value.comments ?? [])
-                        NotificationCenter.default.post(name: NSNotification.Name("updatePost"), object: nil, userInfo: nil)
+                
+                let query = CommentQuery(content: value)
+                
+                NetworkManager.shared.callRequest(router: Router.makeComment(postId: owner.networkTrigger.value, query: query), responseType: CommentResponse.self) { response in
+                    switch response {
+                    case .success(_):
+                        
+                        NetworkManager.shared.callRequest(router: Router.readOnePost(postId: owner.networkTrigger.value), responseType: Posts.self) { response in
+                            switch response {
+                            case .success(let value):
+                                updateTableView.onNext(value.comments ?? [])
+                                NotificationCenter.default.post(name: NSNotification.Name("update"), object: nil, userInfo: nil)
+                            case .failure(let error):
+                                print(error)
+                            }
+                        }
+                        
+                    case .failure(let error):
+                        print(error)
                     }
                 }
             }

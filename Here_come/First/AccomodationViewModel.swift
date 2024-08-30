@@ -17,7 +17,6 @@ final class AccomodationViewModel {
     
     struct Input {
         let networkTrigger: Observable<Void>
-        let pullToRefresh: PublishSubject<Void>
     }
     
     struct Output {
@@ -32,27 +31,35 @@ final class AccomodationViewModel {
         
         input.networkTrigger
             .bind(with: self) { owner, _ in
-                NetworkManager.shared.readPost(productId: "herecomePost") { value in
-                    tableViewList.onNext(value)
+                
+                NetworkManager.shared.callRequest(router: .readPost(productId: "herecomePost"), responseType: ReadPostModel.self) { response in
+                    switch response {
+                    case .success(let value):
+                        tableViewList.onNext(value.data)
+                    case .failure(let error):
+                        print("readPost", error)
+                    }
                 }
-            }
-            .disposed(by: disposeBag)
-        
-        input.pullToRefresh
-            .bind(with: self) { owner, _ in
-                NetworkManager.shared.readPost(productId: "herecomePost") { value in
-                    tableViewList.onNext(value)
-                }
+
             }
             .disposed(by: disposeBag)
         
         likeButtonTap
             .bind(with: self) { owner, _ in
-                NetworkManager.shared.likePost(postId: owner.likeButtonTap.value) { value in
-                    currentLike.onNext(value.like_status)
-                    let bool = UserDefaults.standard.bool(forKey: self.likeButtonTap.value)
-                    UserDefaults.standard.set(!bool, forKey: self.likeButtonTap.value)
+                
+                let query = LikeQuery(like_status: UserDefaults.standard.bool(forKey: owner.likeButtonTap.value))
+                
+                NetworkManager.shared.callRequest(router: Router.likePost(postId: owner.likeButtonTap.value, query: query), responseType: LikeModel.self) { response in
+                    switch response {
+                    case .success(let value):
+                        currentLike.onNext(value.like_status)
+                        let bool = UserDefaults.standard.bool(forKey: self.likeButtonTap.value)
+                        UserDefaults.standard.set(!bool, forKey: self.likeButtonTap.value)
+                    case .failure(let error):
+                        print(error)
+                    }
                 }
+
             }
             .disposed(by: disposeBag)
         

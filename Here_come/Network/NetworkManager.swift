@@ -15,6 +15,27 @@ final class NetworkManager {
     
     private init() { }
     
+    func callRequest<T: Decodable>(router: Router, responseType: T.Type, completionHandler: @escaping (Result<T, APIError>) -> Void) {
+        
+        do {
+            let request = try router.asURLRequest()
+            
+            AF.request(request)
+            .validate(statusCode: 200..<300)
+            .responseDecodable(of: responseType) { response in
+                switch response.result {
+                case .success(let value):
+                    completionHandler(.success(value))
+                case .failure(let error):
+                    print("callRequest ->", error)
+                }
+            }
+        } catch {
+            print(error)
+        }
+        
+    }
+    
     func accessLogin(id: String, password: String, completionHandler: @escaping (LoginModel) -> Void)  {
         
         do {
@@ -94,74 +115,6 @@ final class NetworkManager {
         
     }
     
-    func readPost(productId: String, completionHandler: @escaping ([Posts]) -> Void) {
-        
-        do {
-            let request = try Router.readPost(productId: productId).asURLRequest()
-            
-            AF.request(request)
-                .validate(statusCode: 200..<300)
-                .responseDecodable(of: ReadPostModel.self) { response in
-                    switch response.result {
-                    case .success(let value):
-                        dump(value.data)
-                        completionHandler(value.data)
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
-            
-        } catch {
-            print(error)
-        }
-        
-    }
-    
-    func readOnePost(postId: String, completionHandler: @escaping (Posts) -> Void) {
-        
-        do {
-            let request = try Router.readOnePost(postId: postId).asURLRequest()
-            
-            AF.request(request)
-                .validate(statusCode: 200..<300)
-                .responseDecodable(of: Posts.self) { response in
-                    switch response.result {
-                    case .success(let value):
-//                        dump(value)
-                        completionHandler(value)
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
-            
-        } catch {
-            print(error)
-        }
-        
-    }
-    
-    func readHashTag(hashTag: String, completionHandler: @escaping ([Posts]) -> Void) {
-        
-        do {
-            let request = try Router.readHashTag(hashTag: hashTag).asURLRequest()
-            
-            AF.request(request)
-                .validate(statusCode: 200..<300)
-                .responseDecodable(of: ReadPostModel.self) { response in
-                    switch response.result {
-                    case .success(let value):
-                        completionHandler(value.data)
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
-            
-        } catch {
-            print(error)
-        }
-        
-    }
-    
     func deletePost(postId: String) {
         
         do {
@@ -175,55 +128,6 @@ final class NetworkManager {
                         dump(value.data)
                     case .failure(let error):
                         print(error)
-                    }
-                }
-            
-        } catch {
-            print(error)
-        }
-        
-    }
-    
-    func likePost(postId: String, completionHandler: @escaping (LikeModel) -> Void) {
-        
-        do {
-            let query = LikeQuery(like_status: UserDefaults.standard.bool(forKey: postId))
-            let request = try Router.likePost(postId: postId, query: query).asURLRequest()
-            
-            AF.request(request)
-                .validate(statusCode: 200..<300)
-                .responseDecodable(of: LikeModel.self) { response in
-                    switch response.result {
-                    case .success(let value):
-                        completionHandler(value)
-                    case .failure(let error):
-                        print(error)
-                        print("좋아요 실패")
-                    }
-                }
-            
-        } catch {
-            print(error)
-        }
-        
-    }
-    
-    func makeComment(postId: String, comment: String, completionHandler: @escaping (CommentResponse) -> Void) {
-        
-        do {
-            let query = CommentQuery(content: comment)
-            let request = try Router.makeComment(postId: postId, query: query).asURLRequest()
-            
-            AF.request(request)
-                .validate(statusCode: 200..<300)
-                .responseDecodable(of: CommentResponse.self) { response in
-                    switch response.result {
-                    case .success(let value):
-                        completionHandler(value)
-                        print("성공")
-                    case .failure(let error):
-                        print(error)
-                        print("댓글 실패")
                     }
                 }
             
