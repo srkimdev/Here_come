@@ -7,14 +7,8 @@
 
 import UIKit
 
-extension UIButton.Configuration {
+//extension UIButton.Configuration {
     
-    static func HeartButton() -> UIButton.Configuration {
-        var config = UIButton.Configuration.plain()
-        config.image = UIImage(systemName: "heart")
-        config.buttonSize = .large
-        config.image?.withTintColor(.black)
-        return config
-    }
     
-}
+    
+//}

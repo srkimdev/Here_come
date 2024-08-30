@@ -7,13 +7,16 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
+import iamport_ios
 
 final class DetailHouseViewModel {
     
     let disposeBag = DisposeBag()
+    let idInfo = BehaviorRelay<[String]>(value: [])
     
     struct Input {
-        let networkTrigger: BehaviorSubject<House?>
+        let networkTrigger: BehaviorRelay<House?>
     }
     
     struct Output {

@@ -99,8 +99,6 @@ final class NetworkManager {
         do {
             let request = try Router.readPost(productId: productId).asURLRequest()
             
-            print("pass?")
-            
             AF.request(request)
                 .validate(statusCode: 200..<300)
                 .responseDecodable(of: ReadPostModel.self) { response in
@@ -226,6 +224,31 @@ final class NetworkManager {
                     case .failure(let error):
                         print(error)
                         print("댓글 실패")
+                    }
+                }
+            
+        } catch {
+            print(error)
+        }
+        
+    }
+    
+    func payments(postId: String, userId: String, completionHandler: @escaping (PaymentModel) -> Void) {
+        
+        do {
+            let query = PaymentQuery(imp_uid: userId, post_id: postId)
+            let request = try Router.payments(query: query).asURLRequest()
+            
+            AF.request(request)
+                .validate(statusCode: 200..<300)
+                .responseDecodable(of: PaymentModel.self) { response in
+                    switch response.result {
+                    case .success(let value):
+                        completionHandler(value)
+                        print("성공")
+                    case .failure(let error):
+                        print(error)
+                        print("결제 실패")
                     }
                 }
             

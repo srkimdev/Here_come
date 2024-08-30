@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DC051A252C7F1D0900F750A5 /* ShowMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC051A242C7F1D0900F750A5 /* ShowMapViewController.swift */; };
+		DC051A272C7F386400F750A5 /* ShowLittleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC051A262C7F386400F750A5 /* ShowLittleMapViewController.swift */; };
 		DC07695B2C6C77D30025F939 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC07695A2C6C77D30025F939 /* AppDelegate.swift */; };
 		DC07695D2C6C77D30025F939 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC07695C2C6C77D30025F939 /* SceneDelegate.swift */; };
 		DC07695F2C6C77D30025F939 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC07695E2C6C77D30025F939 /* ViewController.swift */; };
@@ -47,8 +48,6 @@
 		DC0769C62C6E13E40025F939 /* AccomodationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769C52C6E13E40025F939 /* AccomodationViewModel.swift */; };
 		DC0769C82C6E5E740025F939 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769C72C6E5E740025F939 /* ImageCollectionViewCell.swift */; };
 		DC0769CA2C6F2E3D0025F939 /* RecentTextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769C92C6F2E3D0025F939 /* RecentTextCollectionViewCell.swift */; };
-		DC0769CC2C6F43600025F939 /* RecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769CB2C6F43600025F939 /* RecommendCollectionViewCell.swift */; };
-		DC0769CF2C6F4F020025F939 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769CE2C6F4F020025F939 /* SearchViewController.swift */; };
 		DC0769D12C6F51470025F939 /* SociallingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769D02C6F51470025F939 /* SociallingTableViewCell.swift */; };
 		DC0769D52C6F72500025F939 /* SociallingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769D42C6F72500025F939 /* SociallingViewModel.swift */; };
 		DC0769D72C6F73140025F939 /* Party.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769D62C6F73140025F939 /* Party.swift */; };
@@ -94,10 +93,15 @@
 		DCEE48372C7C5E6D00D745EB /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE48362C7C5E6D00D745EB /* UIColor+Extension.swift */; };
 		DCEE483A2C7C7FB400D745EB /* DetailHouseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE48392C7C7FB400D745EB /* DetailHouseViewController.swift */; };
 		DCEE483C2C7CB09A00D745EB /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE483B2C7CB09A00D745EB /* UIButton+Extension.swift */; };
+		DCF576222C807234007B839C /* PaymentQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF576212C807234007B839C /* PaymentQuery.swift */; };
+		DCF576242C8072E3007B839C /* PaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF576232C8072E2007B839C /* PaymentModel.swift */; };
+		DCF576272C8088CE007B839C /* iamport-ios in Frameworks */ = {isa = PBXBuildFile; productRef = DCF576262C8088CE007B839C /* iamport-ios */; };
+		DCF576292C809130007B839C /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF576282C809130007B839C /* PaymentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DC051A242C7F1D0900F750A5 /* ShowMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMapViewController.swift; sourceTree = "<group>"; };
+		DC051A262C7F386400F750A5 /* ShowLittleMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowLittleMapViewController.swift; sourceTree = "<group>"; };
 		DC0769572C6C77D30025F939 /* Here_come.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Here_come.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC07695A2C6C77D30025F939 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DC07695C2C6C77D30025F939 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,8 +137,6 @@
 		DC0769C52C6E13E40025F939 /* AccomodationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccomodationViewModel.swift; sourceTree = "<group>"; };
 		DC0769C72C6E5E740025F939 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC0769C92C6F2E3D0025F939 /* RecentTextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTextCollectionViewCell.swift; sourceTree = "<group>"; };
-		DC0769CB2C6F43600025F939 /* RecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCollectionViewCell.swift; sourceTree = "<group>"; };
-		DC0769CE2C6F4F020025F939 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		DC0769D02C6F51470025F939 /* SociallingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SociallingTableViewCell.swift; sourceTree = "<group>"; };
 		DC0769D42C6F72500025F939 /* SociallingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SociallingViewModel.swift; sourceTree = "<group>"; };
 		DC0769D62C6F73140025F939 /* Party.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Party.swift; sourceTree = "<group>"; };
@@ -179,6 +181,9 @@
 		DCEE48362C7C5E6D00D745EB /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		DCEE48392C7C7FB400D745EB /* DetailHouseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHouseViewController.swift; sourceTree = "<group>"; };
 		DCEE483B2C7CB09A00D745EB /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		DCF576212C807234007B839C /* PaymentQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentQuery.swift; sourceTree = "<group>"; };
+		DCF576232C8072E2007B839C /* PaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModel.swift; sourceTree = "<group>"; };
+		DCF576282C809130007B839C /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +198,7 @@
 				DC0769872C6C7E6C0025F939 /* RxCocoa in Frameworks */,
 				DC07697E2C6C7E350025F939 /* Alamofire in Frameworks */,
 				DC0769C02C6DF6250025F939 /* IQKeyboardManagerSwift in Frameworks */,
+				DCF576272C8088CE007B839C /* iamport-ios in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,7 +246,6 @@
 				DC0769A92C6CD23A0025F939 /* Second */,
 				DC0769AA2C6CD2400025F939 /* Third */,
 				DC0769AB2C6CD2480025F939 /* Fourth */,
-				DC0769CD2C6F4EE50025F939 /* Search */,
 				DC0769DA2C70AE830025F939 /* WriteBoard */,
 				DC4150D52C786BD90008FAB3 /* WriteReview */,
 				DC15FCE92C7368CD0049FEB5 /* Category */,
@@ -328,6 +333,7 @@
 				DC15FCDD2C731E3C0049FEB5 /* PostQuery.swift */,
 				DC4150CC2C771D1C0008FAB3 /* CommentQuery.swift */,
 				DC4150E92C79FE810008FAB3 /* LikeQuery.swift */,
+				DCF576212C807234007B839C /* PaymentQuery.swift */,
 			);
 			path = RequestModel;
 			sourceTree = "<group>";
@@ -342,6 +348,7 @@
 				DC4150CE2C775C360008FAB3 /* CommentModel.swift */,
 				DC4150E72C79CF220008FAB3 /* LikeModel.swift */,
 				DC15EC9C2C7EFD9D008CA735 /* MapModel.swift */,
+				DCF576232C8072E2007B839C /* PaymentModel.swift */,
 			);
 			path = ResponseModel;
 			sourceTree = "<group>";
@@ -361,6 +368,7 @@
 				DC0769C12C6E10840025F939 /* AccomodationTableViewCell.swift */,
 				DC0769C72C6E5E740025F939 /* ImageCollectionViewCell.swift */,
 				DC0769C52C6E13E40025F939 /* AccomodationViewModel.swift */,
+				DC051A262C7F386400F750A5 /* ShowLittleMapViewController.swift */,
 			);
 			path = First;
 			sourceTree = "<group>";
@@ -395,15 +403,6 @@
 				DC0769E12C71C61B0025F939 /* SettingTableViewCell.swift */,
 			);
 			path = Fourth;
-			sourceTree = "<group>";
-		};
-		DC0769CD2C6F4EE50025F939 /* Search */ = {
-			isa = PBXGroup;
-			children = (
-				DC0769CE2C6F4F020025F939 /* SearchViewController.swift */,
-				DC0769CB2C6F43600025F939 /* RecommendCollectionViewCell.swift */,
-			);
-			path = Search;
 			sourceTree = "<group>";
 		};
 		DC0769DA2C70AE830025F939 /* WriteBoard */ = {
@@ -475,6 +474,7 @@
 				DCEE48392C7C7FB400D745EB /* DetailHouseViewController.swift */,
 				DCB4B2412C7DB17700DED0D2 /* DetailHouseViewModel.swift */,
 				DCB4B2432C7DB5A900DED0D2 /* HouseImageCollectionViewCell.swift */,
+				DCF576282C809130007B839C /* PaymentViewController.swift */,
 			);
 			path = "Detail House";
 			sourceTree = "<group>";
@@ -503,6 +503,7 @@
 				DC0769882C6C7E6C0025F939 /* RxSwift */,
 				DC0769BF2C6DF6250025F939 /* IQKeyboardManagerSwift */,
 				DCB4B24B2C7DCDB000DED0D2 /* NMapsMap */,
+				DCF576262C8088CE007B839C /* iamport-ios */,
 			);
 			productName = Here_come;
 			productReference = DC0769572C6C77D30025F939 /* Here_come.app */;
@@ -539,6 +540,7 @@
 				DC0769852C6C7E6C0025F939 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				DC0769BE2C6DF6250025F939 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				DCB4B24A2C7DCDB000DED0D2 /* XCRemoteSwiftPackageReference "NMapsMap" */,
+				DCF576252C8088CE007B839C /* XCRemoteSwiftPackageReference "iamport-ios" */,
 			);
 			productRefGroup = DC0769582C6C77D30025F939 /* Products */;
 			projectDirPath = "";
@@ -569,6 +571,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC07697B2C6C7CAD0025F939 /* LoginViewController.swift in Sources */,
+				DCF576292C809130007B839C /* PaymentViewController.swift in Sources */,
 				DC07699A2C6C8A580025F939 /* LoginModel.swift in Sources */,
 				DC0769B72C6CD7720025F939 /* Accomodations.swift in Sources */,
 				DCEE48352C7C5A5700D745EB /* StarStackView.swift in Sources */,
@@ -594,9 +597,10 @@
 				DC0769AF2C6CD3460025F939 /* SociallingViewController.swift in Sources */,
 				DC0769CA2C6F2E3D0025F939 /* RecentTextCollectionViewCell.swift in Sources */,
 				DC07699E2C6C8C4D0025F939 /* TargetType.swift in Sources */,
+				DC051A272C7F386400F750A5 /* ShowLittleMapViewController.swift in Sources */,
 				DC1143A72C75D96E00CEB325 /* DetailViewController.swift in Sources */,
 				DC0769DC2C70AE940025F939 /* WriteViewController.swift in Sources */,
-				DC0769CF2C6F4F020025F939 /* SearchViewController.swift in Sources */,
+				DCF576222C807234007B839C /* PaymentQuery.swift in Sources */,
 				DC0769E22C71C61B0025F939 /* SettingTableViewCell.swift in Sources */,
 				DC4150F12C7B424C0008FAB3 /* SellingViewModel.swift in Sources */,
 				DC0769762C6C79280025F939 /* BaseTableViewCell.swift in Sources */,
@@ -632,9 +636,9 @@
 				DC4150EC2C7B041B0008FAB3 /* ShowMapListViewController.swift in Sources */,
 				DC15FCDE2C731E3C0049FEB5 /* PostQuery.swift in Sources */,
 				DC15EC9B2C7EF800008CA735 /* ShowMapListViewModel.swift in Sources */,
-				DC0769CC2C6F43600025F939 /* RecommendCollectionViewCell.swift in Sources */,
 				DC0769782C6C79AC0025F939 /* BaseCollectionViewCell.swift in Sources */,
 				DCB4B2442C7DB5A900DED0D2 /* HouseImageCollectionViewCell.swift in Sources */,
+				DCF576242C8072E3007B839C /* PaymentModel.swift in Sources */,
 				DC15EC9F2C7F0E14008CA735 /* LocationTableViewCell.swift in Sources */,
 				DC0769D72C6F73140025F939 /* Party.swift in Sources */,
 				DC2E07412C763B1D007589E9 /* CommentTableViewCell.swift in Sources */,
@@ -924,6 +928,14 @@
 				minimumVersion = 3.17.0;
 			};
 		};
+		DCF576252C8088CE007B839C /* XCRemoteSwiftPackageReference "iamport-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/iamport/iamport-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -961,6 +973,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DCB4B24A2C7DCDB000DED0D2 /* XCRemoteSwiftPackageReference "NMapsMap" */;
 			productName = NMapsMap;
+		};
+		DCF576262C8088CE007B839C /* iamport-ios */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DCF576252C8088CE007B839C /* XCRemoteSwiftPackageReference "iamport-ios" */;
+			productName = "iamport-ios";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

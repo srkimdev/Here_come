@@ -151,7 +151,7 @@ final class SellingViewController: BaseViewController {
                 
                 let vc = DetailHouseViewController()
                 vc.data = value
-                vc.networkTrigger.onNext(value)
+                vc.networkTrigger.accept(value)
                 
                 owner.transitionScreen(vc: vc, style: .push)
                 

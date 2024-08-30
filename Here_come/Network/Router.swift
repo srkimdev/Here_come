@@ -21,6 +21,7 @@ enum Router: TargetType {
     case deletePost(postId: String)
     case likePost(postId: String, query: LikeQuery)
     case makeComment(postId: String, query: CommentQuery)
+    case payments(query: PaymentQuery)
     
     var method: Alamofire.HTTPMethod {
         switch self {
@@ -45,6 +46,8 @@ enum Router: TargetType {
         case .likePost:
             return .post
         case .makeComment:
+            return .post
+        case .payments:
             return .post
         }
     }
@@ -108,6 +111,16 @@ enum Router: TargetType {
                 return nil
             }
             
+        case .payments(let query):
+            let encoder = JSONEncoder()
+            
+            do {
+                let data = try encoder.encode(query)
+                return data
+            } catch {
+                return nil
+            }
+            
         default:
             return nil
         }
@@ -139,6 +152,8 @@ enum Router: TargetType {
             return "/posts/\(postId)/like"
         case .makeComment(let postId, _):
             return "/posts/\(postId)/comments"
+        case .payments:
+            return "/payments/validation"
         default:
             return ""
         }
@@ -163,7 +178,7 @@ enum Router: TargetType {
                 Header.contentType.rawValue: Header.multipart.rawValue,
                 Header.sesacKey.rawValue: APIKey.Key
             ]
-        case .uploadPost, .likePost, .makeComment:
+        case .uploadPost, .likePost, .makeComment, .payments:
             return [
                 Header.authorization.rawValue: UserDefaultsManager.shared.token,
                 Header.contentType.rawValue: Header.json.rawValue,

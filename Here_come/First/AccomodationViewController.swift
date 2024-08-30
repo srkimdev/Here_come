@@ -19,7 +19,7 @@ final class AccomodationViewController: BaseViewController {
     let pullToRefresh = PublishSubject<Void>()
     
     let postTableView = UITableView()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -98,7 +98,7 @@ final class AccomodationViewController: BaseViewController {
             .disposed(by: disposeBag)
         
     }
-    
+
     @objc func writeButtonTapped() {
         let vc = WriteReviewViewController()
         transitionScreen(vc: vc, style: .push)

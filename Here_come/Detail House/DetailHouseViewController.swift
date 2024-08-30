@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import MapKit
 import RxSwift
+import RxCocoa
 import NMapsMap
 
 final class DetailHouseViewController: BaseViewController {
@@ -37,10 +38,12 @@ final class DetailHouseViewController: BaseViewController {
     let naverMapView = NMFNaverMapView()
     let addressLabel = UILabel()
     
+    let belowView = UIView()
     let likeButton = UIButton()
+    let payButton = UIButton()
     
     var data: House?
-    let networkTrigger = BehaviorSubject<House?>(value: nil)
+    let networkTrigger = BehaviorRelay<House?>(value: nil)
     let viewModel = DetailHouseViewModel()
     let disposeBag = DisposeBag()
     
@@ -62,7 +65,6 @@ final class DetailHouseViewController: BaseViewController {
         contentView.addSubview(pageControl)
         contentView.addSubview(houseName)
         contentView.addSubview(locationLabel)
-        contentView.addSubview(likeButton)
         contentView.addSubview(seperateLine)
         contentView.addSubview(infoLabel)
         contentView.addSubview(dateInfoLabel)
@@ -75,7 +77,9 @@ final class DetailHouseViewController: BaseViewController {
         contentView.addSubview(locationInfoLabel)
         contentView.addSubview(naverMapView)
         contentView.addSubview(addressLabel)
-        
+        view.addSubview(belowView)
+        belowView.addSubview(likeButton)
+        belowView.addSubview(payButton)
     }
     
     override func configureLayout() {
@@ -100,16 +104,10 @@ final class DetailHouseViewController: BaseViewController {
             make.height.equalTo(20)
         }
         
-        likeButton.snp.makeConstraints { make in
-            make.top.equalTo(houseImageCollectionView.snp.bottom).offset(14)
-            make.trailing.equalTo(contentView).inset(16)
-            make.size.equalTo(36)
-        }
-        
         houseName.snp.makeConstraints { make in
             make.top.equalTo(houseImageCollectionView.snp.bottom).offset(20)
             make.leading.equalTo(contentView.snp.leading).offset(16)
-            make.trailing.equalTo(likeButton.snp.leading).offset(-16)
+            make.trailing.equalTo(contentView).offset(-16)
         }
         
         locationLabel.snp.makeConstraints { make in
@@ -187,7 +185,25 @@ final class DetailHouseViewController: BaseViewController {
         addressLabel.snp.makeConstraints { make in
             make.top.equalTo(naverMapView.snp.bottom).offset(16)
             make.leading.equalTo(contentView).offset(16)
-            make.bottom.equalToSuperview().offset(-20)
+            make.bottom.equalToSuperview().offset(-70)
+        }
+        
+        belowView.snp.makeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(60)
+        }
+        
+        likeButton.snp.makeConstraints { make in
+            make.leading.equalTo(belowView.snp.leading).offset(16)
+            make.centerY.equalTo(belowView)
+            make.size.equalTo(40)
+        }
+        
+        payButton.snp.makeConstraints { make in
+            make.verticalEdges.equalTo(belowView).inset(10)
+            make.trailing.equalTo(belowView).inset(16)
+            make.width.equalTo(300)
         }
         
     }
@@ -207,8 +223,6 @@ final class DetailHouseViewController: BaseViewController {
         
         locationLabel.text = data.location
         locationLabel.font = .systemFont(ofSize: 14)
-        
-        likeButton.configuration = .HeartButton()
         
         infoLabel.text = "정보 입력"
         infoLabel.font = .systemFont(ofSize: 17, weight: .bold)
@@ -245,9 +259,21 @@ final class DetailHouseViewController: BaseViewController {
         addressLabel.text = data.address
         addressLabel.font = .systemFont(ofSize: 14)
         
+        belowView.backgroundColor = .white
+        
+        likeButton.setImage(HeartButton(), for: .normal)
+        likeButton.contentMode = .scaleToFill
+        
+        payButton.setTitle("결제하기", for: .normal)
+        payButton.layer.masksToBounds = true
+        payButton.layer.cornerRadius = 20
+        payButton.backgroundColor = UIColor.init(hex: "#3A9AD9")
+        
     }
     
     func bind() {
+        
+        guard let data else { return }
         
         let input = DetailHouseViewModel.Input(networkTrigger: networkTrigger)
         let output = viewModel.transform(input: input)
@@ -258,6 +284,15 @@ final class DetailHouseViewController: BaseViewController {
                 
                 cell.designCell(transition: element)
                 
+            }
+            .disposed(by: disposeBag)
+        
+        payButton.rx.tap
+            .bind(with: self) { owner, _ in
+                let vc = PaymentViewController()
+                vc.data = data
+                
+                owner.transitionScreen(vc: vc, style: .push)
             }
             .disposed(by: disposeBag)
         
@@ -299,6 +334,13 @@ final class DetailHouseViewController: BaseViewController {
         pageControl.currentPageIndicatorTintColor = .cyan
         pageControl.pageIndicatorTintColor = .lightGray
         
+    }
+    
+    private func HeartButton() -> UIImage? {
+        var config = UIImage.SymbolConfiguration(pointSize: 25)
+        let image = UIImage(systemName: "heart")?.withConfiguration(config)
+        
+        return image
     }
     
 }
