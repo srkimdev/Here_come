@@ -7,8 +7,15 @@
 
 import UIKit
 
-//extension UIButton.Configuration {
+extension UIButton.Configuration {
     
-    
-    
-//}
+    static func filterButton() -> UIButton.Configuration {
+        var configuration = UIButton.Configuration.plain()
+        configuration.title = "날짜순"
+        configuration.baseForegroundColor = .black
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
+        configuration.baseBackgroundColor = .white
+        return configuration
+    }
+
+}

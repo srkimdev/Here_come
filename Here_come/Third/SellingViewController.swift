@@ -17,6 +17,7 @@ final class SellingViewController: BaseViewController {
     let deleteButton = UIButton()
     
     let totalLabel = UILabel()
+    
     let dateButton = UIButton()
     
     lazy var recentTextCollectionView = UICollectionView(frame: .zero, collectionViewLayout: recentTextCollectionViewLayout())
@@ -78,11 +79,11 @@ final class SellingViewController: BaseViewController {
         dateButton.snp.makeConstraints { make in
             make.top.equalTo(recentTextCollectionView.snp.bottom).offset(20)
             make.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-            make.height.equalTo(20)
+            make.height.equalTo(28)
         }
         
         houseCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(totalLabel.snp.bottom).offset(16)
+            make.top.equalTo(dateButton.snp.bottom).offset(16)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         
@@ -104,10 +105,10 @@ final class SellingViewController: BaseViewController {
         totalLabel.text = "총 234개"
         totalLabel.font = .systemFont(ofSize: 15)
         
-        dateButton.setTitle("날짜", for: .normal)
-        dateButton.setTitleColor(.black, for: .normal)
-        dateButton.layer.cornerRadius = 10
+        dateButton.configuration = .filterButton()
+        dateButton.layer.cornerRadius = 14
         dateButton.layer.masksToBounds = true
+        dateButton.layer.borderColor = UIColor.lightGray.cgColor
         dateButton.layer.borderWidth = 1
         
         recentTextCollectionView.showsHorizontalScrollIndicator = false
