@@ -26,8 +26,10 @@ final class NetworkManager {
                 switch response.result {
                 case .success(let value):
                     completionHandler(.success(value))
-                case .failure(let error):
-                    print("callRequest ->", error)
+                case .failure:
+                    let statusCode: Int = response.response?.statusCode ?? 0
+                    let error = APIError.statusCodeCheck(statusCode: statusCode)
+                    print("callRequest ->", error.description)
                 }
             }
             
@@ -52,7 +54,9 @@ final class NetworkManager {
                     completionHandler(success)
                 
                 case .failure:
-                    print("로그인 실패")
+                    let statusCode: Int = response.response?.statusCode ?? 0
+                    let error = APIError.statusCodeCheck(statusCode: statusCode)
+                    print("callRequest ->", error.description)
                 }
             }
             
@@ -75,7 +79,9 @@ final class NetworkManager {
                     completionHandler(.success(success))
                 
                 case .failure:
-                    print("accessToken refresh failed")
+                    let statusCode: Int = response.response?.statusCode ?? 0
+                    let error = APIError.statusCodeCheck(statusCode: statusCode)
+                    print("callRequest ->", error.description)
                 }
             }
             
@@ -104,9 +110,10 @@ final class NetworkManager {
                 case .success(let value):
                     completionHandler(value.files ?? [])
                     
-                case .failure(let error):
-                    print(error)
-                    print("fail uploadImage function")
+                case .failure:
+                    let statusCode: Int = response.response?.statusCode ?? 0
+                    let error = APIError.statusCodeCheck(statusCode: statusCode)
+                    print("callRequest ->", error.description)
                 }
             }
             
@@ -127,8 +134,10 @@ final class NetworkManager {
                     switch response.result {
                     case .success(let value):
                         completionHandler(value)
-                    case .failure(let error):
-                        print("upload 실패 \(error)")
+                    case .failure:
+                        let statusCode: Int = response.response?.statusCode ?? 0
+                        let error = APIError.statusCodeCheck(statusCode: statusCode)
+                        print("callRequest ->", error.description)
                     }
                 }
             
@@ -149,8 +158,10 @@ final class NetworkManager {
                     switch response.result {
                     case .success(let value):
                         dump(value.data)
-                    case .failure(let error):
-                        print(error)
+                    case .failure:
+                        let statusCode: Int = response.response?.statusCode ?? 0
+                        let error = APIError.statusCodeCheck(statusCode: statusCode)
+                        print("callRequest ->", error.description)
                     }
                 }
             
@@ -173,9 +184,10 @@ final class NetworkManager {
                     case .success(let value):
                         completionHandler(value)
                         print("성공")
-                    case .failure(let error):
-                        print(error)
-                        print("결제 실패")
+                    case .failure:
+                        let statusCode: Int = response.response?.statusCode ?? 0
+                        let error = APIError.statusCodeCheck(statusCode: statusCode)
+                        print("callRequest ->", error.description)
                     }
                 }
             
