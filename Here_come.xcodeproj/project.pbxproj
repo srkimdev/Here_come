@@ -99,6 +99,7 @@
 		DCF576292C809130007B839C /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF576282C809130007B839C /* PaymentViewController.swift */; };
 		DCF5762C2C819193007B839C /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = DCF5762B2C819193007B839C /* Toast */; };
 		DCF5762E2C81B857007B839C /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF5762D2C81B857007B839C /* NetworkError.swift */; };
+		DCF576302C82DD4A007B839C /* TokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF5762F2C82DD4A007B839C /* TokenModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -187,6 +188,7 @@
 		DCF576232C8072E2007B839C /* PaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModel.swift; sourceTree = "<group>"; };
 		DCF576282C809130007B839C /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		DCF5762D2C81B857007B839C /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		DCF5762F2C82DD4A007B839C /* TokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,6 +356,7 @@
 				DC4150E72C79CF220008FAB3 /* LikeModel.swift */,
 				DC15EC9C2C7EFD9D008CA735 /* MapModel.swift */,
 				DCF576232C8072E2007B839C /* PaymentModel.swift */,
+				DCF5762F2C82DD4A007B839C /* TokenModel.swift */,
 			);
 			path = ResponseModel;
 			sourceTree = "<group>";
@@ -590,6 +593,7 @@
 				DC0769942C6C84280025F939 /* NetworkManager.swift in Sources */,
 				DC0769C62C6E13E40025F939 /* AccomodationViewModel.swift in Sources */,
 				DC4150E22C79B20A0008FAB3 /* CommentViewController.swift in Sources */,
+				DCF576302C82DD4A007B839C /* TokenModel.swift in Sources */,
 				DC0769A72C6CD1FC0025F939 /* TabBarViewController.swift in Sources */,
 				DCEE483C2C7CB09A00D745EB /* UIButton+Extension.swift in Sources */,
 				DC0769742C6C78D10025F939 /* BaseViewController.swift in Sources */,

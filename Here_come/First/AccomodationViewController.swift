@@ -25,7 +25,7 @@ final class AccomodationViewController: BaseViewController {
         
         postTableView.register(AccomodationTableViewCell.self, forCellReuseIdentifier: AccomodationTableViewCell.identifier)
         
-        NetworkManager.shared.deletePost(postId: "66cae6a35056517017a5495f")
+//        NetworkManager.shared.deletePost(postId: "66cae6a35056517017a5495f")
         
         bind()
     }
@@ -57,7 +57,9 @@ final class AccomodationViewController: BaseViewController {
     
     func bind() {
         
-        let input = AccomodationViewModel.Input(networkTrigger: networkTrigger)
+        let likeButtonTap = BehaviorRelay<String>(value: "")
+        
+        let input = AccomodationViewModel.Input(networkTrigger: networkTrigger, likeButtonTap: likeButtonTap)
         let output = viewModel.transform(input: input)
         
         output.tableViewList
@@ -84,18 +86,18 @@ final class AccomodationViewController: BaseViewController {
                 
                 cell.likeButton.rx.tap
                     .bind(with: self) { owner, _ in
-                        owner.viewModel.likeButtonTap.accept(element.post_id)
+                        likeButtonTap.accept(element.post_id)
                     }
                     .disposed(by: cell.disposeBag)
                 
             }
             .disposed(by: disposeBag)
         
-        output.updateLike
-            .bind(with: self) { owner, _ in
-                owner.networkTrigger.onNext(())
-            }
-            .disposed(by: disposeBag)
+//        output.updateLike
+//            .bind(with: self) { owner, _ in
+//                owner.networkTrigger.onNext(())
+//            }
+//            .disposed(by: disposeBag)
         
     }
 

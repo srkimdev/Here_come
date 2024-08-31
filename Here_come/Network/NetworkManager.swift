@@ -20,7 +20,7 @@ final class NetworkManager {
         do {
             let request = try router.asURLRequest()
             
-            AF.request(request)
+            AF.request(request, interceptor: AuthInterceptor())
             .validate(statusCode: 200..<300)
             .responseDecodable(of: responseType) { response in
                 switch response.result {
@@ -30,6 +30,7 @@ final class NetworkManager {
                     print("callRequest ->", error)
                 }
             }
+            
         } catch {
             print(error)
         }
@@ -52,6 +53,29 @@ final class NetworkManager {
                 
                 case .failure:
                     print("로그인 실패")
+                }
+            }
+            
+        } catch {
+            print(error)
+        }
+        
+    }
+    
+    func accessToken(completionHandler: @escaping (Result<TokenModel, APIError>) -> Void) {
+        
+        do {
+            let request = try Router.accessToken.asURLRequest()
+            
+            AF.request(request).responseDecodable(of: TokenModel.self) { response in
+                switch response.result {
+                case .success(let success):
+                    
+                    print("accessToken refresh")
+                    completionHandler(.success(success))
+                
+                case .failure:
+                    print("accessToken refresh failed")
                 }
             }
             
@@ -104,8 +128,7 @@ final class NetworkManager {
                     case .success(let value):
                         completionHandler(value)
                     case .failure(let error):
-                        print(error)
-                        print("upload 실패")
+                        print("upload 실패 \(error)")
                     }
                 }
             
@@ -160,6 +183,55 @@ final class NetworkManager {
             print(error)
         }
         
+    }
+    
+}
+
+final class AuthInterceptor: RequestInterceptor {
+    
+    func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
+
+        var urlRequest = urlRequest
+        print("enter adapt", UserDefaultsManager.shared.token)
+        urlRequest.setValue(UserDefaultsManager.shared.token, forHTTPHeaderField: "Authorization")
+        completion(.success(urlRequest))
+        
+    }
+    
+    func retry(_ request: Request, for session: Session, dueTo error: Error, completion: @escaping (RetryResult) -> Void) {
+        guard let response = request.task?.response as? HTTPURLResponse, response.statusCode == 419 else {
+            print("it's not 401")
+            completion(.doNotRetryWithError(error))
+            return
+        }
+
+        print("accessToken 401 --> try accessToken refresh")
+            
+        NetworkManager.shared.accessToken { response in
+            switch response {
+            case .success(let value):
+                
+                print(value.accessToken)
+                UserDefaultsManager.shared.token = value.accessToken
+                completion(.retry)
+                
+            case .failure(let error):
+                print("Refresh Token is expired, \(error)")
+                completion(.doNotRetryWithError(error))
+                self.initialize()
+            }
+        }
+
+    }
+    
+    private func initialize() {
+        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+        let sceneDelegate = windowScene?.delegate as? SceneDelegate
+        
+//        let rootViewcontroller = UINavigationController(rootViewController: )
+        
+        sceneDelegate?.window?.rootViewController = LoginViewController()
+        sceneDelegate?.window?.makeKeyAndVisible()
     }
     
 }

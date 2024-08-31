@@ -12,5 +12,7 @@ enum APIError: Error {
     
     case ok
     case badRequest
+    case Forbidden // 403
+//    case
     
 }
