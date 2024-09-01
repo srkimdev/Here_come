@@ -112,11 +112,13 @@ final class WriteReviewViewController: BaseViewController {
     override func configureUI() {
         
         navigationItem.title = "글쓰기"
+        BackButton()
         
         locationButton.layer.borderWidth = 1
         locationButton.layer.borderColor = UIColor.systemGray4.cgColor
         
         locationImage.image = UIImage(named: "location")
+        locationImage.contentMode = .scaleAspectFill
         
         locationLabel.text = "장소"
         

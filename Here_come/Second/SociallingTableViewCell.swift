@@ -122,9 +122,10 @@ final class SociallingTableViewCell: BaseTableViewCell {
         categoryView.layer.masksToBounds = true
         categoryView.layer.cornerRadius = 2
         categoryView.backgroundColor = .systemGray5
+        categoryView.backgroundColor = Custom.Colors.seaColor
         
-        categoryLabel.text = "여름휴가"
         categoryLabel.font = .systemFont(ofSize: 13)
+        categoryLabel.textColor = .white
         
         contentLabel.font = .systemFont(ofSize: 13)
         

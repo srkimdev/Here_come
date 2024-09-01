@@ -15,6 +15,7 @@ final class AccomodationTableViewCell: BaseTableViewCell {
     let profileImage = UIImageView()
     let userName = UILabel()
     let locationLabel = UILabel()
+    let settingButton = UIButton()
     let locationView = UIView()
     let locationImage = UIImageView()
     let locationName = UILabel()
@@ -60,6 +61,7 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         contentView.addSubview(profileImage)
         contentView.addSubview(userName)
         contentView.addSubview(locationLabel)
+        contentView.addSubview(settingButton)
         contentView.addSubview(locationView)
         locationView.addSubview(locationImage)
         locationView.addSubview(locationName)
@@ -94,6 +96,12 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         locationLabel.snp.makeConstraints { make in
             make.bottom.equalTo(profileImage.snp.bottom)
             make.leading.equalTo(profileImage.snp.trailing).offset(12)
+        }
+        
+        settingButton.snp.makeConstraints { make in
+            make.centerY.equalTo(profileImage)
+            make.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(12)
+            make.size.equalTo(30)
         }
         
         imageCollectionView.snp.makeConstraints { make in
@@ -187,12 +195,16 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         
         locationLabel.font = .systemFont(ofSize: 13)
         
+        settingButton.setImage(UIImage(systemName: "ellipsis"), for: .normal)
+        settingButton.tintColor = .black
+        
         locationView.layer.masksToBounds = true
-        locationView.layer.cornerRadius = 5
+        locationView.layer.cornerRadius = 10
         locationView.layer.borderWidth = 1
         locationView.layer.borderColor = UIColor.lightGray.cgColor
         
         locationImage.image = UIImage(named: "location")
+        locationImage.contentMode = .scaleAspectFill
         
         locationName.text = "김세중 미술관"
         locationName.font = .systemFont(ofSize: 14, weight: .bold)
@@ -229,7 +241,7 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         commentCount.text = "\(transition.comments!.count)"
         
         likeImage.image = UserDefaults.standard.bool(forKey: transition.post_id) ? UIImage(systemName: "heart") : UIImage(systemName: "heart.fill")
-        likeImage.tintColor = UserDefaults.standard.bool(forKey: transition.post_id) ? .black : .red
+        likeImage.tintColor = UserDefaults.standard.bool(forKey: transition.post_id) ? .black : Custom.Colors.seaColor
         
         updateImage.accept(transition.files ?? [])
         bind()

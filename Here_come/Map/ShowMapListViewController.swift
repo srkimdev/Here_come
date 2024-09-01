@@ -51,6 +51,7 @@ final class ShowMapListViewController: BaseViewController {
     
     override func configureUI() {
         
+        BackButton()
         searchBar.placeholder = "숙소의 주소, 지역명 등을 입력해주세요"
         
         locationTableView.rowHeight = 80
@@ -74,6 +75,7 @@ final class ShowMapListViewController: BaseViewController {
             .bind(with: self) { owner, value in
                 
                 let vc = ShowMapViewController()
+                vc.hidesBottomBarWhenPushed = true
                 vc.data = value
                 
                 owner.transitionScreen(vc: vc, style: .push)

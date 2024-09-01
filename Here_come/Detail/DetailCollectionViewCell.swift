@@ -26,7 +26,7 @@ final class DetailCollectionViewCell: BaseCollectionViewCell {
     
     override func configureLayout() {
         backView.snp.makeConstraints { make in
-            make.edges.equalTo(contentView)
+            make.edges.equalTo(contentView.safeAreaLayoutGuide)
         }
         
         myImage.snp.makeConstraints { make in
@@ -36,10 +36,12 @@ final class DetailCollectionViewCell: BaseCollectionViewCell {
     }
     
     override func configureUI() {
-        backView.layer.masksToBounds = true
-        backView.layer.cornerRadius = 5
         
-        myImage.contentMode = .scaleAspectFit
+        backView.layer.masksToBounds = true
+        backView.layer.cornerRadius = 10
+        
+        myImage.contentMode = .scaleAspectFill
+        
     }
     
     func designCell(transition: String) {

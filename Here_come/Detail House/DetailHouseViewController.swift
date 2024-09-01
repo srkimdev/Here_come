@@ -213,6 +213,8 @@ final class DetailHouseViewController: BaseViewController {
         
         guard let data else { return }
         
+        BackButton()
+        
         scrollView.showsVerticalScrollIndicator = false
         
         houseName.text = data.title
@@ -228,25 +230,29 @@ final class DetailHouseViewController: BaseViewController {
         infoLabel.text = "정보 입력"
         infoLabel.font = .systemFont(ofSize: 17, weight: .bold)
         
-        seperateLine.backgroundColor = .systemGray5
+        seperateLine.backgroundColor = .systemGray6
         
         dateInfoLabel.text = "날짜"
         dateInfoLabel.font = .systemFont(ofSize: 16)
         
         dateLabel.text = "2024. 08. 26 - 2024. 08. 29"
+        dateLabel.font = .systemFont(ofSize: 16)
         
         dateEditButton.setTitle("수정하기", for: .normal)
-        dateEditButton.setTitleColor(.black, for: .normal)
+        dateEditButton.setTitleColor(.lightGray, for: .normal)
+        dateEditButton.titleLabel?.font = .systemFont(ofSize: 16)
         
         personInfoLabel.text = "인원"
         personInfoLabel.font = .systemFont(ofSize: 16)
         
         personLabel.text = "1명"
+        personLabel.font = .systemFont(ofSize: 16)
         
         personEditButton.setTitle("수정하기", for: .normal)
-        personEditButton.setTitleColor(.black, for: .normal)
+        personEditButton.setTitleColor(.lightGray, for: .normal)
+        personEditButton.titleLabel?.font = .systemFont(ofSize: 16)
         
-        seperateLine2.backgroundColor = .systemGray5
+        seperateLine2.backgroundColor = .systemGray6
         
         locationInfoLabel.text = "위치"
         locationInfoLabel.font = .systemFont(ofSize: 17, weight: .bold)
@@ -264,11 +270,12 @@ final class DetailHouseViewController: BaseViewController {
         
         likeButton.setImage(HeartButton(), for: .normal)
         likeButton.contentMode = .scaleToFill
+        likeButton.tintColor = Custom.Colors.seaColor
         
         payButton.setTitle("결제하기", for: .normal)
         payButton.layer.masksToBounds = true
         payButton.layer.cornerRadius = 20
-        payButton.backgroundColor = UIColor.init(hex: "#3A9AD9")
+        payButton.backgroundColor = Custom.Colors.seaColor
         
     }
     
@@ -319,7 +326,7 @@ final class DetailHouseViewController: BaseViewController {
         let marker = NMFMarker()
         marker.position = NMGLatLng(lat: data.latitude, lng: data.longitude)
         marker.iconImage = NMF_MARKER_IMAGE_BLACK
-        marker.iconTintColor = UIColor.red
+        marker.iconTintColor = Custom.Colors.seaColor
         marker.width = 30
         marker.height = 40
         marker.mapView = self.naverMapView.mapView
@@ -332,7 +339,7 @@ final class DetailHouseViewController: BaseViewController {
         
         pageControl.numberOfPages = data.image.count
         pageControl.currentPage = 0
-        pageControl.currentPageIndicatorTintColor = .cyan
+        pageControl.currentPageIndicatorTintColor = Custom.Colors.seaColor
         pageControl.pageIndicatorTintColor = .lightGray
         
     }

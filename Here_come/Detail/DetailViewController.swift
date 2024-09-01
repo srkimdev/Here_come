@@ -25,7 +25,7 @@ final class DetailViewController: BaseViewController {
     let titleLabel = UILabel()
     let contentLabel = UILabel()
 
-    lazy var imageCollectionView = UICollectionView(frame: .zero, collectionViewLayout: imageCollectionViewLayout())
+    lazy var imageCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
 
     let seperateLine = UIView()
     let commentLabel = UILabel()
@@ -72,6 +72,7 @@ final class DetailViewController: BaseViewController {
         belowView.addSubview(textFieldView)
         textFieldView.addSubview(commentTextField)
         belowView.addSubview(sendButton)
+        
     }
 
     override func configureLayout() {
@@ -124,7 +125,7 @@ final class DetailViewController: BaseViewController {
 
         imageCollectionView.snp.makeConstraints { make in
             make.top.equalTo(contentLabel.snp.bottom).offset(20)
-            make.horizontalEdges.equalTo(contentView).inset(16)
+            make.horizontalEdges.equalTo(contentView)
             make.height.equalTo(320)
         }
 
@@ -168,11 +169,13 @@ final class DetailViewController: BaseViewController {
         sendButton.snp.makeConstraints { make in
             make.centerY.equalTo(belowView)
             make.trailing.equalTo(belowView.snp.trailing).inset(16)
-            make.size.equalTo(40)
+            make.size.equalTo(50)
         }
     }
 
     override func configureUI() {
+        
+        BackButton()
 
         categoryBackView.backgroundColor = .systemGray5
         categoryBackView.layer.masksToBounds = true
@@ -207,6 +210,8 @@ final class DetailViewController: BaseViewController {
         commentTextField.placeholder = "댓글을 입력해주세요"
 
         sendButton.setImage(UIImage(systemName: "paperplane"), for: .normal)
+        sendButton.tintColor = Custom.Colors.seaColor
+        
     }
 
     func bind() {
@@ -255,14 +260,21 @@ final class DetailViewController: BaseViewController {
             .disposed(by: disposeBag)
         
     }
+    
+    let layout = UICollectionViewCompositionalLayout { (sectionIndex, environment) -> NSCollectionLayoutSection? in
+                
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(UIScreen.main.bounds.width - 32), heightDimension: .fractionalHeight(1.0))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .groupPagingCentered
+        section.interGroupSpacing = 10
+        
+        return section
+    }
+    
 }
 
-extension DetailViewController: UICollectionViewDelegateFlowLayout {
-    func imageCollectionViewLayout() -> UICollectionViewFlowLayout {
-        let layout = UICollectionViewFlowLayout()
-        let width = view.bounds.width - 32
-        layout.itemSize = CGSize(width: width, height: width)
-        layout.scrollDirection = .horizontal
-        return layout
-    }
-}

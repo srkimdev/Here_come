@@ -28,7 +28,7 @@ final class HouseImageCollectionViewCell: BaseCollectionViewCell {
     }
     
     override func configureUI() {
-
+        imageView.contentMode = .scaleAspectFill
     }
     
     func designCell(transition: String) {

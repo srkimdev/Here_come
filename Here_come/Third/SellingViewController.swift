@@ -18,7 +18,25 @@ final class SellingViewController: BaseViewController {
     
     let totalLabel = UILabel()
     
-    let dateButton = UIButton()
+    let dateButton = {
+        let button = UIButton()
+        var configuration = UIButton.Configuration.plain()
+        configuration.baseBackgroundColor = .white
+        configuration.baseForegroundColor = .black
+
+        var attText = AttributedString("날짜순")
+        attText.font = UIFont.systemFont(ofSize: 15)
+        configuration.attributedTitle = attText
+        configuration.contentInsets = NSDirectionalEdgeInsets.init(top: 0, leading: 8, bottom: 0, trailing: 8)
+        
+        configuration.background.cornerRadius = 12
+        configuration.background.strokeColor = .lightGray
+        configuration.background.strokeWidth = 1
+        
+        button.configuration = configuration
+        
+        return button
+    }()
     
     lazy var recentTextCollectionView = UICollectionView(frame: .zero, collectionViewLayout: recentTextCollectionViewLayout())
     lazy var houseCollectionView = UICollectionView(frame: .zero, collectionViewLayout: houseCollectionViewLayout())
@@ -79,7 +97,7 @@ final class SellingViewController: BaseViewController {
         dateButton.snp.makeConstraints { make in
             make.top.equalTo(recentTextCollectionView.snp.bottom).offset(20)
             make.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-            make.height.equalTo(28)
+            make.height.equalTo(24)
         }
         
         houseCollectionView.snp.makeConstraints { make in
@@ -104,12 +122,6 @@ final class SellingViewController: BaseViewController {
         
         totalLabel.text = "총 234개"
         totalLabel.font = .systemFont(ofSize: 15)
-        
-        dateButton.configuration = .filterButton()
-        dateButton.layer.cornerRadius = 14
-        dateButton.layer.masksToBounds = true
-        dateButton.layer.borderColor = UIColor.lightGray.cgColor
-        dateButton.layer.borderWidth = 1
         
         recentTextCollectionView.showsHorizontalScrollIndicator = false
         
@@ -151,6 +163,7 @@ final class SellingViewController: BaseViewController {
             .bind(with: self) { owner, value in
                 
                 let vc = DetailHouseViewController()
+                vc.hidesBottomBarWhenPushed = true
                 vc.data = value
                 vc.networkTrigger.accept(value)
                 

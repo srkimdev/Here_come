@@ -59,6 +59,7 @@ final class RecentTextCollectionViewCell: BaseCollectionViewCell {
         recentText.numberOfLines = 1
         
         deleteButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        deleteButton.tintColor = .lightGray
         
     }
     

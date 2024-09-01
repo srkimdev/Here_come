@@ -45,6 +45,8 @@ final class ShowMapViewController: BaseViewController {
         
         guard let data else { return }
         
+        BackButton()
+        
         let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: Double(data.y) ?? 0, lng: Double(data.x) ?? 0))
         self.naverMapView.mapView.moveCamera(cameraUpdate)
         self.setMarker(lat: Double(data.y) ?? 0, lng: Double(data.x) ?? 0)
@@ -52,7 +54,7 @@ final class ShowMapViewController: BaseViewController {
         setButton.setTitle("위치 설정하기", for: .normal)
         setButton.layer.cornerRadius = 5
         setButton.layer.masksToBounds = true
-        setButton.backgroundColor = UIColor.init(hex: "#3ACCC5")
+        setButton.backgroundColor = Custom.Colors.seaColor
         setButton.setTitleColor(.white, for: .normal)
         
     }
@@ -62,7 +64,7 @@ final class ShowMapViewController: BaseViewController {
         let marker = NMFMarker()
         marker.position = NMGLatLng(lat: lat, lng: lng)
         marker.iconImage = NMF_MARKER_IMAGE_BLACK
-        marker.iconTintColor = UIColor.red
+        marker.iconTintColor = Custom.Colors.seaColor
         marker.width = 30
         marker.height = 40
         marker.mapView = self.naverMapView.mapView

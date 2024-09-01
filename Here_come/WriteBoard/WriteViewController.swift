@@ -21,7 +21,13 @@ final class WriteViewController: BaseViewController {
     let contentTextView = UITextView()
     
     lazy var photoCollectionView = UICollectionView(frame: .zero, collectionViewLayout: photoCollectionViewLayout())
-    let imageButton = UIButton()
+    
+    let imageButton = {
+        let button = UIButton()
+        let image = UIImage(systemName: "photo.on.rectangle", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24))
+        button.setImage(image, for: .normal)
+        return button
+    }()
     
     let pickerSubject = BehaviorRelay<[UIImage]>(value: [])
     let viewModel = WriteViewModel()
@@ -91,12 +97,14 @@ final class WriteViewController: BaseViewController {
         imageButton.snp.makeConstraints { make in
             make.trailing.equalTo(view.safeAreaLayoutGuide).inset(20)
             make.bottom.equalTo(view.safeAreaLayoutGuide).inset(20)
-            make.size.equalTo(40)
+            make.size.equalTo(60)
         }
         
     }
     
     override func configureUI() {
+        
+        BackButton()
         
         navigationItem.title = "글쓰기"
         
@@ -115,9 +123,9 @@ final class WriteViewController: BaseViewController {
         contentTextView.textColor = .lightGray
         contentTextView.font = .systemFont(ofSize: 15)
         
-        imageButton.backgroundColor = .lightGray
+        imageButton.backgroundColor = Custom.Colors.seaColor
         imageButton.layer.masksToBounds = true
-        imageButton.setImage(UIImage(systemName: "photo.badge.plus"), for: .normal)
+        imageButton.tintColor = .white
         
         photoCollectionView.showsHorizontalScrollIndicator = false
         

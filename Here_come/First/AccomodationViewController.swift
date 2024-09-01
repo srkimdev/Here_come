@@ -50,6 +50,7 @@ final class AccomodationViewController: BaseViewController {
         
         postTableView.rowHeight = UITableView.automaticDimension
         postTableView.showsVerticalScrollIndicator = false
+        postTableView.separatorInset = UIEdgeInsets.zero
         
         NotificationCenter.default.addObserver(self, selector: #selector(receivedNotification), name: NSNotification.Name("updatePost"), object: nil)
         
@@ -58,8 +59,9 @@ final class AccomodationViewController: BaseViewController {
     func bind() {
         
         let likeButtonTap = BehaviorRelay<String>(value: "")
+        let showDeleteAlert = PublishSubject<String>()
         
-        let input = AccomodationViewModel.Input(networkTrigger: networkTrigger, likeButtonTap: likeButtonTap)
+        let input = AccomodationViewModel.Input(networkTrigger: networkTrigger, likeButtonTap: likeButtonTap, showDeleteAlert: showDeleteAlert)
         let output = viewModel.transform(input: input)
         
         output.tableViewList
@@ -87,6 +89,14 @@ final class AccomodationViewController: BaseViewController {
                 cell.likeButton.rx.tap
                     .bind(with: self) { owner, _ in
                         likeButtonTap.accept(element.post_id)
+                    }
+                    .disposed(by: cell.disposeBag)
+                
+                cell.settingButton.rx.tap
+                    .bind(with: self) { owner, _ in
+                        owner.showDeleteAlert(postId: element.post_id) { _ in
+                            self.networkTrigger.onNext(())
+                        }
                     }
                     .disposed(by: cell.disposeBag)
                 

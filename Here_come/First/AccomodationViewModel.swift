@@ -16,6 +16,7 @@ final class AccomodationViewModel {
     struct Input {
         let networkTrigger: Observable<Void>
         let likeButtonTap: BehaviorRelay<String>
+        let showDeleteAlert: PublishSubject<String>
     }
     
     struct Output {
@@ -26,7 +27,7 @@ final class AccomodationViewModel {
     func transform(input: Input) -> Output {
         
         let tableViewList = BehaviorSubject<[Posts]>(value: [])
-        let currentLike = PublishSubject<Bool>()
+//        let currentLike = PublishSubject<Bool>()
         
         input.networkTrigger
             .bind(with: self) { owner, _ in
@@ -61,6 +62,12 @@ final class AccomodationViewModel {
 //
 //            }
 //            .disposed(by: disposeBag)
+        
+        input.showDeleteAlert
+            .bind(with: self) { owner, value in
+                NetworkManager.shared.deletePost(postId: value)
+            }
+            .disposed(by: disposeBag)
         
         return Output(tableViewList: tableViewList/*, updateLike: currentLike*/)
     }

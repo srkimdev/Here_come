@@ -65,9 +65,11 @@ final class SociallingCollectionViewCell: BaseCollectionViewCell {
     func designCell(transition: Categories, selectedIndex: String) {
 
         if transition.rawValue == selectedIndex {
-            backView.layer.borderWidth = 1
+            backView.layer.borderWidth = 2
+            categoryLabel.textColor = .black
         } else {
             backView.layer.borderWidth = 0
+            categoryLabel.textColor = .lightGray
         }
         
         categoryLabel.text = transition.rawValue
