@@ -147,44 +147,20 @@ final class NetworkManager {
         
     }
     
-    func deletePost(postId: String) {
-        
+    func deletePost(postId: String, completionHandler: @escaping () -> Void) {
+            
         do {
             let request = try Router.deletePost(postId: postId).asURLRequest()
             
             AF.request(request)
                 .validate(statusCode: 200..<300)
-                .responseDecodable(of: ReadPostModel.self) { response in
-                    switch response.result {
-                    case .success(let value):
-                        dump(value.data)
-                    case .failure:
-                        let statusCode: Int = response.response?.statusCode ?? 0
-                        let error = APIError.statusCodeCheck(statusCode: statusCode)
-                        print("callRequest ->", error.description)
-                    }
-                }
-            
-        } catch {
-            print(error)
-        }
-        
-    }
-    
-    func payments(postId: String, userId: String, completionHandler: @escaping (PaymentModel) -> Void) {
-        
-        do {
-            let query = PaymentQuery(imp_uid: userId, post_id: postId)
-            let request = try Router.payments(query: query).asURLRequest()
-            
-            AF.request(request)
-                .validate(statusCode: 200..<300)
-                .responseDecodable(of: PaymentModel.self) { response in
-                    switch response.result {
-                    case .success(let value):
-                        completionHandler(value)
-                        print("성공")
-                    case .failure:
+                .responseString { response in
+                    
+                    print(response.result)
+                    
+                    if response.response?.statusCode == 200 {
+                        completionHandler()
+                    } else {
                         let statusCode: Int = response.response?.statusCode ?? 0
                         let error = APIError.statusCodeCheck(statusCode: statusCode)
                         print("callRequest ->", error.description)

@@ -20,7 +20,8 @@ final class SellingViewModel {
     
     struct Input {
         let networkTrigger: PublishSubject<Void>
-        let inputText: PublishSubject<String>
+        let inputText: ControlProperty<String>
+        let searchBarEnter: ControlEvent<Void>
         let deleteAllButtonTap: ControlEvent<Void>
         let cellDeleteButton: PublishSubject<Int>
     }
@@ -41,7 +42,8 @@ final class SellingViewModel {
             }
             .disposed(by: disposeBag)
         
-        input.inputText
+        input.searchBarEnter
+            .withLatestFrom(input.inputText)
             .bind(with: self) { owner, value in
                 owner.topToRecentSearch(search: value)
                 updateRecentText.onNext(owner.textStore)

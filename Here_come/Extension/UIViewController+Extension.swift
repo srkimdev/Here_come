@@ -40,7 +40,7 @@ extension UIViewController {
         })
     }
     
-    func showDeleteAlert(postId: String, completionHandler: @escaping (()) -> Void) {
+    func showDeleteAlert(completionHandler: @escaping () -> Void) {
 
         let alert = UIAlertController(
             title: nil,
@@ -48,8 +48,7 @@ extension UIViewController {
             preferredStyle: .actionSheet)
         
         let delete = UIAlertAction(title: "삭제", style: .destructive) { _ in
-            NetworkManager.shared.deletePost(postId: postId)
-            completionHandler(())
+            completionHandler()
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel)
         

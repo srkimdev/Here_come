@@ -14,7 +14,7 @@ final class AccomodationViewModel {
     let disposeBag = DisposeBag()
     
     struct Input {
-        let networkTrigger: Observable<Void>
+        let networkTrigger: BehaviorSubject<Void>
         let likeButtonTap: BehaviorRelay<String>
         let showDeleteAlert: PublishSubject<String>
     }
@@ -36,6 +36,7 @@ final class AccomodationViewModel {
                     switch response {
                     case .success(let value):
                         tableViewList.onNext(value.data)
+                        print("tableview")
                     case .failure(let error):
                         print("readPost", error)
                     }
@@ -65,7 +66,12 @@ final class AccomodationViewModel {
         
         input.showDeleteAlert
             .bind(with: self) { owner, value in
-                NetworkManager.shared.deletePost(postId: value)
+            
+                print(value)
+                NetworkManager.shared.deletePost(postId: value) {
+                    input.networkTrigger.onNext(())
+                }
+
             }
             .disposed(by: disposeBag)
         

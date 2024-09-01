@@ -55,13 +55,27 @@ final class PaymentViewController: BaseViewController {
         Iamport.shared.paymentWebView(webViewMode: self.wkWebView, userCode: "imp57573124", payment: payment) { [weak self] iamportResponse in
             print(String(describing: iamportResponse))
             
-            NetworkManager.shared.payments(postId: data.postId, userId: (iamportResponse?.imp_uid)!) { value in
-                print(value)
-                self?.poptoast {
-                    self?.view.makeToast("결제가 완료되었습니다.", position: .bottom)
+            let query = PaymentQuery(imp_uid: (iamportResponse?.imp_uid)!, post_id: data.postId)
+            
+            NetworkManager.shared.callRequest(router: Router.payments(query: query), responseType: PaymentModel.self) { response in
+                switch response {
+                case .success:
+                    self?.poptoast {
+                        self?.view.makeToast("결제가 완료되었습니다.", position: .bottom)
+                    }
+                case .failure(let error):
+                    print("paryment \(error)")
                 }
-                
             }
+            
+            
+//            NetworkManager.shared.payments(postId: data.postId, userId: (iamportResponse?.imp_uid)!) { value in
+//                print(value)
+//                self?.poptoast {
+//                    self?.view.makeToast("결제가 완료되었습니다.", position: .bottom)
+//                }
+//                
+//            }
             
         }
         

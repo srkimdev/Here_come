@@ -50,7 +50,7 @@
 		DC0769CA2C6F2E3D0025F939 /* RecentTextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769C92C6F2E3D0025F939 /* RecentTextCollectionViewCell.swift */; };
 		DC0769D12C6F51470025F939 /* SociallingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769D02C6F51470025F939 /* SociallingTableViewCell.swift */; };
 		DC0769D52C6F72500025F939 /* SociallingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769D42C6F72500025F939 /* SociallingViewModel.swift */; };
-		DC0769D72C6F73140025F939 /* Party.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769D62C6F73140025F939 /* Party.swift */; };
+		DC0769D72C6F73140025F939 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769D62C6F73140025F939 /* Category.swift */; };
 		DC0769D92C709CDF0025F939 /* SociallingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769D82C709CDF0025F939 /* SociallingCollectionViewCell.swift */; };
 		DC0769DC2C70AE940025F939 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769DB2C70AE940025F939 /* WriteViewController.swift */; };
 		DC0769DE2C70F6A10025F939 /* WriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0769DD2C70F6A10025F939 /* WriteViewModel.swift */; };
@@ -93,7 +93,6 @@
 		DCEE48352C7C5A5700D745EB /* StarStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE48342C7C5A5700D745EB /* StarStackView.swift */; };
 		DCEE48372C7C5E6D00D745EB /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE48362C7C5E6D00D745EB /* UIColor+Extension.swift */; };
 		DCEE483A2C7C7FB400D745EB /* DetailHouseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE48392C7C7FB400D745EB /* DetailHouseViewController.swift */; };
-		DCEE483C2C7CB09A00D745EB /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEE483B2C7CB09A00D745EB /* UIButton+Extension.swift */; };
 		DCF576222C807234007B839C /* PaymentQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF576212C807234007B839C /* PaymentQuery.swift */; };
 		DCF576242C8072E3007B839C /* PaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF576232C8072E2007B839C /* PaymentModel.swift */; };
 		DCF576272C8088CE007B839C /* iamport-ios in Frameworks */ = {isa = PBXBuildFile; productRef = DCF576262C8088CE007B839C /* iamport-ios */; };
@@ -143,7 +142,7 @@
 		DC0769C92C6F2E3D0025F939 /* RecentTextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTextCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC0769D02C6F51470025F939 /* SociallingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SociallingTableViewCell.swift; sourceTree = "<group>"; };
 		DC0769D42C6F72500025F939 /* SociallingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SociallingViewModel.swift; sourceTree = "<group>"; };
-		DC0769D62C6F73140025F939 /* Party.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Party.swift; sourceTree = "<group>"; };
+		DC0769D62C6F73140025F939 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		DC0769D82C709CDF0025F939 /* SociallingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SociallingCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC0769DB2C70AE940025F939 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
 		DC0769DD2C70F6A10025F939 /* WriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewModel.swift; sourceTree = "<group>"; };
@@ -185,7 +184,6 @@
 		DCEE48342C7C5A5700D745EB /* StarStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarStackView.swift; sourceTree = "<group>"; };
 		DCEE48362C7C5E6D00D745EB /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		DCEE48392C7C7FB400D745EB /* DetailHouseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHouseViewController.swift; sourceTree = "<group>"; };
-		DCEE483B2C7CB09A00D745EB /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		DCF576212C807234007B839C /* PaymentQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentQuery.swift; sourceTree = "<group>"; };
 		DCF576232C8072E2007B839C /* PaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModel.swift; sourceTree = "<group>"; };
 		DCF576282C809130007B839C /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
@@ -292,7 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				DC0769B62C6CD7720025F939 /* Accomodations.swift */,
-				DC0769D62C6F73140025F939 /* Party.swift */,
+				DC0769D62C6F73140025F939 /* Category.swift */,
 				DC090AE72C833E3E0052DD05 /* Custom.swift */,
 			);
 			path = Database;
@@ -313,7 +311,6 @@
 				DC07698A2C6C815E0025F939 /* UITextField+Extension.swift */,
 				DC0769B42C6CD4800025F939 /* UIViewController+Extension.swift */,
 				DCEE48362C7C5E6D00D745EB /* UIColor+Extension.swift */,
-				DCEE483B2C7CB09A00D745EB /* UIButton+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -598,7 +595,6 @@
 				DC4150E22C79B20A0008FAB3 /* CommentViewController.swift in Sources */,
 				DCF576302C82DD4A007B839C /* TokenModel.swift in Sources */,
 				DC0769A72C6CD1FC0025F939 /* TabBarViewController.swift in Sources */,
-				DCEE483C2C7CB09A00D745EB /* UIButton+Extension.swift in Sources */,
 				DC0769742C6C78D10025F939 /* BaseViewController.swift in Sources */,
 				DC0769B52C6CD4800025F939 /* UIViewController+Extension.swift in Sources */,
 				DC07695B2C6C77D30025F939 /* AppDelegate.swift in Sources */,
@@ -656,7 +652,7 @@
 				DCB4B2442C7DB5A900DED0D2 /* HouseImageCollectionViewCell.swift in Sources */,
 				DCF576242C8072E3007B839C /* PaymentModel.swift in Sources */,
 				DC15EC9F2C7F0E14008CA735 /* LocationTableViewCell.swift in Sources */,
-				DC0769D72C6F73140025F939 /* Party.swift in Sources */,
+				DC0769D72C6F73140025F939 /* Category.swift in Sources */,
 				DC2E07412C763B1D007589E9 /* CommentTableViewCell.swift in Sources */,
 				DC4150EA2C79FE810008FAB3 /* LikeQuery.swift in Sources */,
 				DC0769D52C6F72500025F939 /* SociallingViewModel.swift in Sources */,

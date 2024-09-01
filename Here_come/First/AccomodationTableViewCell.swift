@@ -26,7 +26,6 @@ final class AccomodationTableViewCell: BaseTableViewCell {
     let commentImage = UIImageView()
     let commentButton = UIButton()
     let commentCount = UILabel()
-//    let locationImage = UIImageView()
     let locationButton = UIButton()
     let descriptionLabel = UILabel()
     
@@ -224,6 +223,7 @@ final class AccomodationTableViewCell: BaseTableViewCell {
         imageCollectionView.showsHorizontalScrollIndicator = false
         
         pageControl.backgroundColor = .black
+        
     }
     
     func designCell(transition: Posts) {
@@ -286,15 +286,15 @@ final class AccomodationTableViewCell: BaseTableViewCell {
 }
 
 extension AccomodationTableViewCell: UICollectionViewDelegateFlowLayout {
+    
     private func imageCollectionViewLayout() -> UICollectionViewLayout {
-        
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
-        
         return layout
     }
+    
 }

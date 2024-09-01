@@ -49,7 +49,6 @@ final class SellingViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchBar.delegate = self
         recentTextCollectionView.register(RecentTextCollectionViewCell.self, forCellWithReuseIdentifier: RecentTextCollectionViewCell.identifier)
         houseCollectionView.register(HouseCollectionViewCell.self, forCellWithReuseIdentifier: HouseCollectionViewCell.identifier)
         
@@ -133,7 +132,7 @@ final class SellingViewController: BaseViewController {
         
         let cellDeleteButton = PublishSubject<Int>()
         
-        let input = SellingViewModel.Input(networkTrigger: networkTrigger, inputText: inputText, deleteAllButtonTap: deleteButton.rx.tap, cellDeleteButton: cellDeleteButton)
+        let input = SellingViewModel.Input(networkTrigger: networkTrigger, inputText: searchBar.rx.text.orEmpty, searchBarEnter: searchBar.rx.searchButtonClicked, deleteAllButtonTap: deleteButton.rx.tap, cellDeleteButton: cellDeleteButton)
         let output = viewModel.transform(input: input)
         
         output.updateTableView
@@ -176,13 +175,6 @@ final class SellingViewController: BaseViewController {
         
     }
     
-}
-
-extension SellingViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchText = searchBar.text else { return }
-        inputText.onNext(searchText)
-    }
 }
 
 extension SellingViewController: UICollectionViewDelegateFlowLayout {

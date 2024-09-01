@@ -25,8 +25,6 @@ final class AccomodationViewController: BaseViewController {
         
         postTableView.register(AccomodationTableViewCell.self, forCellReuseIdentifier: AccomodationTableViewCell.identifier)
         
-//        NetworkManager.shared.deletePost(postId: "66cae6a35056517017a5495f")
-        
         bind()
     }
     
@@ -94,8 +92,8 @@ final class AccomodationViewController: BaseViewController {
                 
                 cell.settingButton.rx.tap
                     .bind(with: self) { owner, _ in
-                        owner.showDeleteAlert(postId: element.post_id) { _ in
-                            self.networkTrigger.onNext(())
+                        owner.showDeleteAlert() {
+                            showDeleteAlert.onNext(element.post_id)
                         }
                     }
                     .disposed(by: cell.disposeBag)
