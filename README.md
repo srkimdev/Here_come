@@ -4,6 +4,7 @@
 
 ## 스크린샷
 
+|![Simulator Screenshot - iPhone 15 Pro - 2024-10-17 at 16 56 05](https://github.com/user-attachments/assets/48f69cd8-b53b-4e72-99ef-19d04f4f36b5)|![Simulator Screenshot - iPhone 15 Pro - 2024-10-17 at 17 03 51](https://github.com/user-attachments/assets/eabd9d67-386b-4361-864a-4e4a4a7dc080)|![Simulator Screenshot - iPhone 15 Pro - 2024-10-17 at 16 26 24](https://github.com/user-attachments/assets/dd9b5180-1655-4a2a-be1c-5d9c1ec05a40)|![Simulator Screenshot - iPhone 15 Pro - 2024-10-17 at 16 26 40](https://github.com/user-attachments/assets/1dee4eb5-1ea4-4b13-b83b-31c6604c739e)|
 |--|--|--|--|
 
 
