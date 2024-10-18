@@ -4,7 +4,7 @@
 
 ## 스크린샷
 
-|![Simulator Screenshot - iPhone 15 Pro - 2024-10-17 at 20 32 15](https://github.com/user-attachments/assets/fcf48aab-4a52-44f0-aff7-77d244318eee)|![Simulator Screenshot - iPhone 15 Pro - 2024-10-17 at 20 32 38](https://github.com/user-attachments/assets/d4cd0c25-0f37-4efd-8a4d-09aaf10ad3c2)|![Simulator Screenshot - iPhone 15 Pro - 2024-10-17 at 16 26 24](https://github.com/user-attachments/assets/dd9b5180-1655-4a2a-be1c-5d9c1ec05a40)|![Simulator Screenshot - iPhone 15 Pro - 2024-10-17 at 16 26 40](https://github.com/user-attachments/assets/1dee4eb5-1ea4-4b13-b83b-31c6604c739e)|
+|![Simulator Screenshot - iPhone 15 Pro - 2024-10-17 at 20 32 15](https://github.com/user-attachments/assets/fcf48aab-4a52-44f0-aff7-77d244318eee)|![Simulator Screenshot - iPhone 15 Pro - 2024-10-17 at 20 32 38](https://github.com/user-attachments/assets/d4cd0c25-0f37-4efd-8a4d-09aaf10ad3c2)|![Simulator Screenshot - iPhone 15 Pro - 2024-10-17 at 16 26 24](https://github.com/user-attachments/assets/dd9b5180-1655-4a2a-be1c-5d9c1ec05a40)|![Simulator Screenshot - iPhone 15 Pro - 2024-10-17 at 21 00 27](https://github.com/user-attachments/assets/b24d9142-eedf-4470-86fb-70d8326eface)|
 |--|--|--|--|
 
 <br>
@@ -46,10 +46,13 @@
 네이버지도(사용자 친화적), 카카오search
 
 - ### Access Token 갱신
+  - 
+
 
 - ### 결제
+  - 통합결제 API를 연동하여 PG사와 연결
+  - 결제 승인 시 결제 내역에 대한 유효성 검증을 위해 서버와 통신하여 최종 결제 여부를 확인 
 
-- ### 커서 기반 페이지네이션
 
 - ### Dynamic Cell Size
   - UICollectionViewFlowLayout에서 제공하는 estimatedItemSize와 automaticSize를 이용하여 텍스트의 길이에 따라 셀의 크기를 다르게 함   
@@ -57,9 +60,17 @@
 
 
 - ### 사진 업로드 / 로드
-  - multipart/form
+  - PHPickerViewController를 사용하여 사진을 선택하고 multipart/form-data방식을 통해 Data타입의 jpeg파일을 서버에 업로드
+  - Kingfisher에서 제공하는 setImage함수의 option으로 Header값을 넣어준 AnyModifier를 추가하여 이미지를 로드
 
-엑세스토큰, 커서기반 페이지네이션, 결제, multipart
+
+- ### 커서 기반 페이지네이션
+  - 실시간으로 올라오는 게시글을 대응하기 위해 커서 기반 페이지네이션 도입
+  - 각 페이지 마다 서버에서 제공하는 next_cursor변수를 가지고 통신하여 다음 페이지 조회
+
+
+
+결제, multipart
 dispatchgroup, 셀 크기, 상태코드 처리
 
 
