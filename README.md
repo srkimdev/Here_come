@@ -42,37 +42,42 @@
 <br/>
  
 ## 핵심 기술 구현 사항
-- network
-네이버지도(사용자 친화적), 카카오search
 
 - ### Access Token 갱신
-  - 
+  - Alamofire의 RequestIntercepter 프로토콜을 채택하여 adapt, retry 로직 구현 
+  - Access Token 만료 시 retry함수를 거쳐 새로운 엑세스 토큰 발급
+  - Refresh Token 만료 시 로그인 화면으로 이동
 
+<br>
+
+- ### 장소 검색 및 위치 확인
+  - 사용자 장소 검색을 위해 Kakao search API 이용
+  - MapKit과 비교했을 때 사용자에게 좀 더 친숙한 네이버 지도를 이용하여 숙소 위치 확인
+ 
+<br>
 
 - ### 결제
   - 통합결제 API를 연동하여 PG사와 연결
-  - 결제 승인 시 결제 내역에 대한 유효성 검증을 위해 서버와 통신하여 최종 결제 여부를 확인 
+  - 결제 승인 시 결제 내역에 대한 유효성 검증을 위해 서버와 통신하여 최종 결제 여부를 확인
 
+<br>
 
 - ### Dynamic Cell Size
   - UICollectionViewFlowLayout에서 제공하는 estimatedItemSize와 automaticSize를 이용하여 텍스트의 길이에 따라 셀의 크기를 다르게 함   
   - 텍스트의 autoLayout을 verticalEdges, horizontalEdges로 잡아 셀에게 텍스트의 길이에 대한 힌트를 제공함
 
+<br>
 
 - ### 사진 업로드 / 로드
   - PHPickerViewController를 사용하여 사진을 선택하고 multipart/form-data방식을 통해 Data타입의 jpeg파일을 서버에 업로드
   - Kingfisher에서 제공하는 setImage함수의 option으로 Header값을 넣어준 AnyModifier를 추가하여 이미지를 로드
+  - 이미지 로드 시 여러 이미지들이 비동기적으로 로드되는 것을 동기화하기 위해 dispatchGroup을 사용
 
+<br>
 
 - ### 커서 기반 페이지네이션
   - 실시간으로 올라오는 게시글을 대응하기 위해 커서 기반 페이지네이션 도입
   - 각 페이지 마다 서버에서 제공하는 next_cursor변수를 가지고 통신하여 다음 페이지 조회
-
-
-
-결제, multipart
-dispatchgroup, 셀 크기, 상태코드 처리
-
 
 <br/>
 
