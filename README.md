@@ -16,7 +16,7 @@
   - 24.08.17 - 24.08.31 ( 15일 )
 - 개발 환경:
 
-    | iOS version | <img src="https://img.shields.io/badge/iOS-16.0+-black?logo=apple"/> |
+    | iOS version | <img src="https://img.shields.io/badge/iOS-15.0+-black?logo=apple"/> |
     |:-:|:-:|
     | Framework | UIKit |
     | Architecture | MVVM |
