@@ -44,15 +44,8 @@
 ## 핵심 기술 구현 사항
 
 - ### Access Token 갱신
-  - Alamofire의 RequestIntercepter 프로토콜을 채택하여 adapt, retry 로직 구현 
-  - Access Token 만료 시 retry함수를 거쳐 새로운 엑세스 토큰 발급
-  - Refresh Token 만료 시 로그인 화면으로 이동
-
-<br>
-
-- ### 장소 검색 및 위치 확인
-  - 장소 검색을 위해 Kakao search API를 이용하였고 장소명과 좌표값 추출
-  - MapKit과 비교했을 때 사용자에게 좀 더 친숙한 네이버 지도를 이용하여 숙소 위치를 보여줌
+  - Alamofire의 RequestIntercepter 프로토콜을 채택하여 adapt, retry 로직 구현
+  - retry에서 Refresh Token으로 Access Token을 재발급하여 UserDefaults에 저장하고 adapt에서 UserDefaults값을 읽어, Authorization 헤더에 새로운 Access Token 값 할당
  
 <br>
 
@@ -63,21 +56,20 @@
 <br>
 
 - ### Dynamic Cell Size
-  - UICollectionViewFlowLayout에서 제공하는 estimatedItemSize와 automaticSize를 이용하여 텍스트의 길이에 따라 셀의 크기를 다르게 함   
-  - 텍스트의 autoLayout을 verticalEdges, horizontalEdges로 잡아 셀에게 텍스트의 길이에 대한 힌트를 제공함
+  - UICollectionViewFlowLayout의 estimatedItemSize와 automaticSize를 사용하여 검색어의 길이에 따라 셀의 가로 크기가 동적으로 변경되도록 구현
+  - UILabel과 셀 사이에 Inset을 설정하고 텍스트 길이에 대한 정보를 제공해 셀 크기를 계산
 
 <br>
 
 - ### 사진 업로드 / 로드
-  - PHPickerViewController를 사용하여 사진을 선택하고 multipart/form-data방식을 통해 Data타입의 jpeg파일을 서버에 업로드
-  - Kingfisher에서 제공하는 setImage함수의 option으로 Header값을 넣어준 AnyModifier를 추가하여 이미지를 로드
-  - 이미지 로드 시 여러 이미지들이 비동기적으로 로드되는 것을 동기화하기 위해 dispatchGroup을 사용
+  - 선택한 사진을 multipart/form-data방식을 통해 jpeg형식의 Data타입을 compressionQuality 0.5로 압축하여 서버에 업로드
+  - Kingfisher에서 제공하는 setImage함수의 option으로, Header값을 넣어준 AnyModifier를 추가하여 이미지를 로드
 
 <br>
 
 - ### 커서 기반 페이지네이션
-  - 실시간으로 올라오는 게시글을 대응하기 위해 커서 기반 페이지네이션 도입
-  - 각 페이지 마다 서버에서 제공하는 next_cursor변수를 가지고 통신하여 다음 페이지 조회
+  - RxSwift의 prefetchRows를 사용하여 스크롤 이벤트를 감지하고 IndexPath값을 ViewModel에 전달
+  - IndexPath의 row값이 4 미만일 경우 이벤트를 구독하여 next_cursor값을 이용해 다음 페이지의 게시물을 로드
 
 <br/>
 
